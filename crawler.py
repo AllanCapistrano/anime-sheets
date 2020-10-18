@@ -40,4 +40,6 @@ class Crawler:
     for link_html in list_links_html:
       lastEpisodeLink_html = link_html.find('a')
 
-    return lastEpisodeLink_html.attrs['href']
+    lastEpisodeLink = lastEpisodeLink_html.attrs['href']
+
+    return lastEpisodeLink
