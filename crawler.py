@@ -33,7 +33,7 @@ class Crawler:
     return lastEpisode[1]
 
   #Funçaõ que retorna o link do último episódio lançado.
-  def getLastEpisodeLink(self, url):
+  def getLastEpisodeUrl(self, url):
     soup = self.reqUrl(url)
     list_links_html = soup.find_all('div', class_='episodiotitle')
 
