@@ -10,7 +10,7 @@ class Crawler:
 
     return soup
 
-  #Funçaõ que retorna o número do último episódio lançado.
+  #Função que retorna o número do último episódio lançado.
   def getLastEpisode(self, url):
     soup = self.reqUrl(url)
     list_episodes_html = soup.find_all('div', class_='numerando')
@@ -22,7 +22,7 @@ class Crawler:
 
     return lastEpisode[1]
 
-  #Funçaõ que retorna o link do último episódio lançado.
+  #Função que retorna o link do último episódio lançado.
   def getLastEpisodeUrl(self, url):
     soup = self.reqUrl(url)
     list_links_html = soup.find_all('div', class_='episodiotitle')
