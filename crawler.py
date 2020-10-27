@@ -10,16 +10,6 @@ class Crawler:
 
     return soup
 
-  #Função que retorna o número da última temporada lançada.
-  def getLastSeason(self, url):
-    soup = self.reqUrl(url)
-    list_seasons_html = soup.find_all('span', class_='se-t')
-    numSeasons = len(list_seasons_html)
-    lastSeason = int(list_seasons_html[numSeasons - 1].contents[0])
-
-    return lastSeason
-
-
   #Funçaõ que retorna o número do último episódio lançado.
   def getLastEpisode(self, url):
     soup = self.reqUrl(url)
