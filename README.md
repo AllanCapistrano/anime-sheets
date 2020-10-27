@@ -34,7 +34,8 @@ O objetito dessa aplicação é que não seja necessário abrir o site para veri
 3. Faça um Fork deste repositório (caso queira modificá-lo) ou somente clone este repositório.
 4. Coloque o arquivo contendo as credenciais na pasta do projeto*.
 5. Compartilhe a planilha com o ```client_email``` que está no arquivo de credenciais.
-6. Após isso, basta rodar o arquivo [```main.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/main.py)
+6. Troque o link da planilha na constante ```SHEET_LINK``` no arquivo [```main.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
+7. Após isso, basta rodar o arquivo [```main.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/main.py)
 
 ###### Obs1: Se não utilizar o nome da planilha como "Animes", é necessário alterar a contante ```SHEET_TITLE``` no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py) ######
 ###### Obs2: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (```COL_```) no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py) ######
