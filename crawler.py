@@ -28,7 +28,7 @@ class Crawler:
     for episode in list_episodes_html:
       lastEpisode = episode.contents[0]
 
-    lastEpisode = lastEpisode.split('-')
+    lastEpisode = lastEpisode.split('- ')
 
     return lastEpisode[1]
 
