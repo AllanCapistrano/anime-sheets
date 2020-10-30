@@ -30,7 +30,7 @@ O objetito dessa aplicação é que não seja necessário abrir o site para veri
 ## 🖥️ Como utilizar ##
 
 1. Criei uma planilha* no [Google Planilhas](https://www.google.com/sheets/about/) seguindo o modelo da imagem acima*.
-2. Obtenha as credenciais para acessar a API do Google Drive e Google Planilhas, [clique aqui](https://www.iperiusbackup.net/pt-br/como-habilitar-a-api-do-google-drive-e-obter-credenciais-de-cliente/) para aprender a obter a credencial do Google Drive (mesmo processo para obter a credencial do Google Planilhas).
+2. Obtenha as credenciais para acessar a API do Google Drive e Google Planilhas. [Clique aqui](https://www.iperiusbackup.net/pt-br/como-habilitar-a-api-do-google-drive-e-obter-credenciais-de-cliente/) para aprender a obter a credencial do Google Drive (mesmo processo para obter a credencial do Google Planilhas).
 3. Faça um Fork deste repositório (caso queira modificá-lo) ou somente clone este repositório.
 4. Coloque o arquivo contendo as credenciais na pasta do projeto*.
 5. Compartilhe a planilha com o ```client_email``` que está no arquivo de credenciais.
