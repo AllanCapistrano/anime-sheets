@@ -51,7 +51,6 @@ def setLastEpisodeUrl(index, value):
 
 #Função para trocar a cor de fundo da célula.
 def changeCellBackgroundColor(pos, color):
-  print(color)
   sheet.format(COL_LE_NAME + str(pos), {
     "backgroundColor": {
       "red": color[0],
