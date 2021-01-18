@@ -15,24 +15,27 @@ crawler = Crawler()
 animes_url = sheets.getAnimeUrl()
 im = sheets.getIm()
 size = len(animes_url)
+last_episode_sheet = sheets.getLastEpisode()
 
 for i in range(0, size):
-  last_episode = crawler.getLastEpisode(animes_url[i])
-  last_episode_url = crawler.getLastEpisodeUrl(animes_url[i])
+    last_episode = crawler.getLastEpisode(animes_url[i])
+    last_episode_url = crawler.getLastEpisodeUrl(animes_url[i])
 
-  sheets.setLastEpisode(i, last_episode)
-  sheets.setLastEpisodeUrl(i, last_episode_url)
+    if(last_episode_sheet[i] != last_episode):
+        sheets.setLastEpisode(i, last_episode)
+        sheets.setLastEpisodeUrl(i, last_episode_url)
 
-  if(int(im[i]) < int(last_episode)):
-    sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
-  else:
-    sheets.changeCellBackgroundColor(i + 2, COLOR_OK)
+    if(int(im[i]) < int(last_episode)):
+        sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
+    else:
+        sheets.changeCellBackgroundColor(i + 2, COLOR_OK)
 
-  percentage = 100 * (i + 1)/size
+    percentage = 100 * (i + 1)/size
 
-  print("Anime {}/{} atualizado | {:.2f}%".format(i + 1, size, percentage))
+    print("Anime {}/{} atualizado | {:.2f}%".format(i + 1, size, percentage))
 
 end = time.time()
 
-print("\nPlanilha de animes atualizada com sucesso {}! \nLink: {}\n".format(USER, SHEET_LINK))
+print("\nPlanilha de animes atualizada com sucesso {}! \nLink: {}\n".format(
+    USER, SHEET_LINK))
 print("Tempo de execução: {:.2f}s\n".format(end - start))
