@@ -21,10 +21,16 @@ for i in range(0, size):
     last_episode = crawler.getLastEpisode(animes_url[i])
     last_episode_url = crawler.getLastEpisodeUrl(animes_url[i])
 
-    if(last_episode_sheet[i] != last_episode):
-        sheets.setLastEpisode(i, last_episode)
-        sheets.setLastEpisodeUrl(i, last_episode_url)
-
+    try:
+        if(last_episode_sheet[i] != last_episode):
+            sheets.setLastEpisode(i, last_episode)
+            sheets.setLastEpisodeUrl(i, last_episode_url)
+    except :
+        if(im[i]):
+            sheets.setLastEpisode(i, last_episode)
+            sheets.setLastEpisodeUrl(i, last_episode_url)
+    
+    
     if(int(im[i]) < int(last_episode)):
         sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
     else:
