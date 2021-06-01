@@ -29,7 +29,7 @@ O objetivo desta aplicação é que não seja necessário abrir o site para veri
 
 ## 🖥️ Como utilizar ##
 
-1. Criei uma planilha¹ no [Google Planilhas](https://www.google.com/sheets/about/) seguindo o modelo da imagem acima²;
+1. Criei uma planilha¹ no [Google Planilhas](https://www.google.com/sheets/about/) seguindo o modelo da imagem acima² ou faça o download do [template](https://github.com/AllanCapistrano/anime-sheets/releases/tag/1.0);
 2. Entre na [Google Cloud Plataform](https://console.cloud.google.com) e clique em **Criar Projeto**;
 3. Digite o nome do projeto e depois clique em **Criar**;
 4. Clique no menu lateral esquerdo, e depois selecione a opção **APIs e serviços**;
