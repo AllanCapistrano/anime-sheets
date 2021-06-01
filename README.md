@@ -46,10 +46,10 @@ O objetito dessa aplicação é que não seja necessário abrir o site para veri
 15. Nessa nova janela, no menu superior, clique em **Chaves**, e depois em **Adicionar chave ➞ Criar nova chave**;
 16. Selecione **JSON**³ e clique em **Criar***;
 17. Volte para a página de [Bibliotecas de APIs](https://console.cloud.google.com/apis/library), busque por **Google Sheets API** e clique em **Ativar**;
-18. Faça um Fork deste repositório (caso queira modificá-lo) ou somente clone este repositório.
-29. Coloque o arquivo contendo as credenciais na pasta do projeto.
-20. Compartilhe a planilha com o ```client_email``` que está no arquivo de credenciais (ex: myemail@myproject.iam.gserviceaccount.com).
-21. Coloque o link da planilha na constante ```SHEET_LINK``` no arquivo [```main.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
+18. Faça um Fork deste repositório (caso queira modificá-lo) ou somente clone este repositório;
+29. Coloque o arquivo contendo as credenciais na pasta do projeto;
+20. Compartilhe a planilha com o ```client_email``` que está no arquivo de credenciais (ex: myemail@myproject.iam.gserviceaccount.com);
+21. Coloque o link da planilha na constante ```SHEET_LINK``` no arquivo [```main.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py);
 22. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
 ```powershell
 $ python main.py
