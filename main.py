@@ -4,7 +4,7 @@ import time
 
 # --- Constants --- #
 USER = "Allan"
-SHEET_LINK = "https://docs.google.com/spreadsheets/d/1b5aRDVLz2a3zf4x5j0uJOeonr51Kmlu5vaIQ64b0wCY/edit#gid=0"
+SHEET_LINK = "your_sheet_link"
 COLOR_OK = [0, 1, 0]
 COLOR_NOT_OK = [1, 0, 0]
 # ---------------- #
