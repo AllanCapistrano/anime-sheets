@@ -3,7 +3,7 @@ import sheets
 import time
 
 # --- Constants --- #
-USER = "Allan"
+USER = "your_name"
 SHEET_LINK = "your_sheet_link"
 COLOR_OK = [0, 1, 0]
 COLOR_NOT_OK = [1, 0, 0]
