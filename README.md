@@ -68,4 +68,4 @@ $ python main.py
 ------------
 
 ## ⚖️ Licença ##
-[MIT License (MIT)](https://github.com/AllanCapistrano/anime-sheets-/blob/main/LICENSE)
+[GPL-3.0 License](https://github.com/AllanCapistrano/anime-sheets-/blob/main/LICENSE)
