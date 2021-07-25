@@ -29,7 +29,7 @@ O objetivo desta aplicação é que não seja necessário abrir o site para veri
 - [x] [Animes House](https://animeshouse.net/)
 - [x] [Goyabu](https://goyabu.com/)
 
-###### ¹Obs: Caso deseje utilizar outro(s) site(s), é necessário realizar algumas alterações.
+###### ¹Obs: Caso deseje utilizar outro(s) site(s), é necessário realizar algumas modificações.
 
 ------------
 
