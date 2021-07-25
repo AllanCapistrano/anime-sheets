@@ -1,4 +1,4 @@
-from crawler import Crawler
+from crawlerAnimesHouse import CrawlerAnimesHouse
 import sheets
 import time
 
@@ -11,15 +11,15 @@ COLOR_NOT_OK = [1, 0, 0]
 
 start = time.time()
 
-crawler = Crawler()
+crawlerAnimesHouse = CrawlerAnimesHouse()
 animes_url = sheets.getAnimeUrl()
 im = sheets.getIm()
 size = len(animes_url)
 last_episode_sheet = sheets.getLastEpisode()
 
 for i in range(0, size):
-    last_episode = crawler.getLastEpisode(animes_url[i])
-    last_episode_url = crawler.getLastEpisodeUrl(animes_url[i])
+    last_episode = crawlerAnimesHouse.getLastEpisode(animes_url[i])
+    last_episode_url = crawlerAnimesHouse.getLastEpisodeUrl(animes_url[i])
 
     try:
         if(last_episode_sheet[i] != last_episode):
