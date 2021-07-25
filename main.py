@@ -1,37 +1,48 @@
-from crawler import Crawler
-import sheets
 import time
+import sheets
 
-# --- Constants --- #
+from crawlerAnimesHouse import CrawlerAnimesHouse
+from crawlerGoyabu import CrawlerGoyabu
+
+# ------------------------------ Constants ----------------------------------- #
 USER = "your_name"
 SHEET_LINK = "your_sheet_link"
 COLOR_OK = [0, 1, 0]
 COLOR_NOT_OK = [1, 0, 0]
-# ---------------- #
+# ---------------------------------------------------------------------------- #
 
-start = time.time()
+start              = time.time()
 
-crawler = Crawler()
-animes_url = sheets.getAnimeUrl()
-im = sheets.getIm()
-size = len(animes_url)
-last_episode_sheet = sheets.getLastEpisode()
+crawlerAnimesHouse = CrawlerAnimesHouse()
+crawlerGoyabu      = CrawlerGoyabu()
+
+animesUrls         = sheets.getAnimeUrl()
+im                 = sheets.getIm()
+size               = len(animesUrls)
+
+lastEpisodeSheet = sheets.getLastEpisode()
 
 for i in range(0, size):
-    last_episode = crawler.getLastEpisode(animes_url[i])
-    last_episode_url = crawler.getLastEpisodeUrl(animes_url[i])
+    # Verifica qual é o site que está sendo utilizado para assisitir o anime.
+    if(animesUrls[i].find("animeshouse") != -1):
+        lastEpisode = crawlerAnimesHouse.getLastEpisode(animesUrls[i])
+        lastEpisodeUrl = crawlerAnimesHouse.getLastEpisodeUrl(animesUrls[i])
+    elif(animesUrls[i].find("goyabu") != -1):
+        lastEpisode = crawlerGoyabu.getLastEpisode(animesUrls[i])
+        lastEpisodeUrl = crawlerGoyabu.getLastEpisodeUrl(animesUrls[i])
 
     try:
-        if(last_episode_sheet[i] != last_episode):
-            sheets.setLastEpisode(i, last_episode)
-            sheets.setLastEpisodeUrl(i, last_episode_url)
+        # Evitar escritas desnecessárias.
+        if(lastEpisodeSheet[i] != lastEpisode):
+            sheets.setLastEpisode(i, lastEpisode)
+            sheets.setLastEpisodeUrl(i, lastEpisodeUrl)
     except :
         if(im[i]):
-            sheets.setLastEpisode(i, last_episode)
-            sheets.setLastEpisodeUrl(i, last_episode_url)
+            sheets.setLastEpisode(i, lastEpisode)
+            sheets.setLastEpisodeUrl(i, lastEpisodeUrl)
     
-    
-    if(int(im[i]) < int(last_episode)):
+    # Muda a cor da célula, de acordo com o último episódio assisitido.
+    if(int(im[i]) < int(lastEpisode)):
         sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
     else:
         sheets.changeCellBackgroundColor(i + 2, COLOR_OK)
