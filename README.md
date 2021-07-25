@@ -25,6 +25,10 @@ O objetivo desta aplicação é que não seja necessário abrir o site para veri
 - [gspread](https://pypi.org/project/gspread/)
 - [oauth2client](https://pypi.org/project/oauth2client/)
 
+**🌐 Sites Suportados:**
+- [x] Animes House
+- [x] Goyabu
+
 ------------
 
 ## 🖥️ Como utilizar ##
