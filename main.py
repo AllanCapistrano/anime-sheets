@@ -1,8 +1,8 @@
 import time
 import sheets
 
-from crawlerAnimesHouse import CrawlerAnimesHouse
-from crawlerGoyabu import CrawlerGoyabu
+from services.crawlerAnimesHouse import CrawlerAnimesHouse
+from services.crawlerGoyabu import CrawlerGoyabu
 
 # ------------------------------ Constants ----------------------------------- #
 USER = "your_name"
