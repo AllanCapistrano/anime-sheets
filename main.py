@@ -1,6 +1,6 @@
 import time
-import sheets
 
+from services import sheets
 from services.crawlerAnimesHouse import CrawlerAnimesHouse
 from services.crawlerGoyabu import CrawlerGoyabu
 
@@ -25,10 +25,10 @@ lastEpisodeSheet = sheets.getLastEpisode()
 for i in range(0, size):
     # Verifica qual é o site que está sendo utilizado para assisitir o anime.
     if(animesUrls[i].find("animeshouse") != -1):
-        lastEpisode = crawlerAnimesHouse.getLastEpisode(animesUrls[i])
+        lastEpisode    = crawlerAnimesHouse.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerAnimesHouse.getLastEpisodeUrl(animesUrls[i])
     elif(animesUrls[i].find("goyabu") != -1):
-        lastEpisode = crawlerGoyabu.getLastEpisode(animesUrls[i])
+        lastEpisode    = crawlerGoyabu.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerGoyabu.getLastEpisodeUrl(animesUrls[i])
 
     try:
