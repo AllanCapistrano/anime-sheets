@@ -1,7 +1,7 @@
 # anime-sheets
 
 <h3 align="center">
-  <a href="https://github.com/AllanCapistrano/anime-sheets/releases/tag/1.0" target=_blank>Modelo da Planilha</a>
+  <a href="https://github.com/AllanCapistrano/anime-sheets/releases/tag/1.0" target="_blank">Modelo da Planilha</a>
 </h3>
 <p align="center">
   <img src="https://i.imgur.com/b46LpT2.png" alt="Google Sheets">
