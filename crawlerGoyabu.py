@@ -63,4 +63,6 @@ class CrawlerGoyabu:
 
         for animeInfo in soup.find_all("div", class_="anime-episode"):
             for episodes in animeInfo.find_all("a"):
-                return episodes.attrs["href"]
+                lastEpisodeUrl = episodes.attrs["href"]
+                
+        return lastEpisodeUrl
