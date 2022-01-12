@@ -1,13 +1,17 @@
+import os
 import time
+from dotenv import load_dotenv
 
 from services import sheets
 from services.crawlerAnimesHouse import CrawlerAnimesHouse
 from services.crawlerGoyabu import CrawlerGoyabu
 
+load_dotenv()
+
 # ------------------------------ Constants ----------------------------------- #
-USER = "your_name"
-SHEET_LINK = "your_sheet_link"
-COLOR_OK = [0, 1, 0]
+USER_NAME    = os.getenv("USER_NAME")
+SHEET_LINK   = os.getenv("SHEET_LINK")
+COLOR_OK     = [0, 1, 0]
 COLOR_NOT_OK = [1, 0, 0]
 # ---------------------------------------------------------------------------- #
 
@@ -20,7 +24,7 @@ animesUrls         = sheets.getAnimeUrl()
 im                 = sheets.getIm()
 size               = len(animesUrls)
 
-lastEpisodeSheet = sheets.getLastEpisode()
+lastEpisodeSheet   = sheets.getLastEpisode()
 
 for i in range(0, size):
     # Verifica qual é o site que está sendo utilizado para assisitir o anime.
@@ -54,5 +58,5 @@ for i in range(0, size):
 end = time.time()
 
 print("\nPlanilha de animes atualizada com sucesso {}! \nLink: {}\n".format(
-    USER, SHEET_LINK))
+    USER_NAME, SHEET_LINK))
 print("Tempo de execução: {:.2f}s\n".format(end - start))
