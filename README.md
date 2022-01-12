@@ -24,6 +24,7 @@
 - [LXML](https://pypi.org/project/lxml/)
 - [gspread](https://pypi.org/project/gspread/)
 - [oauth2client](https://pypi.org/project/oauth2client/)
+- [python-dotenv](https://pypi.org/project/python-dotenv/)
 
 ### 🌐 Sites Suportados¹: ###
 - [x] [Animes House](https://animeshouse.net/)
@@ -35,8 +36,10 @@
 
 ## 🖥️ Como utilizar ##
 
+### Configurando o Google Planilhas ###
+
 1. Faça o download das dependências listadas acima;
-2. Criei uma planilha² no [Google Planilhas](https://www.google.com/sheets/about/) seguindo o modelo da imagem acima³ ou faça o download do [template](https://github.com/AllanCapistrano/anime-sheets/releases/tag/1.0);
+2. Criei uma planilha<sup>1</sup> no [Google Planilhas](https://www.google.com/sheets/about/) seguindo o modelo da imagem acima<sup>2</sup> ou faça o download do [template](https://github.com/AllanCapistrano/anime-sheets/releases/tag/1.0);
 3. Entre na [Google Cloud Plataform](https://console.cloud.google.com) e clique em **Criar Projeto**;
 4. Digite o nome do projeto e depois clique em **Criar**;
 5. Clique no menu lateral esquerdo, e depois selecione a opção **APIs e serviços**;
@@ -51,20 +54,33 @@
 14. Em **Conceda a essa conta de serviço acesso ao projeto** selecione **Projeto ➞ Editor**, clique em **Continuar** e depois clique em **Concluir**;
 15. Na nova janela aberta, em **Contas de serviço**, clique no email correspondente (ex: test@myproject.iam.gserviceaccount.com);
 16. Nessa nova janela, no menu superior, clique em **Chaves**, e depois em **Adicionar chave ➞ Criar nova chave**;
-17. Selecione **JSON**<sup>4</sup> e clique em **Criar***;
+17. Selecione **JSON**<sup>3</sup> e clique em **Criar***;
 18. Volte para a página de [Bibliotecas de APIs](https://console.cloud.google.com/apis/library), busque por **Google Sheets API** e clique em **Ativar**;
 19. Faça um Fork deste repositório (caso queira modificá-lo) ou somente clone este repositório;
 29. Coloque o arquivo contendo as credenciais na pasta do projeto;
 21. Compartilhe a planilha com o ```client_email``` que está no arquivo de credenciais (ex: myemail@myproject.iam.gserviceaccount.com);
-22. Coloque o link da planilha na constante ```SHEET_LINK``` no arquivo [```main.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py);
-23. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
-```powershell
-$ python main.py
-```
 
-###### ²Obs: Se não utilizar o nome da planilha como "Animes", é necessário alterar a contante ```SHEET_TITLE``` no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py) ######
-###### ³Obs: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (```COL_*```) no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py) ######
-###### <sup>4</sup>Obs: Recomenda-se renomear o arquivo ```.json``` baixado para ```creds.json```, caso contrário, é necessário alterara constante ```CREDS_FILE``` no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)  ######
+### Executando o projeto ###
+1. Faça o download das dependências do projeto, você pode visualizá-las [clicando aqui](-dependências) ou pelo arquivo [`requirements.txt`](./requirements.txt);
+2. Faça uma cópia do arquivo `.env.example` com o nome de `.env`, ou renomei o arquivo `.env.example` para `.env`:
+   ```powershell
+   cp .env.example .env
+   ```
+   ou
+   ```powershell
+   mv .env.example .env
+   ```
+3. Abra o arquivo `.env` e preencha os campos com as suas respectivas credenciais;
+   1. `USER_NAME` nome de usuário que deseja;
+   2. `SHEET_LINK` url da sua planilha, a mesma que você utilizaou para compartilhar.
+4. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
+   ```powershell
+   python main.py
+   ```
+
+###### <sup>1</sup>Obs: Se não utilizar o nome da planilha como "Animes", será necessário alterar a constante ```SHEET_TITLE``` no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py) ######
+###### <sup>2</sup>Obs: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (```COL_*```) no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py) ######
+###### <sup>3</sup>Obs: Recomenda-se renomear o arquivo ```.json``` baixado para ```creds.json```, caso contrário, é necessário alterara constante ```CREDS_FILE``` no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)  ######
 
 ------------
 
@@ -102,4 +118,4 @@ $ python main.py
 ------------
 
 ## ⚖️ Licença ##
-[GPL-3.0 License](https://github.com/AllanCapistrano/anime-sheets-/blob/main/LICENSE)
+[GPL-3.0 License](./LICENSE)
