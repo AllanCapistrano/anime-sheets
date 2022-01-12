@@ -61,7 +61,7 @@
 21. Compartilhe a planilha com o ```client_email``` que está no arquivo de credenciais (ex: myemail@myproject.iam.gserviceaccount.com);
 
 ### Executando o projeto ###
-1. Faça o download das dependências do projeto, você pode visualizá-las [clicando aqui](-dependências) ou pelo arquivo [`requirements.txt`](./requirements.txt);
+1. Faça o download das dependências do projeto, você pode visualizá-las [clicando aqui](#-dependências) ou pelo arquivo [`requirements.txt`](./requirements.txt);
 2. Faça uma cópia do arquivo `.env.example` com o nome de `.env`, ou renomei o arquivo `.env.example` para `.env`:
    ```powershell
    cp .env.example .env
