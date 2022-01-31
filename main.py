@@ -56,10 +56,13 @@ for i in range(0, size):
 
     percentage = 100 * (i + 1)/size
 
-    print("Anime {}/{} atualizado | {:.2f}%".format(i + 1, size, percentage))
+    print(
+        "\r{:.2f}% | Anime {}/{} atualizado".format(percentage, i + 1, size)
+        , end=""
+    )
 
 end = time.time()
 
-print("\nPlanilha de animes atualizada com sucesso {}! \nLink: {}\n".format(
+print("\n\nPlanilha de animes atualizada com sucesso {}! \nLink: {}\n".format(
     USER_NAME, SHEET_LINK))
 print("Tempo de execução: {:.2f}s\n".format(end - start))
