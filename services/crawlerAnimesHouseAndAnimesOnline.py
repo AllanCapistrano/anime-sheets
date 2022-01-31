@@ -1,64 +1,43 @@
-import requests
-from bs4 import BeautifulSoup
+from services.crawler import Crawler
 
-class CrawlerAnimesHouseAndAnimesOnline:
-  def reqUrl(self, url: str) -> BeautifulSoup:
-    """ Função responsável por buscar as Urls.
+class CrawlerAnimesHouseAndAnimesOnline(Crawler):
+    def getLastEpisode(self, url: str) -> str:
+        """ Função responsável por retornar o número do último episódio do 
+        anime.
 
-    Parameters
-    -----------
+        Parameters
+        -----------
+        url: :class:`str`
+            Url do site.
+            
+        Returns
+        -----------
+        episodeNumber: :class:`str`
+        """
 
-    url: :class:`str`
-        Url do site.
+        soup = self.reqUrl(url)
 
-    Returns
-    -----------
-    soup: :class:`BeautifulSoup`
-    """
+        for episodes in soup.find_all('div', class_='numerando'):
+            lastEpisode = episodes.contents[0]
 
-    req  = requests.get(url)
-    soup = BeautifulSoup(req.text, 'lxml')
+        return lastEpisode.split('- ')[1]
 
-    return soup
+    def getLastEpisodeUrl(self, url: str) -> str:
+        """ Função responsável por retornar a url do último episódio do anime.
 
-  def getLastEpisode(self, url: str) -> str:
-    """ Função responsável por retornar o número do último episódio do anime.
-
-    Parameters
-    -----------
-
-    url: :class:`str`
-        Url do site.
+        Parameters
+        -----------
+        url: :class:`str`
+            Url do site.
+            
+        Returns
+        -----------
+        lastEpisodeUrl: :class:`str`
+        """
         
-    Returns
-    -----------
-    episodeNumber: :class:`str`
-    """
+        soup = self.reqUrl(url)
 
-    soup = self.reqUrl(url)
+        for episodes in soup.find_all('div', class_='episodiotitle'):
+            episodeUrl = episodes.find('a')
 
-    for episodes in soup.find_all('div', class_='numerando'):
-      lastEpisode = episodes.contents[0]
-
-    return lastEpisode.split('- ')[1]
-
-  def getLastEpisodeUrl(self, url: str) -> str:
-    """ Função responsável por retornar a url do último episódio do anime.
-
-    Parameters
-    -----------
-
-    url: :class:`str`
-        Url do site.
-        
-    Returns
-    -----------
-    lastEpisodeUrl: :class:`str`
-    """
-    
-    soup = self.reqUrl(url)
-
-    for episodes in soup.find_all('div', class_='episodiotitle'):
-      episodeUrl = episodes.find('a')
-
-    return episodeUrl.attrs['href']
+        return episodeUrl.attrs['href']

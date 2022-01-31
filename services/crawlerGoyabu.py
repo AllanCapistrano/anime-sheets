@@ -1,32 +1,12 @@
-import requests
-from bs4 import BeautifulSoup
+from services.crawler import Crawler
 
-class CrawlerGoyabu:
-    def __reqUrl__(self, url: str) -> BeautifulSoup:
-        """ Função responsável por buscar as Urls.
-
-        Parameters
-        -----------
-
-        url: :class:`str`
-            Url do site.
-
-        Returns
-        -----------
-        soup: :class:`BeautifulSoup`
-        """
-
-        req  = requests.get(url)
-        soup = BeautifulSoup(req.text, 'lxml')
-
-        return soup
-
+class CrawlerGoyabu(Crawler):
     def getLastEpisode(self, url: str) -> str:
-        """ Função responsável por retornar o número do último episódio do anime.
+        """ Função responsável por retornar o número do último episódio do 
+        anime.
 
         Parameters
         -----------
-
         url: :class:`str`
             Url do site.
             
@@ -35,7 +15,7 @@ class CrawlerGoyabu:
         episodeNumber: :class:`str`
         """
 
-        soup = self.__reqUrl__(url)
+        soup = self.reqUrl(url)
 
         for animeInfo in soup.find_all("div", class_="anime-episode"):
             for episodes in animeInfo.find_all("h3"):
@@ -50,7 +30,6 @@ class CrawlerGoyabu:
 
         Parameters
         -----------
-
         url: :class:`str`
             Url do site.
             
@@ -59,7 +38,7 @@ class CrawlerGoyabu:
         lastEpisodeUrl: :class:`str`
         """
 
-        soup = self.__reqUrl__(url)
+        soup = self.reqUrl(url)
 
         for animeInfo in soup.find_all("div", class_="anime-episode"):
             for episodes in animeInfo.find_all("a"):
