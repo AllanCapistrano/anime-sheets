@@ -54,7 +54,7 @@ def getIm() -> list:
 
     return im
 
-# 
+
 def getLastEpisode() -> list:
     """ Função que retorna uma lista com o número do último episódio lançado 
     dos animes que estão na planilha.
@@ -74,7 +74,6 @@ def setLastEpisode(index: int, value: str):
 
     Parameters
     -----------
-
     index: :class:`int`
         Posição na planilha.
     index: :class:`str`
@@ -88,7 +87,6 @@ def setLastEpisodeUrl(index: int , value: str):
 
     Parameters
     -----------
-
     index: :class:`int`
         Posição na planilha.
     index: :class:`str`
@@ -102,7 +100,6 @@ def changeCellBackgroundColor(pos: int, color: list):
 
     Parameters
     -----------
-
     pos: :class:`int`
         Posição na planilha.
     color: :class:`list`

@@ -3,7 +3,7 @@ import time
 from dotenv import load_dotenv
 
 from services import sheets
-from services.crawlerAnimesHouse import CrawlerAnimesHouse
+from services.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
 from services.crawlerGoyabu import CrawlerGoyabu
 
 load_dotenv()
@@ -15,28 +15,31 @@ COLOR_OK     = [0, 1, 0]
 COLOR_NOT_OK = [1, 0, 0]
 # ---------------------------------------------------------------------------- #
 
-start              = time.time()
+start = time.time()
 
-crawlerAnimesHouse = CrawlerAnimesHouse()
-crawlerGoyabu      = CrawlerGoyabu()
+crawlerAnimesHouseAndAnimesOnline = CrawlerAnimesHouseAndAnimesOnline()
+crawlerGoyabu                     = CrawlerGoyabu()
 
-animesUrls         = sheets.getAnimeUrl()
-im                 = sheets.getIm()
-size               = len(animesUrls)
+animesUrls = sheets.getAnimeUrl()
+im         = sheets.getIm()
+size       = len(animesUrls)
 
-lastEpisodeSheet   = sheets.getLastEpisode()
+lastEpisodeSheet = sheets.getLastEpisode()
 
 for i in range(0, size):
     # Verifica qual é o site que está sendo utilizado para assisitir o anime.
-    if(animesUrls[i].find("animeshouse") != -1):
-        lastEpisode    = crawlerAnimesHouse.getLastEpisode(animesUrls[i])
-        lastEpisodeUrl = crawlerAnimesHouse.getLastEpisodeUrl(animesUrls[i])
+    if(
+        animesUrls[i].find("animeshouse")  != -1 or 
+        animesUrls[i].find("animesonline") != -1
+    ):
+        lastEpisode    = crawlerAnimesHouseAndAnimesOnline.getLastEpisode(animesUrls[i])
+        lastEpisodeUrl = crawlerAnimesHouseAndAnimesOnline.getLastEpisodeUrl(animesUrls[i])
     elif(animesUrls[i].find("goyabu") != -1):
         lastEpisode    = crawlerGoyabu.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerGoyabu.getLastEpisodeUrl(animesUrls[i])
 
     try:
-        # Evitar escritas desnecessárias.
+        # Evita escritas desnecessárias.
         if(lastEpisodeSheet[i] != lastEpisode):
             sheets.setLastEpisode(i, lastEpisode)
             sheets.setLastEpisodeUrl(i, lastEpisodeUrl)

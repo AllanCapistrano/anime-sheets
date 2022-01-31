@@ -28,6 +28,7 @@
 
 ### 🌐 Sites Suportados¹: ###
 - [x] [Animes House](https://animeshouse.net/)
+- [x] [Animes Online](https://animesonline.org/)
 - [x] [Goyabu](https://goyabu.com/)
 
 ###### ¹Obs: Caso deseje utilizar outro(s) site(s), é necessário realizar algumas modificações.
