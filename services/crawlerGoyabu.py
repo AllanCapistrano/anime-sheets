@@ -1,6 +1,7 @@
 from services.crawler import Crawler
+from services.crawlerInterface import CrawlerInterface
 
-class CrawlerGoyabu(Crawler):
+class CrawlerGoyabu(Crawler, CrawlerInterface):
     def getLastEpisode(self, url: str) -> str:
         """ Função responsável por retornar o número do último episódio do 
         anime.
