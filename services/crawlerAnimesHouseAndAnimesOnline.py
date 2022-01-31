@@ -1,8 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-class CrawlerAnimesHouse:
-  def __reqUrl__(self, url: str) -> BeautifulSoup:
+class CrawlerAnimesHouseAndAnimesOnline:
+  def reqUrl(self, url: str) -> BeautifulSoup:
     """ Função responsável por buscar as Urls.
 
     Parameters
@@ -35,7 +35,7 @@ class CrawlerAnimesHouse:
     episodeNumber: :class:`str`
     """
 
-    soup = self.__reqUrl__(url)
+    soup = self.reqUrl(url)
 
     for episodes in soup.find_all('div', class_='numerando'):
       lastEpisode = episodes.contents[0]
@@ -56,7 +56,7 @@ class CrawlerAnimesHouse:
     lastEpisodeUrl: :class:`str`
     """
     
-    soup = self.__reqUrl__(url)
+    soup = self.reqUrl(url)
 
     for episodes in soup.find_all('div', class_='episodiotitle'):
       episodeUrl = episodes.find('a')
