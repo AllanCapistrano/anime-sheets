@@ -22,9 +22,11 @@ class CrawlerGoyabu(Crawler, CrawlerInterface):
             for episodes in animeInfo.find_all("h3"):
                 episodeInfo = episodes.contents[0].split(" ")
 
-        for episodeNumber in episodeInfo:
-            if(episodeNumber.isnumeric()):
-                return episodeNumber
+        for temp in episodeInfo:
+            if(temp.isnumeric()):
+                episodeNumber = temp
+                
+        return episodeNumber
 
     def getLastEpisodeUrl(self, url: str) -> str:
         """ Função responsável por retornar a url do último episódio do anime.
