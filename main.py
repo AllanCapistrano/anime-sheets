@@ -27,7 +27,7 @@ size       = len(animesUrls)
 lastEpisodeSheet = sheets.getLastEpisode()
 
 for i in range(0, size):
-    # Verifica qual é o site que está sendo utilizado para assisitir o anime.
+    # Verifica qual é o site que está sendo utilizado para assistir o anime.
     if(
         animesUrls[i].find("animeshouse")  != -1 or 
         animesUrls[i].find("animesonline") != -1
@@ -48,7 +48,7 @@ for i in range(0, size):
             sheets.setLastEpisode(i, lastEpisode)
             sheets.setLastEpisodeUrl(i, lastEpisodeUrl)
     
-    # Muda a cor da célula, de acordo com o último episódio assisitido.
+    # Muda a cor da célula, de acordo com o último episódio assistido.
     if(int(im[i]) < int(lastEpisode)):
         sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
     else:
