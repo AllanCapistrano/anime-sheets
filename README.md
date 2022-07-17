@@ -20,6 +20,7 @@
 
 ### 📦 Dependências: ###
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
+- [dotenv](https://pypi.org/project/python-dotenv/)
 - [gspread](https://pypi.org/project/gspread/)
 - [LXML](https://pypi.org/project/lxml/)
 - [oauth2client](https://pypi.org/project/oauth2client/)
