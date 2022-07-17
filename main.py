@@ -68,6 +68,6 @@ if(USER_NAME != ""):
     console.print("Planilha de animes atualizada com sucesso {}!".format(
         USER_NAME), style="bold")
 if(SHEET_LINK != ""):
-    console.print("Link: {}".format(SHEET_LINK))
+    print("Link: {}".format(SHEET_LINK))
 
 print()
