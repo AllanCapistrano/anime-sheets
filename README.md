@@ -19,12 +19,13 @@
 - [Google Planilhas](https://www.google.com/sheets/about/)
 
 ### 📦 Dependências: ###
-- [Requests](https://pypi.org/project/requests/)
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
-- [LXML](https://pypi.org/project/lxml/)
 - [gspread](https://pypi.org/project/gspread/)
+- [LXML](https://pypi.org/project/lxml/)
 - [oauth2client](https://pypi.org/project/oauth2client/)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
+- [Requests](https://pypi.org/project/requests/)
+- [rich](https://pypi.org/project/rich/)
 
 ### 🌐 Sites Suportados¹: ###
 - [x] [Animes House](https://animeshouse.net/)
