@@ -1,6 +1,8 @@
 import os
 import time
 from dotenv import load_dotenv
+from rich.progress import track
+from rich.console import Console
 
 from services import sheets
 from services.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
@@ -15,6 +17,8 @@ COLOR_OK     = [0, 1, 0]
 COLOR_NOT_OK = [1, 0, 0]
 # ---------------------------------------------------------------------------- #
 
+console = Console()
+
 start = time.time()
 
 crawlerAnimesHouseAndAnimesOnline = CrawlerAnimesHouseAndAnimesOnline()
@@ -26,7 +30,7 @@ size       = len(animesUrls)
 
 lastEpisodeSheet = sheets.getLastEpisode()
 
-for i in range(0, size):
+for i in track(range(0, size), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
     if(
         animesUrls[i].find("animeshouse")  != -1 or 
@@ -56,13 +60,14 @@ for i in range(0, size):
 
     percentage = 100 * (i + 1)/size
 
-    print(
-        "\r{:.2f}% | Anime {}/{} atualizado".format(percentage, i + 1, size)
-        , end=""
-    )
-
 end = time.time()
 
-print("\n\nPlanilha de animes atualizada com sucesso {}! \nLink: {}\n".format(
-    USER_NAME, SHEET_LINK))
-print("Tempo de execução: {:.2f}s\n".format(end - start))
+console.print("Tempo de execução: {:.2f}s\n".format(end - start), style="bold green")
+
+if(USER_NAME != ""):
+    console.print("Planilha de animes atualizada com sucesso {}!".format(
+        USER_NAME), style="bold")
+if(SHEET_LINK != ""):
+    console.print("Link: {}".format(SHEET_LINK))
+
+print()
