@@ -49,7 +49,7 @@ for i in range(0, size):
             sheets.setLastEpisodeUrl(i, lastEpisodeUrl)
     
     # Muda a cor da célula, de acordo com o último episódio assistido.
-    if(int(im[i]) < int(lastEpisode)):
+    if(float(im[i]) < float(lastEpisode)):
         sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
     else:
         sheets.changeCellBackgroundColor(i + 2, COLOR_OK)
