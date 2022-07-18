@@ -24,11 +24,11 @@ start = time.time()
 crawlerAnimesHouseAndAnimesOnline = CrawlerAnimesHouseAndAnimesOnline()
 crawlerGoyabu                     = CrawlerGoyabu()
 
-animesUrls = sheets.getAnimeUrl()
-im         = sheets.getIm()
+animesUrls = sheets.getAnimeUrls()
+myEpisodes = sheets.getMyEpisodes()
 size       = len(animesUrls)
 
-lastEpisodeSheet = sheets.getLastEpisode()
+lastEpisodeSheet = sheets.getLastEpisodes()
 
 for i in track(range(0, size), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
@@ -48,12 +48,12 @@ for i in track(range(0, size), description="[cyan]Atualizando..."):
             sheets.setLastEpisode(i, lastEpisode)
             sheets.setLastEpisodeUrl(i, lastEpisodeUrl)
     except :
-        if(im[i]):
+        if(myEpisodes[i]):
             sheets.setLastEpisode(i, lastEpisode)
             sheets.setLastEpisodeUrl(i, lastEpisodeUrl)
     
     # Muda a cor da célula, de acordo com o último episódio assistido.
-    if(float(im[i]) < float(lastEpisode)):
+    if(float(myEpisodes[i]) < float(lastEpisode)):
         sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
     else:
         sheets.changeCellBackgroundColor(i + 2, COLOR_OK)
