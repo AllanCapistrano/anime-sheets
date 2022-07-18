@@ -7,18 +7,21 @@
   <img src="https://i.imgur.com/b46LpT2.png" alt="Google Sheets">
 </p>
 
-------------
+---
 
-## 📖 Descrição do Projeto ##
+## 📖 Descrição do Projeto
+
 > **Crawler que a partir dos dados previamente preenchidos na planilha (nome do anime, temporada, URL, episódio atual), busca as informações desse anime para atualizar os dados da planilha.**
 >
 > **O objetivo desta aplicação é que não seja necessário abrir o site para verificar se um episódio novo foi lançado, pois com a utilização deste crawler, o último episódio de todos os animes que estão preenchidos na planilha serão atualizados automaticamente.**
 
-### 📂 Tecnologias utilizadas: ###
+### 📂 Tecnologias utilizadas:
+
 - [Python](https://www.python.org/)
 - [Google Planilhas](https://www.google.com/sheets/about/)
 
-### 📦 Dependências: ###
+### 📦 Dependências:
+
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
 - [dotenv](https://pypi.org/project/python-dotenv/)
 - [gspread](https://pypi.org/project/gspread/)
@@ -28,18 +31,19 @@
 - [Requests](https://pypi.org/project/requests/)
 - [rich](https://pypi.org/project/rich/)
 
-### 🌐 Sites Suportados¹: ###
+### 🌐 Sites Suportados¹:
+
 - [x] [Animes House](https://animeshouse.net/)
 - [x] [Animes Online](https://animesonline.org/)
 - [x] [Goyabu](https://goyabu.com/)
 
 ###### ¹Obs: Caso deseje utilizar outro(s) site(s), é necessário realizar algumas modificações.
 
-------------
+---
 
-## 🖥️ Como utilizar ##
+## 🖥️ Como utilizar
 
-### Configurando o Google Planilhas ###
+### Configurando o Google Planilhas
 
 1. Crie uma planilha<sup>2</sup> no [Google Planilhas](https://www.google.com/sheets/about/) seguindo o modelo da imagem acima<sup>3</sup> ou faça o download do [template](https://github.com/AllanCapistrano/anime-sheets/releases/tag/1.0);
 2. Entre na [Google Cloud Plataform](https://console.cloud.google.com) e clique em **Criar Projeto**;
@@ -56,13 +60,13 @@
 13. Em **Conceda a essa conta de serviço acesso ao projeto** selecione **Projeto ➞ Editor**, clique em **Continuar** e depois clique em **Concluir**;
 14. Na nova janela aberta, em **Contas de serviço**, clique no email correspondente (ex: test@myproject.iam.gserviceaccount.com);
 15. Nessa nova janela, no menu superior, clique em **Chaves**, e depois em **Adicionar chave ➞ Criar nova chave**;
-16. Selecione **JSON**<sup>4</sup> e clique em **Criar***;
+16. Selecione **JSON**<sup>4</sup> e clique em **Criar\***;
 17. Volte para a página de [Bibliotecas de APIs](https://console.cloud.google.com/apis/library), busque por **Google Sheets API** e clique em **Ativar**;
 18. Faça um Fork deste repositório (caso queira modificá-lo) ou somente clone-o;
 19. Coloque o arquivo contendo as credenciais na pasta do projeto;
-20. Compartilhe a planilha com o ```client_email``` que está no arquivo de credenciais (ex: myemail@myproject.iam.gserviceaccount.com);
+20. Compartilhe a planilha com o `client_email` que está no arquivo de credenciais (ex: myemail@myproject.iam.gserviceaccount.com);
 
-### Executando o projeto ###
+### Executando o projeto
 
 1. Faça o download das dependências do projeto, você pode visualizá-las [clicando aqui](#-dependências) ou pelo arquivo [`requirements.txt`](./requirements.txt);
 2. Faça uma cópia do arquivo `.env.example` com o nome de `.env`, ou renomei o arquivo `.env.example` para `.env`:
@@ -81,16 +85,18 @@
    python main.py
    ```
 
-###### <sup>2</sup>Obs: Se não utilizar o nome da planilha como "Animes", será necessário alterar a constante ```SHEET_TITLE``` no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py) ######
-###### <sup>3</sup>Obs: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (```COL_*```) no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py) ######
-###### <sup>4</sup>Obs: Recomenda-se renomear o arquivo ```.json``` baixado para ```creds.json```, caso contrário, é necessário alterar a constante ```CREDS_FILE``` no arquivo [```sheets.py```](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)  ######
+###### <sup>2</sup>Obs: Se não utilizar o nome da planilha como "Animes", será necessário alterar a constante `SHEET_TITLE` no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
 
-------------
+###### <sup>3</sup>Obs: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (`COL_*`) no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
 
-## 👨‍💻 Autor ##
+###### <sup>4</sup>Obs: Recomenda-se renomear o arquivo `.json` baixado para `creds.json`, caso contrário, é necessário alterar a constante `CREDENTIALS_FILE` no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
+
+---
+
+## 👨‍💻 Autor
 
 | [![Allan Capistrano](https://github.com/AllanCapistrano.png?size=100)](https://github.com/AllanCapistrano) |
-| -----------------------------------------------------------------------------------------------------------|
+| ---------------------------------------------------------------------------------------------------------- |
 | [Allan Capistrano](https://github.com/AllanCapistrano)                                                     |
 
 <p>
@@ -108,15 +114,16 @@
     </a>
 </p>
 
-------------
+---
 
-## 🙏 Apoie ##
+## 🙏 Apoie
 
 **Por favor ⭐️ este repositório caso este projeto seja útil e/ou tenha lhe ajudado.**
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/allancapistrano)
 
-------------
+---
 
-## ⚖️ Licença ##
+## ⚖️ Licença
+
 [GPL-3.0 License](./LICENSE)

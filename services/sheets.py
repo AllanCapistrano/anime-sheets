@@ -2,13 +2,13 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
 # ------------------------------ Constants ----------------------------------- #
-CREDS_FILE = "creds.json"
+CREDENTIALS_FILE = "creds.json"
 SHEET_TITLE = "Animes"
-COL_URL = 3
-COL_IM = 4
-COL_LE = 5
-COL_LEU = 6
-COL_LE_NAME = 'F'
+COL_NUMBER_URL = 3
+COL_NUMBER_IM = 4
+COL_NUMBER_LAST_EPISODE = 5
+COL_NUMBER_LAST_EPISODE_URL = 6
+COL_NAME_LAST_EPISODE = 'F'
 # ---------------------------------------------------------------------------- #
 
 scope = [
@@ -19,7 +19,7 @@ scope = [
 ]
 
 # Definindo as credenciais
-creds = ServiceAccountCredentials.from_json_keyfile_name(CREDS_FILE, scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, scope)
 
 # Definindo o client
 client = gspread.authorize(creds)
@@ -35,7 +35,7 @@ def getAnimeUrl() -> list:
     animeUrl: :class:`list`
     """
 
-    animeUrl = sheet.col_values(COL_URL)
+    animeUrl = sheet.col_values(COL_NUMBER_URL)
     animeUrl.pop(0)
 
     return animeUrl
@@ -49,7 +49,7 @@ def getIm() -> list:
     im: :class:`list`
     """
 
-    im = sheet.col_values(COL_IM)
+    im = sheet.col_values(COL_NUMBER_IM)
     im.pop(0)
 
     return im
@@ -64,7 +64,7 @@ def getLastEpisode() -> list:
     lastEpisode: :class:`list`
     """
     
-    lastEpisode = sheet.col_values(COL_LE)
+    lastEpisode = sheet.col_values(COL_NUMBER_LAST_EPISODE)
     lastEpisode.pop(0)
 
     return lastEpisode
@@ -80,7 +80,7 @@ def setLastEpisode(index: int, value: str):
         Número do episódio.
     """
 
-    sheet.update_cell(index + 2, COL_LE, value)
+    sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE, value)
 
 def setLastEpisodeUrl(index: int , value: str):
     """ Função que altera na planilha a URL do último episódio lançado.
@@ -93,7 +93,7 @@ def setLastEpisodeUrl(index: int , value: str):
         Número do episódio.
     """
 
-    sheet.update_cell(index + 2, COL_LEU, value)
+    sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE_URL, value)
 
 def changeCellBackgroundColor(pos: int, color: list):
     """ Função para alterar a cor de fundo de uma célula na planilha.
@@ -106,7 +106,7 @@ def changeCellBackgroundColor(pos: int, color: list):
         Lista com os valores RGB ([red, green, blue]). 
     """
 
-    sheet.format(COL_LE_NAME + str(pos), {
+    sheet.format(COL_NAME_LAST_EPISODE + str(pos), {
         "backgroundColor": {
             "red": color[0],
             "green": color[1],
