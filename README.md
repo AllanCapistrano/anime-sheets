@@ -58,7 +58,7 @@
    ```powershell
    pip3 install -r requirements.txt
    ```
-2. Faça uma cópia do arquivo `.env.example` com o nome de `.env`, ou renomei o arquivo `.env.example` para `.env`:
+2. Faça uma cópia do arquivo `.env.example` com o nome de `.env`, ou altere o nome do arquivo `.env.example` para `.env`:
    ```powershell
    cp .env.example .env
    ```
@@ -67,10 +67,11 @@
    mv .env.example .env
    ```
 3. Abra o arquivo `.env` e preencha os campos (todos são opcionais):
-   1. `USER_NAME` nome de usuário que deseja;
-   2. `SHEET_LINK` URL da sua planilha (a mesma que você utilizou para compartilhar).
-   3. `BITLY_TOKEN`<sup>5</sup> token de acesso do [Bitly](https://bitly.com/) para encurtar as URLs.
-5. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
+   1. `CREDENTIALS_FILE` nome do arquivo com a extensão `.json` que contém as credencias do **Google Drive API**, criado no passo **8** de [Configurando o Google Planilhas](#configurando-o-google-planilhas) ;
+   2. `USER_NAME` nome de usuário que deseja;
+   3. `SHEET_LINK` URL da sua planilha (a mesma que você utilizou para compartilhar);
+   4. `BITLY_TOKEN`<sup>5</sup> token de acesso do [Bitly](https://bitly.com/) para encurtar as URLs.
+4. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
    ```powershell
    python main.py
    ```
@@ -79,7 +80,7 @@
 
 ###### <sup>3</sup>Obs: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (`COL_*`) no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
 
-###### <sup>4</sup>Obs: Recomenda-se renomear o arquivo `.json` baixado para `creds.json`, caso contrário, é necessário alterar a constante `CREDENTIALS_FILE` no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
+###### <sup>4</sup>Obs: Recomenda-se renomear o arquivo `.json` baixado para `creds.json`.
 
 ###### <sup>5</sup>Obs: As URLs curtas melhoram a exibição da tabela, porém, caso não queira encurtar as URLs basta não preencher esse campo.
 
