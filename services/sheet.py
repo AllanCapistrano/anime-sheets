@@ -110,6 +110,20 @@ class Sheet:
 
         return lastEpisodes
 
+    def getLastEpisodesUrls(self) -> list:
+        """ Retorna uma lista com a URL do último episódio lançado dos animes 
+        que estão na planilha.
+
+        Returns
+        -----------
+        lastEpisodesUrls: :class:`list`
+        """
+        
+        lastEpisodesUrls = self.sheet.col_values(COL_NUMBER_LAST_EPISODE_URL)
+        lastEpisodesUrls.pop(0)
+
+        return lastEpisodesUrls
+
     def getAnimeBroadcasts(self) -> list:
         """ Retorna uma lista com os dias de lançamentos dos animes que estão na 
         planilha.
