@@ -13,7 +13,7 @@
 
 > **Crawler para verificar qual é o último episódio dos animes que estão na planilha, basta preencher com a URL¹ do mesmo.**
 
-###### ¹Obs: Verifique quais são os [sites suportados](#🌐-sites-suportados).
+###### ¹Obs: Verifique quais são os [sites suportados](#-sites-suportados).
 
 ### 🌐 Sites Suportados:
 
