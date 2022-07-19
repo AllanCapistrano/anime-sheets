@@ -1,97 +1,75 @@
-from os import getenv
+from os import system, name
+from sys import exit
 from time import time
-from dotenv import load_dotenv
-from rich.progress import track
 from rich.console import Console
 
-from services.sheet import Sheet
-from services.crawlers.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
-from services.crawlers.crawlerGoyabu import CrawlerGoyabu
-from services.table import Table
-
-load_dotenv()
-
-# ------------------------------ Constants ----------------------------------- #
-USER_NAME  = getenv("USER_NAME")
-SHEET_LINK = getenv("SHEET_LINK")
-# ---------------------------------------------------------------------------- #
+from modules.updateSheet import updateSheet
+from modules.showTable import showTable
 
 if __name__ == "__main__":
     console = Console()
-    table   = Table()
+
+    # TODO: Criar módulo de exibição de opções
+    system('cls' if name == 'nt' else 'clear')
+    console.print("[1] Exibir tabela", style="bold")
+    console.print("[2] Mais informações de um Anime", style="bold")
+    console.print("[3] Atualizar informações de um Anime", style="bold")
+    console.print("[4] Atualizar último episódio assistido", style="bold")
+    console.print("[5] Atualizar planilha", style="bold")
+
+    option = input("Escolha uma das opções acima: ")
 
     try:
-        sheet = Sheet()
-    except Exception as error:
-        print()
-        console.print(error, style="bold red")
-        
-        exit()
+        option = int(option)
+    except:
+        raise ValueError("Erro! Opção inválida.")
 
-    start = time()
+    match option:
+        case 1: # Exibir tabela
+            system('cls' if name == 'nt' else 'clear')
 
-    crawlerAnimesHouseAndAnimesOnline = CrawlerAnimesHouseAndAnimesOnline()
-    crawlerGoyabu                     = CrawlerGoyabu()
+            start = time()
+            updateSheet()
+            showTable()
+            end = time()
 
-    animeNames        = sheet.getAnimeNames()
-    animeSeasons      = sheet.getAnimeSeasons()
-    animesUrls        = sheet.getAnimeUrls()
-    myEpisodes        = sheet.getMyEpisodes()
-    lastEpisodesSheet = sheet.getLastEpisodes()
-    animeBroadcasts   = sheet.getAnimeBroadcasts()
+            console.print("Tempo de execução: {:.2f}s".format(end - start), style="bold green")
+        case 2: # Mais informações de um Anime
+            system('cls' if name == 'nt' else 'clear')
 
-    lastEpisodesUpdated     = []
-    lastEpisodesUrlsUpdated = []
+            start = time()
+            # TODO
+            end = time()
 
-    for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
-        # Verifica qual é o site que está sendo utilizado para assistir o anime.
-        if(
-            animesUrls[i].find("animeshouse")  != -1 or 
-            animesUrls[i].find("animesonline") != -1
-        ):
-            lastEpisode    = crawlerAnimesHouseAndAnimesOnline.getLastEpisode(animesUrls[i])
-            lastEpisodeUrl = crawlerAnimesHouseAndAnimesOnline.getLastEpisodeUrl(animesUrls[i])
-        elif(animesUrls[i].find("goyabu") != -1):
-            lastEpisode    = crawlerGoyabu.getLastEpisode(animesUrls[i])
-            lastEpisodeUrl = crawlerGoyabu.getLastEpisodeUrl(animesUrls[i])
+            console.print("Tempo de execução: {:.2f}s".format(end - start), style="bold green")
+            raise NotImplementedError("Método ainda não implementado")
+        case 3: # Atualizar informações de um Anime
+            system('cls' if name == 'nt' else 'clear')
 
-        lastEpisodesUpdated.append(lastEpisode)
-        lastEpisodesUrlsUpdated.append(lastEpisodeUrl)
+            start = time()
+            # TODO
+            end = time()
 
-        try:
-            # Evita escritas desnecessárias.
-            if(lastEpisodesSheet[i] != lastEpisode):
-                sheet.setLastEpisode(i, lastEpisode)
-                sheet.setLastEpisodeUrl(i, lastEpisodeUrl)
-        except :
-            if(myEpisodes[i]):
-                sheet.setLastEpisode(i, lastEpisode)
-                sheet.setLastEpisodeUrl(i, lastEpisodeUrl)
-        
-        sheet.changeCellBackgroundColor(float(myEpisodes[i]), float(lastEpisode), i)
+            console.print("Tempo de execução: {:.2f}s".format(end - start), style="bold green")
+            raise NotImplementedError("Método ainda não implementado")
+        case 4: # Atualizar último episódio assistido
+            system('cls' if name == 'nt' else 'clear')
 
-    # Preenchendo a tabela.
-    table.fillTable(
-        names            = animeNames, 
-        seasons          = animeSeasons, 
-        urls             = animesUrls, 
-        myEpisodes       = myEpisodes, 
-        lastEpisodes     = lastEpisodesUpdated, 
-        lastEpisodesUrls = lastEpisodesUrlsUpdated, 
-        broadcasts       = animeBroadcasts
-    )
+            start = time()
+            # TODO
+            end = time()
 
-    end = time()
+            console.print("Tempo de execução: {:.2f}s".format(end - start), style="bold green")
+            raise NotImplementedError("Método ainda não implementado")
+        case 5: # Atualizar planilha
+            system('cls' if name == 'nt' else 'clear')
 
-    console.print("Tempo de execução: {:.2f}s\n".format(end - start), style="bold green")
+            start = time()
+            updateSheet(showLog=True)
+            end = time()
 
-    if(USER_NAME != ""):
-        console.print("Planilha de animes atualizada com sucesso {}!".format(
-            USER_NAME), style="bold")
-    if(SHEET_LINK != ""):
-        print("Link: {}".format(SHEET_LINK))
+            console.print("Tempo de execução: {:.2f}s".format(end - start), style="bold green")
+        case _:
+            console.print("Opção inválida! Tente novamente.", style="bold red")
 
-    # Exibindo a tabela.
-    table.showTable()
-
-    print()
+            exit() # Temporário
