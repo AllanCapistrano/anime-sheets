@@ -1,7 +1,10 @@
-from services.crawler import Crawler
-from services.crawlerInterface import CrawlerInterface
+import re
 
-class CrawlerAnimesHouseAndAnimesOnline(Crawler, CrawlerInterface):
+from services.crawlers.crawler import Crawler
+from services.crawlers.interface.crawlerInterface import CrawlerInterface
+
+class CrawlerGoyabu(Crawler, CrawlerInterface):
+
     def getLastEpisode(self, url: str) -> str:
         """ Função responsável por retornar o número do último episódio do 
         anime.
@@ -16,12 +19,12 @@ class CrawlerAnimesHouseAndAnimesOnline(Crawler, CrawlerInterface):
         episodeNumber: :class:`str`
         """
 
-        soup = self.reqUrl(url)
+        soup               = self.reqUrl(url)
+        animeInfo          = soup.find("div", class_="chaps-infs")
+        lastEpisode        = animeInfo.contents[0].split(" ")[1]
+        lastEpisodeNumeric = re.sub('[^.0-9]', '', lastEpisode)
 
-        for episodes in soup.find_all('div', class_='numerando'):
-            lastEpisode = episodes.contents[0]
-
-        return lastEpisode.split('- ')[1]
+        return lastEpisodeNumeric
 
     def getLastEpisodeUrl(self, url: str) -> str:
         """ Função responsável por retornar a url do último episódio do anime.
@@ -35,10 +38,11 @@ class CrawlerAnimesHouseAndAnimesOnline(Crawler, CrawlerInterface):
         -----------
         lastEpisodeUrl: :class:`str`
         """
-        
+
         soup = self.reqUrl(url)
 
-        for episodes in soup.find_all('div', class_='episodiotitle'):
-            episodeUrl = episodes.find('a')
+        animeInfo      = soup.find("div", class_="row")
+        animeLink      = animeInfo.find("a")
+        lastEpisodeUrl = animeLink.attrs["href"]
 
-        return episodeUrl.attrs['href']
+        return lastEpisodeUrl

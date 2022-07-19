@@ -23,11 +23,11 @@
 ### 📦 Dependências:
 
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
-- [dotenv](https://pypi.org/project/python-dotenv/)
 - [gspread](https://pypi.org/project/gspread/)
 - [LXML](https://pypi.org/project/lxml/)
 - [oauth2client](https://pypi.org/project/oauth2client/)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
+- [pyshorteners](https://pypi.org/project/pyshorteners/)
 - [Requests](https://pypi.org/project/requests/)
 - [rich](https://pypi.org/project/rich/)
 
@@ -77,10 +77,11 @@
    ```powershell
    mv .env.example .env
    ```
-3. Abra o arquivo `.env` e preencha os campos:
+3. Abra o arquivo `.env` e preencha os campos (todos são opcionais):
    1. `USER_NAME` nome de usuário que deseja;
    2. `SHEET_LINK` URL da sua planilha (a mesma que você utilizou para compartilhar).
-4. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
+   3. `BITLY_TOKEN`<sup>5</sup> token de acesso do [Bitly](https://bitly.com/) para encurtar as URLs.
+5. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
    ```powershell
    python main.py
    ```
@@ -90,6 +91,8 @@
 ###### <sup>3</sup>Obs: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (`COL_*`) no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
 
 ###### <sup>4</sup>Obs: Recomenda-se renomear o arquivo `.json` baixado para `creds.json`, caso contrário, é necessário alterar a constante `CREDENTIALS_FILE` no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
+
+###### <sup>5</sup>Obs: As URLs curtas melhoram a exibição da tabela, porém, caso não queira encurtar as URLs basta não preencher esse campo.
 
 ---
 

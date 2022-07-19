@@ -4,10 +4,13 @@ from oauth2client.service_account import ServiceAccountCredentials
 # ------------------------------ Constants ----------------------------------- #
 CREDENTIALS_FILE = "creds.json"
 SHEET_TITLE = "Animes"
+COL_NUMBER_ANIME_NAME = 1
+COL_NUMBER_SEASON = 2
 COL_NUMBER_URL = 3
-COL_NUMBER_IM = 4
+COL_NUMBER_MY_EPISODES = 4
 COL_NUMBER_LAST_EPISODE = 5
 COL_NUMBER_LAST_EPISODE_URL = 6
+COL_NUMBER_BROADCAST = 7
 COL_NAME_LAST_EPISODE = 'F'
 # ---------------------------------------------------------------------------- #
 
@@ -27,47 +30,88 @@ client = gspread.authorize(creds)
 # Abrindo a planilha
 sheet = client.open(SHEET_TITLE).sheet1
 
-def getAnimeUrl() -> list:
+def getAnimeNames() -> list:
+    """ Função que retorna uma lista com os nomes dos animes que estão na 
+    planilha.
+
+    Returns
+    -----------
+    animeNames: :class:`list`
+    """
+
+    animeNames = sheet.col_values(COL_NUMBER_ANIME_NAME)
+    animeNames.pop(0)
+
+    return animeNames
+
+def getAnimeSeasons() -> list:
+    """ Função que retorna uma lista com os números das temporadas dos animes 
+    que estão na planilha.
+
+    Returns
+    -----------
+    animeSeasons: :class:`list`
+    """
+
+    animeSeasons = sheet.col_values(COL_NUMBER_SEASON)
+    animeSeasons.pop(0)
+
+    return animeSeasons
+
+def getAnimeUrls() -> list:
     """ Função que retorna uma lista com as URL dos animes que estão na planilha.
 
     Returns
     -----------
-    animeUrl: :class:`list`
+    animeUrls: :class:`list`
     """
 
-    animeUrl = sheet.col_values(COL_NUMBER_URL)
-    animeUrl.pop(0)
+    animeUrls = sheet.col_values(COL_NUMBER_URL)
+    animeUrls.pop(0)
 
-    return animeUrl
+    return animeUrls
 
-def getIm() -> list:
+def getMyEpisodes() -> list:
     """ Função que retorna uma lista com os episódios que parei dos animes que 
     estão na planilha.
 
     Returns
     -----------
-    im: :class:`list`
+    myEpisodes: :class:`list`
     """
 
-    im = sheet.col_values(COL_NUMBER_IM)
-    im.pop(0)
+    myEpisodes = sheet.col_values(COL_NUMBER_MY_EPISODES)
+    myEpisodes.pop(0)
 
-    return im
+    return myEpisodes
 
-
-def getLastEpisode() -> list:
+def getLastEpisodes() -> list:
     """ Função que retorna uma lista com o número do último episódio lançado 
     dos animes que estão na planilha.
 
     Returns
     -----------
-    lastEpisode: :class:`list`
+    lastEpisodes: :class:`list`
     """
     
-    lastEpisode = sheet.col_values(COL_NUMBER_LAST_EPISODE)
-    lastEpisode.pop(0)
+    lastEpisodes = sheet.col_values(COL_NUMBER_LAST_EPISODE)
+    lastEpisodes.pop(0)
 
-    return lastEpisode
+    return lastEpisodes
+
+def getAnimeBroadcasts() -> list:
+    """ Função que retorna uma lista com os dias de lançamentos dos animes que 
+    estão na planilha.
+
+    Returns
+    -----------
+    animeBroadcasts: :class:`list`
+    """
+
+    animeBroadcasts = sheet.col_values(COL_NUMBER_BROADCAST)
+    animeBroadcasts.pop(0)
+
+    return animeBroadcasts
 
 def setLastEpisode(index: int, value: str):
     """ Função que altera na planilha o número do último episódio lançado.
