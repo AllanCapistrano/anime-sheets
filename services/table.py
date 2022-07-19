@@ -27,7 +27,6 @@ class Table:
         self.table.add_column("Last Episode (URL)", justify="center", vertical="middle", no_wrap=True)
         self.table.add_column("Broadcast", justify="center", vertical="middle")
 
-
     def fillTable(
         self,
         names: list, 
@@ -87,7 +86,6 @@ class Table:
                 self.console.print(error, style="bold red")
                 
                 exit()
-
 
     def showTable(self) -> None:
         """ Exibe a tabela no terminal.
