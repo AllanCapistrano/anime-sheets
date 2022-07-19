@@ -12,6 +12,8 @@ COL_NUMBER_LAST_EPISODE = 5
 COL_NUMBER_LAST_EPISODE_URL = 6
 COL_NUMBER_BROADCAST = 7
 COL_NAME_LAST_EPISODE = 'F'
+COLOR_OK     = [0, 1, 0]
+COLOR_NOT_OK = [1, 0, 0]
 # ---------------------------------------------------------------------------- #
 
 scope = [
@@ -139,7 +141,7 @@ def setLastEpisodeUrl(index: int , value: str):
 
     sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE_URL, value)
 
-def changeCellBackgroundColor(pos: int, color: list):
+def setCellBackgroundColor(pos: int, color: list):
     """ Função para alterar a cor de fundo de uma célula na planilha.
 
     Parameters
@@ -157,3 +159,22 @@ def changeCellBackgroundColor(pos: int, color: list):
             "blue": color[2]
         }
     })
+
+def changeCellBackgroundColor(myEpisode: float, lastEpisode: float, pos: int):
+    """ Altera a cor de fundo da célula de acordo com o último episódio 
+    assistido.
+
+    Parameters
+    -----------
+    myEpisode: :class:`float`
+        Último episódio assistido.
+    lastEpisode: :class:`float`
+        Último episódio lançado.
+    pos: :class:`int`
+        Posição na planilha da URL do último episódio lançado.
+    """
+    
+    if(myEpisode < lastEpisode):
+        setCellBackgroundColor(pos + 2, COLOR_NOT_OK)
+    else:
+        setCellBackgroundColor(pos + 2, COLOR_OK)
