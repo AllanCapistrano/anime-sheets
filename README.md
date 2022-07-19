@@ -42,7 +42,7 @@
 13. Em **Conceda a essa conta de serviço acesso ao projeto** selecione **Projeto ➞ Editor**, clique em **Continuar** e depois clique em **Concluir**;
 14. Na nova janela aberta, em **Contas de serviço**, clique no email correspondente (ex: test@myproject.iam.gserviceaccount.com);
 15. Nessa nova janela, no menu superior, clique em **Chaves**, e depois em **Adicionar chave ➞ Criar nova chave**;
-16. Selecione **JSON**[<sup>4</sup>](#4obs-recomenda-se-renomear-o-arquivo-json-baixado-para-credsjson) e clique em **Criar\***;
+16. Selecione **JSON**[<sup>4</sup>](#4obs-recomenda-se-renomear-o-arquivo-json-baixado-para-credsjson) e clique em **Criar**;
 17. Volte para a página de [Bibliotecas de APIs](https://console.cloud.google.com/apis/library), busque por **Google Sheets API** e clique em **Ativar**;
 18. Faça um Fork deste repositório (caso queira modificá-lo) ou somente clone-o;
 19. Coloque o arquivo contendo as credenciais na pasta do projeto;
