@@ -12,13 +12,20 @@ from services.table import Table
 load_dotenv()
 
 # ------------------------------ Constants ----------------------------------- #
-USER_NAME    = getenv("USER_NAME")
-SHEET_LINK   = getenv("SHEET_LINK")
+USER_NAME  = getenv("USER_NAME")
+SHEET_LINK = getenv("SHEET_LINK")
 # ---------------------------------------------------------------------------- #
 
 console = Console()
 table   = Table()
-sheet   = Sheet()
+
+try:
+    sheet = Sheet()
+except Exception as error:
+    print()
+    console.print(error, style="bold red")
+    
+    exit()
 
 start = time()
 
