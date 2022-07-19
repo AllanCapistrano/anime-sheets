@@ -1,25 +1,32 @@
-import gspread
+from os import getenv
+from gspread import authorize
 from oauth2client.service_account import ServiceAccountCredentials
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # ------------------------------ Constants ----------------------------------- #
-CREDENTIALS_FILE = "creds.json"
-SHEET_TITLE = "Animes"
-COL_NUMBER_ANIME_NAME = 1
-COL_NUMBER_SEASON = 2
-COL_NUMBER_URL = 3
-COL_NUMBER_MY_EPISODES = 4
-COL_NUMBER_LAST_EPISODE = 5
+CREDENTIALS_FILE            = getenv("CREDENTIALS_FILE")
+SHEET_TITLE                 = "Animes"
+COL_NUMBER_ANIME_NAME       = 1
+COL_NUMBER_SEASON           = 2
+COL_NUMBER_URL              = 3
+COL_NUMBER_MY_EPISODES      = 4
+COL_NUMBER_LAST_EPISODE     = 5
 COL_NUMBER_LAST_EPISODE_URL = 6
-COL_NUMBER_BROADCAST = 7
-COL_NAME_LAST_EPISODE = 'F'
-COLOR_OK     = [0, 1, 0]
-COLOR_NOT_OK = [1, 0, 0]
+COL_NUMBER_BROADCAST        = 7
+COL_NAME_LAST_EPISODE       = 'F'
+COLOR_OK                    = [0, 1, 0]
+COLOR_NOT_OK                = [1, 0, 0]
 # ---------------------------------------------------------------------------- #
 
 class Sheet:
     def __init__(self) -> None:
         """ Método construtor.
         """
+
+        if(CREDENTIALS_FILE == ""):
+            raise ValueError("Erro! É necessário informar o arquivo de credenciais.")
 
         self.scope = [
             "https://spreadsheets.google.com/feeds",
@@ -28,16 +35,15 @@ class Sheet:
             "https://www.googleapis.com/auth/drive"
         ]
 
-        # Definindo as credenciais
-        self.creds = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, self.scope)
-        # Definindo o client
-        self.client = gspread.authorize(self.creds)
-        # Abrindo a planilha
+        # Definindo as credenciais.
+        self.credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, self.scope)
+        # Definindo o client.
+        self.client = authorize(self.credentials)
+        # Abrindo a planilha.
         self.sheet = self.client.open(SHEET_TITLE).sheet1
 
     def getAnimeNames(self) -> list:
-        """ Função que retorna uma lista com os nomes dos animes que estão na 
-        planilha.
+        """ Retorna uma lista com os nomes dos animes que estão na planilha.
 
         Returns
         -----------
@@ -50,8 +56,8 @@ class Sheet:
         return animeNames
 
     def getAnimeSeasons(self) -> list:
-        """ Função que retorna uma lista com os números das temporadas dos 
-        animes que estão na planilha.
+        """ Retorna uma lista com os números das temporadas dos animes que estão 
+        na planilha.
 
         Returns
         -----------
@@ -64,8 +70,7 @@ class Sheet:
         return animeSeasons
 
     def getAnimeUrls(self) -> list:
-        """ Função que retorna uma lista com as URL dos animes que estão na 
-        planilha.
+        """ Retorna uma lista com as URL dos animes que estão na planilha.
 
         Returns
         -----------
@@ -78,8 +83,8 @@ class Sheet:
         return animeUrls
 
     def getMyEpisodes(self) -> list:
-        """ Função que retorna uma lista com os episódios que parei dos animes 
-        que estão na planilha.
+        """ Retorna uma lista com os episódios que parei dos animes que estão na 
+        planilha.
 
         Returns
         -----------
@@ -92,8 +97,8 @@ class Sheet:
         return myEpisodes
 
     def getLastEpisodes(self) -> list:
-        """ Função que retorna uma lista com o número do último episódio lançado 
-        dos animes que estão na planilha.
+        """ Retorna uma lista com o número do último episódio lançado dos animes 
+        que estão na planilha.
 
         Returns
         -----------
@@ -106,8 +111,8 @@ class Sheet:
         return lastEpisodes
 
     def getAnimeBroadcasts(self) -> list:
-        """ Função que retorna uma lista com os dias de lançamentos dos animes 
-        que estão na planilha.
+        """ Retorna uma lista com os dias de lançamentos dos animes que estão na 
+        planilha.
 
         Returns
         -----------
@@ -120,43 +125,45 @@ class Sheet:
         return animeBroadcasts
 
     def setLastEpisode(self, index: int, value: str) -> None:
-        """ Função que altera na planilha o número do último episódio lançado.
+        """ Altera na planilha o número do último episódio lançado.
 
         Parameters
         -----------
         index: :class:`int`
             Posição na planilha.
-        index: :class:`str`
+        value: :class:`str`
             Número do episódio.
         """
 
         self.sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE, value)
 
     def setLastEpisodeUrl(self, index: int , value: str) -> None:
-        """ Função que altera na planilha a URL do último episódio lançado.
+        """ Altera na planilha a URL do último episódio lançado.
 
         Parameters
         -----------
         index: :class:`int`
             Posição na planilha.
-        index: :class:`str`
-            Número do episódio.
+        value: :class:`str`
+            URL do episódio.
         """
 
         self.sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE_URL, value)
 
-    def setCellBackgroundColor(self, pos: int, color: list) -> None:
-        """ Função para alterar a cor de fundo de uma célula na planilha.
+    def setCellBackgroundColor(self, posX: str, posY: int, color: list) -> None:
+        """ Alterar a cor de fundo de uma célula na planilha.
 
         Parameters
         -----------
-        pos: :class:`int`
-            Posição na planilha.
+        posX: :class:`str`
+            Posição na planilha, eixo X.
+        posY: :class:`int`
+            Posição na planilha, eixo Y.
         color: :class:`list`
             Lista com os valores RGB ([red, green, blue]). 
         """
 
-        self.sheet.format(COL_NAME_LAST_EPISODE + str(pos), {
+        self.sheet.format(posX + str(posY), {
             "backgroundColor": {
                 "red": color[0],
                 "green": color[1],
@@ -184,6 +191,6 @@ class Sheet:
         """
         
         if(myEpisode < lastEpisode):
-            self.setCellBackgroundColor(pos + 2, COLOR_NOT_OK)
+            self.setCellBackgroundColor(COL_NAME_LAST_EPISODE, pos + 2, COLOR_NOT_OK)
         else:
-            self.setCellBackgroundColor(pos + 2, COLOR_OK)
+            self.setCellBackgroundColor(COL_NAME_LAST_EPISODE, pos + 2, COLOR_OK)
