@@ -63,13 +63,13 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
 
 # Preenchendo a tabela.
 table.fillTable(
-    names=animeNames, 
-    seasons=animeSeasons, 
-    urls=animesUrls, 
-    myEpisodes=myEpisodes, 
-    lastEpisodes=lastEpisodesUpdated, 
-    lastEpisodesUrls=lastEpisodesUrlsUpdated, 
-    broadcasts=animeBroadcasts
+    names            = animeNames, 
+    seasons          = animeSeasons, 
+    urls             = animesUrls, 
+    myEpisodes       = myEpisodes, 
+    lastEpisodes     = lastEpisodesUpdated, 
+    lastEpisodesUrls = lastEpisodesUrlsUpdated, 
+    broadcasts       = animeBroadcasts
 )
 
 end = time()
