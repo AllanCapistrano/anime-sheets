@@ -1,6 +1,8 @@
-requests
 beautifulsoup4
-lxml
 gspread
+lxml
 oauth2client
 python-dotenv
+pyshorteners
+requests
+rich
