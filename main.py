@@ -14,8 +14,6 @@ load_dotenv()
 # ------------------------------ Constants ----------------------------------- #
 USER_NAME    = getenv("USER_NAME")
 SHEET_LINK   = getenv("SHEET_LINK")
-COLOR_OK     = [0, 1, 0]
-COLOR_NOT_OK = [1, 0, 0]
 # ---------------------------------------------------------------------------- #
 
 console = Console()
@@ -61,11 +59,7 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
             sheets.setLastEpisode(i, lastEpisode)
             sheets.setLastEpisodeUrl(i, lastEpisodeUrl)
     
-    # Muda a cor da célula, de acordo com o último episódio assistido.
-    if(float(myEpisodes[i]) < float(lastEpisode)):
-        sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
-    else:
-        sheets.changeCellBackgroundColor(i + 2, COLOR_OK)
+    sheets.changeCellBackgroundColor(float(myEpisodes[i]), float(lastEpisode), i)
 
 # Preenchendo a tabela.
 table.fillTable(
