@@ -5,8 +5,8 @@ from rich.progress import track
 from rich.console import Console
 
 from services import sheets
-from services.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
-from services.crawlerGoyabu import CrawlerGoyabu
+from services.crawlers.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
+from services.crawlers.crawlerGoyabu import CrawlerGoyabu
 
 load_dotenv()
 
@@ -24,13 +24,16 @@ start = time.time()
 crawlerAnimesHouseAndAnimesOnline = CrawlerAnimesHouseAndAnimesOnline()
 crawlerGoyabu                     = CrawlerGoyabu()
 
-animesUrls = sheets.getAnimeUrls()
-myEpisodes = sheets.getMyEpisodes()
-size       = len(animesUrls)
+animeNames        = sheets.getAnimeNames()
+animeSeasons      = sheets.getAnimeSeasons()
+animesUrls        = sheets.getAnimeUrls()
+myEpisodes        = sheets.getMyEpisodes()
+lastEpisodesSheet = sheets.getLastEpisodes()
 
-lastEpisodeSheet = sheets.getLastEpisodes()
+lastEpisodesUpdated     = []
+lastEpisodesUrlsUpdated = []
 
-for i in track(range(0, size), description="[cyan]Atualizando..."):
+for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
     if(
         animesUrls[i].find("animeshouse")  != -1 or 
@@ -42,9 +45,12 @@ for i in track(range(0, size), description="[cyan]Atualizando..."):
         lastEpisode    = crawlerGoyabu.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerGoyabu.getLastEpisodeUrl(animesUrls[i])
 
+    lastEpisodesUpdated.append(lastEpisode)
+    lastEpisodesUrlsUpdated.append(lastEpisodeUrl)
+
     try:
         # Evita escritas desnecessárias.
-        if(lastEpisodeSheet[i] != lastEpisode):
+        if(lastEpisodesSheet[i] != lastEpisode):
             sheets.setLastEpisode(i, lastEpisode)
             sheets.setLastEpisodeUrl(i, lastEpisodeUrl)
     except :
@@ -57,8 +63,6 @@ for i in track(range(0, size), description="[cyan]Atualizando..."):
         sheets.changeCellBackgroundColor(i + 2, COLOR_NOT_OK)
     else:
         sheets.changeCellBackgroundColor(i + 2, COLOR_OK)
-
-    percentage = 100 * (i + 1)/size
 
 end = time.time()
 
