@@ -9,35 +9,17 @@
 
 ---
 
-## 📖 Descrição do Projeto
+## 📖 Descrição
 
-> **Crawler que a partir dos dados previamente preenchidos na planilha (nome do anime, temporada, URL, episódio atual), busca as informações desse anime para atualizar os dados da planilha.**
->
-> **O objetivo desta aplicação é que não seja necessário abrir o site para verificar se um episódio novo foi lançado, pois com a utilização deste crawler, o último episódio de todos os animes que estão preenchidos na planilha serão atualizados automaticamente.**
+> **Crawler para verificar qual é o último episódio dos animes que estão na planilha, basta preencher com a URL¹ do mesmo.**
 
-### 📂 Tecnologias utilizadas:
+###### ¹Obs: Verifique quais são os [sites suportados](#🌐-sites-suportados¹).
 
-- [Python](https://www.python.org/)
-- [Google Planilhas](https://www.google.com/sheets/about/)
-
-### 📦 Dependências:
-
-- [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
-- [gspread](https://pypi.org/project/gspread/)
-- [LXML](https://pypi.org/project/lxml/)
-- [oauth2client](https://pypi.org/project/oauth2client/)
-- [python-dotenv](https://pypi.org/project/python-dotenv/)
-- [pyshorteners](https://pypi.org/project/pyshorteners/)
-- [Requests](https://pypi.org/project/requests/)
-- [rich](https://pypi.org/project/rich/)
-
-### 🌐 Sites Suportados¹:
+### 🌐 Sites Suportados:
 
 - [x] [Animes House](https://animeshouse.net/)
 - [x] [Animes Online](https://animesonline.org/)
 - [x] [Goyabu](https://goyabu.com/)
-
-###### ¹Obs: Caso deseje utilizar outro(s) site(s), é necessário realizar algumas modificações.
 
 ---
 
@@ -68,7 +50,14 @@
 
 ### Executando o projeto
 
-1. Faça o download das dependências do projeto, você pode visualizá-las [clicando aqui](#-dependências) ou pelo arquivo [`requirements.txt`](./requirements.txt);
+1. Faça o download das dependências do projeto:
+   ```powershell
+   pip install -r requirements.txt
+   ```
+   ou
+   ```powershell
+   pip3 install -r requirements.txt
+   ```
 2. Faça uma cópia do arquivo `.env.example` com o nome de `.env`, ou renomei o arquivo `.env.example` para `.env`:
    ```powershell
    cp .env.example .env
