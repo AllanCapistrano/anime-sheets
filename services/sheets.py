@@ -10,6 +10,7 @@ COL_NUMBER_URL = 3
 COL_NUMBER_MY_EPISODES = 4
 COL_NUMBER_LAST_EPISODE = 5
 COL_NUMBER_LAST_EPISODE_URL = 6
+COL_NUMBER_BROADCAST = 7
 COL_NAME_LAST_EPISODE = 'F'
 # ---------------------------------------------------------------------------- #
 
@@ -97,6 +98,20 @@ def getLastEpisodes() -> list:
     lastEpisodes.pop(0)
 
     return lastEpisodes
+
+def getAnimeBroadcasts() -> list:
+    """ Função que retorna uma lista com os dias de lançamentos dos animes que 
+    estão na planilha.
+
+    Returns
+    -----------
+    animeBroadcasts: :class:`list`
+    """
+
+    animeBroadcasts = sheet.col_values(COL_NUMBER_BROADCAST)
+    animeBroadcasts.pop(0)
+
+    return animeBroadcasts
 
 def setLastEpisode(index: int, value: str):
     """ Função que altera na planilha o número do último episódio lançado.
