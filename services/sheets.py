@@ -53,7 +53,7 @@ def getAnimeSeasons() -> list:
     animeSeasons: :class:`list`
     """
 
-    animeSeasons = sheet.col_values(COL_NUMBER_ANIME_NAME)
+    animeSeasons = sheet.col_values(COL_NUMBER_SEASON)
     animeSeasons.pop(0)
 
     return animeSeasons
