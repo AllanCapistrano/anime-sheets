@@ -21,7 +21,7 @@ class Table:
         self.table.add_column("nº", justify="center", vertical="middle")
         self.table.add_column("Anime", justify="center", vertical="middle")
         self.table.add_column("Season", justify="center", vertical="middle")
-        self.table.add_column("URL", justify="center", vertical="middle")
+        self.table.add_column("URL", justify="center", vertical="middle", no_wrap=True)
         self.table.add_column("My Episode", justify="center", vertical="middle")
         self.table.add_column("Last Episode", justify="center", vertical="middle")
         self.table.add_column("Last Episode (URL)", justify="center", vertical="middle", no_wrap=True)
