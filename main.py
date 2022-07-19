@@ -1,5 +1,5 @@
-import os
-import time
+from os import getenv
+from time import time
 from dotenv import load_dotenv
 from rich.progress import track
 from rich.console import Console
@@ -7,19 +7,21 @@ from rich.console import Console
 from services import sheets
 from services.crawlers.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
 from services.crawlers.crawlerGoyabu import CrawlerGoyabu
+from services.table import Table
 
 load_dotenv()
 
 # ------------------------------ Constants ----------------------------------- #
-USER_NAME    = os.getenv("USER_NAME")
-SHEET_LINK   = os.getenv("SHEET_LINK")
+USER_NAME    = getenv("USER_NAME")
+SHEET_LINK   = getenv("SHEET_LINK")
 COLOR_OK     = [0, 1, 0]
 COLOR_NOT_OK = [1, 0, 0]
 # ---------------------------------------------------------------------------- #
 
 console = Console()
+table   = Table()
 
-start = time.time()
+start = time()
 
 crawlerAnimesHouseAndAnimesOnline = CrawlerAnimesHouseAndAnimesOnline()
 crawlerGoyabu                     = CrawlerGoyabu()
@@ -29,6 +31,7 @@ animeSeasons      = sheets.getAnimeSeasons()
 animesUrls        = sheets.getAnimeUrls()
 myEpisodes        = sheets.getMyEpisodes()
 lastEpisodesSheet = sheets.getLastEpisodes()
+animeBroadcasts   = sheets.getAnimeBroadcasts()
 
 lastEpisodesUpdated     = []
 lastEpisodesUrlsUpdated = []
@@ -64,7 +67,18 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     else:
         sheets.changeCellBackgroundColor(i + 2, COLOR_OK)
 
-end = time.time()
+# Preenchendo a tabela.
+table.fillTable(
+    names=animeNames, 
+    seasons=animeSeasons, 
+    urls=animesUrls, 
+    myEpisodes=myEpisodes, 
+    lastEpisodes=lastEpisodesUpdated, 
+    lastEpisodesUrls=lastEpisodesUrlsUpdated, 
+    broadcasts=animeBroadcasts
+)
+
+end = time()
 
 console.print("Tempo de execução: {:.2f}s\n".format(end - start), style="bold green")
 
@@ -73,5 +87,8 @@ if(USER_NAME != ""):
         USER_NAME), style="bold")
 if(SHEET_LINK != ""):
     print("Link: {}".format(SHEET_LINK))
+
+# Exibindo a tabela.
+table.showTable()
 
 print()
