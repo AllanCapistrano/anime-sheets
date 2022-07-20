@@ -71,8 +71,10 @@
    2. `USER_NAME` nome de usuário que deseja;
    3. `SHEET_LINK` URL da sua planilha (a mesma que você utilizou para compartilhar);
    4. `BITLY_TOKEN`[<sup>5</sup>](#5obs-as-urls-curtas-melhoram-a-exibição-da-tabela-porém-caso-não-queira-encurtar-as-urls-basta-não-preencher-esse-campo) token de acesso do [Bitly](https://bitly.com/) para encurtar as URLs.
-4. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
+4. Após isso, com um terminal aberto no diretório do projeto, basta executar os comandos:
    ```powershell
+   cd src
+   
    python main.py
    ```
 
