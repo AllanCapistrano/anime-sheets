@@ -7,7 +7,7 @@ def showOptions(clearTerminal: bool = True) -> None:
     Parameters
     -----------
     clearTerminal: :class:`bool`
-        Flag limpar ou não o terminal antes da exibição das opções.
+        Flag para limpar ou não o terminal antes da exibição das opções.
     """
     
     console = Console()
