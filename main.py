@@ -16,6 +16,7 @@ if __name__ == "__main__":
     console.print("[3] Atualizar informações de um Anime", style="bold")
     console.print("[4] Atualizar último episódio assistido", style="bold")
     console.print("[5] Atualizar planilha", style="bold")
+    console.print("[6] Sair", style="bold")
 
     option = input("Escolha uma das opções acima: ")
 
@@ -69,6 +70,12 @@ if __name__ == "__main__":
             end = time()
 
             console.print("Tempo de execução: {:.2f}s".format(end - start), style="bold green")
+        case 6:
+            system('cls' if name == 'nt' else 'clear')
+            
+            console.print("Até logo!", style="bold")
+            exit()
+        
         case _:
             console.print("Opção inválida! Tente novamente.", style="bold red")
 
