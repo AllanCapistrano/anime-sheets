@@ -4,6 +4,9 @@ from services.sheet import Sheet
 from services.table import Table
 
 def showTable() -> None:
+    """ Exibe a tabela com as informações dos animes presentes na planilha.
+    """
+
     console = Console()
 
     try:
