@@ -21,8 +21,9 @@ class CrawlerGoyabu(Crawler, CrawlerInterface):
 
         soup               = self.reqUrl(url)
         animeInfo          = soup.find("div", class_="chaps-infs")
-        lastEpisode        = animeInfo.contents[0].split(" ")[1]
-        lastEpisodeNumeric = re.sub('[^.0-9]', '', lastEpisode)
+        lastEpisode        = animeInfo.contents[0].split(" ")
+        index              = len(lastEpisode) - 2
+        lastEpisodeNumeric = re.sub('[^.0-9]', '', lastEpisode[index])
 
         return lastEpisodeNumeric
 
