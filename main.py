@@ -6,7 +6,7 @@ from rich.console import Console
 
 from services.sheet import Sheet
 from services.crawlers.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
-from services.crawlers.crawlerGoyabu import CrawlerGoyabu
+from services.crawlers.crawlerGoyabuOld import CrawlerGoyabuOld as CrawlerGoyabu
 from services.table import Table
 
 load_dotenv()
