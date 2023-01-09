@@ -38,9 +38,9 @@
 9. Em **Qual API você usa?** escolha a opção **Google Drive API**;
 10. Em **Que dados você acessará?** selecione **Dados do aplicativo**;
 11. Em **Você planeja usar esta API com Compute Engine, Kubernetes Engine, App Engine ou Cloud Functions?** selecione **Não, nenhuma**, e clique em **Próxima**;
-12. Digite um nome para a conta do serviço, além de uma descrição (opcional), e clique em **Criar**;
-13. Em **Conceda a essa conta de serviço acesso ao projeto** selecione **Projeto ➞ Editor**, clique em **Continuar** e depois clique em **Concluir**;
-14. Na nova janela aberta, em **Contas de serviço**, clique no email correspondente (ex: test@myproject.iam.gserviceaccount.com);
+12. Digite um nome para a conta do serviço, além de uma descrição (opcional), e clique em **Criar e Continuar**;
+13. Em **Conceda a essa conta de serviço acesso ao projeto** selecione **Básico ➞ Editor**, clique em **Continuar** e depois clique em **Concluir**;
+14. Após isso, clique em **Credenciais** no menu lateral esquerdo, em **Contas de serviço**, clique no email correspondente (ex: test@myproject.iam.gserviceaccount.com);
 15. Nessa nova janela, no menu superior, clique em **Chaves**, e depois em **Adicionar chave ➞ Criar nova chave**;
 16. Selecione **JSON**[<sup>4</sup>](#4obs-recomenda-se-renomear-o-arquivo-json-baixado-para-credsjson) e clique em **Criar**;
 17. Volte para a página de [Bibliotecas de APIs](https://console.cloud.google.com/apis/library), busque por **Google Sheets API** e clique em **Ativar**;
