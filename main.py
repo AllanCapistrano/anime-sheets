@@ -46,7 +46,7 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
     if(
         animesUrls[i].find("animeshouse")  != -1 or 
-        animesUrls[i].find("animesonline") != -1
+        animesUrls[i].find("animesgratis") != -1
     ):
         lastEpisode    = crawlerAnimesHouseAndAnimesOnline.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerAnimesHouseAndAnimesOnline.getLastEpisodeUrl(animesUrls[i])
