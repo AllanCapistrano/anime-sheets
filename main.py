@@ -6,6 +6,7 @@ from rich.console import Console
 
 from services.sheet import Sheet
 from services.crawlers.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
+from services.crawlers.crawlerAnimesOnline import CrawlerAnimesOnline
 from services.crawlers.crawlerGoyabuOld import CrawlerGoyabuOld as CrawlerGoyabu
 from services.table import Table
 
@@ -30,6 +31,7 @@ except Exception as error:
 start = time()
 
 crawlerAnimesHouseAndAnimesOnline = CrawlerAnimesHouseAndAnimesOnline()
+crawlerAnimesOnline               = CrawlerAnimesOnline()
 crawlerGoyabu                     = CrawlerGoyabu()
 
 animeNames        = sheet.getAnimeNames()
@@ -44,7 +46,10 @@ lastEpisodesUrlsUpdated = []
 
 for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
-    if(
+    if(animesUrls[i].find("animesonline")  != -1):
+        lastEpisode    = crawlerAnimesOnline.getLastEpisode(animesUrls[i])
+        lastEpisodeUrl = crawlerAnimesOnline.getLastEpisodeUrl(animesUrls[i])
+    elif(
         animesUrls[i].find("animeshouse")  != -1 or 
         animesUrls[i].find("animesgratis") != -1
     ):
