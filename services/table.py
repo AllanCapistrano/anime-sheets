@@ -3,7 +3,7 @@ from rich.console import Console
 from rich.table import Table as RichTable
 from rich.progress import track
 
-from services.shortUrl import shortenUrl
+from .shortUrl import shortenUrl
 
 class Table:
     def __init__(self) -> None:
