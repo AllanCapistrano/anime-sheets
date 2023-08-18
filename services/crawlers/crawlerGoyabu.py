@@ -1,4 +1,4 @@
-import re
+from re import sub
 
 from .crawler import Crawler
 from .interface import CrawlerInterface
@@ -23,7 +23,7 @@ class CrawlerGoyabu(Crawler, CrawlerInterface):
         animeInfo          = soup.find("div", class_="chaps-infs")
         lastEpisode        = animeInfo.contents[0].split(" ")
         index              = len(lastEpisode) - 2
-        lastEpisodeNumeric = re.sub('[^.0-9]', '', lastEpisode[index])
+        lastEpisodeNumeric = sub('[^.0-9]', '', lastEpisode[index])
 
         return lastEpisodeNumeric
 
