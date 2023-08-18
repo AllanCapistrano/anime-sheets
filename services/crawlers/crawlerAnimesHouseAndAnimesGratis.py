@@ -1,7 +1,7 @@
 from services.crawlers.crawler import Crawler
 from services.crawlers.interface.crawlerInterface import CrawlerInterface
 
-class CrawlerAnimesHouseAndAnimesOnline(Crawler, CrawlerInterface):
+class CrawlerAnimesHouseAndAnimesGratis(Crawler, CrawlerInterface):
     def getLastEpisode(self, url: str) -> str:
         """ Função responsável por retornar o número do último episódio do 
         anime.

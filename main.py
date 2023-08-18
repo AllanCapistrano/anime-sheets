@@ -5,7 +5,7 @@ from rich.progress import track
 from rich.console import Console
 
 from services.sheet import Sheet
-from services.crawlers.crawlerAnimesHouseAndAnimesOnline import CrawlerAnimesHouseAndAnimesOnline
+from services.crawlers.crawlerAnimesHouseAndAnimesGratis import CrawlerAnimesHouseAndAnimesGratis
 from services.crawlers.crawlerAnimesOnline import CrawlerAnimesOnline
 from services.crawlers.crawlerGoyabuOld import CrawlerGoyabuOld as CrawlerGoyabu
 from services.table import Table
@@ -30,7 +30,7 @@ except Exception as error:
 
 start = time()
 
-crawlerAnimesHouseAndAnimesOnline = CrawlerAnimesHouseAndAnimesOnline()
+crawlerAnimesHouseAndAnimesGratis = CrawlerAnimesHouseAndAnimesGratis()
 crawlerAnimesOnline               = CrawlerAnimesOnline()
 crawlerGoyabu                     = CrawlerGoyabu()
 
@@ -53,8 +53,8 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
         animesUrls[i].find("animeshouse")  != -1 or 
         animesUrls[i].find("animesgratis") != -1
     ):
-        lastEpisode    = crawlerAnimesHouseAndAnimesOnline.getLastEpisode(animesUrls[i])
-        lastEpisodeUrl = crawlerAnimesHouseAndAnimesOnline.getLastEpisodeUrl(animesUrls[i])
+        lastEpisode    = crawlerAnimesHouseAndAnimesGratis.getLastEpisode(animesUrls[i])
+        lastEpisodeUrl = crawlerAnimesHouseAndAnimesGratis.getLastEpisodeUrl(animesUrls[i])
     elif(animesUrls[i].find("goyabu") != -1):
         lastEpisode    = crawlerGoyabu.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerGoyabu.getLastEpisodeUrl(animesUrls[i])
