@@ -17,8 +17,9 @@
 
 ### 🌐 Sites Suportados:
 
+- [x] [Animes Gratis](https://animesgratis.org)
 - [x] [Animes House](https://animeshouse.net/)
-- [x] [Animes Online](https://animesonline.org/)
+- [x] [Animes Online](https://animesonline.nz/)
 - [x] [Goyabu](https://goyabu.com/)
 
 ---
