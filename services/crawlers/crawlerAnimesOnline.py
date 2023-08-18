@@ -1,7 +1,7 @@
 from re import search
 
-from services.crawlers.crawler import Crawler
-from services.crawlers.interface.crawlerInterface import CrawlerInterface
+from .crawler import Crawler
+from .interface import CrawlerInterface
 
 class CrawlerAnimesOnline(Crawler, CrawlerInterface):
     def getLastEpisode(self, url: str) -> str:

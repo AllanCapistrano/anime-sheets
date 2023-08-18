@@ -1,5 +1,5 @@
-from services.crawlers.crawler import Crawler
-from services.crawlers.interface.crawlerInterface import CrawlerInterface
+from .crawler import Crawler
+from .interface import CrawlerInterface
 
 class CrawlerAnimesHouseAndAnimesGratis(Crawler, CrawlerInterface):
     def getLastEpisode(self, url: str) -> str:

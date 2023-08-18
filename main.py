@@ -4,11 +4,11 @@ from dotenv import load_dotenv
 from rich.progress import track
 from rich.console import Console
 
-from services.sheet import Sheet
-from services.crawlers.crawlerAnimesHouseAndAnimesGratis import CrawlerAnimesHouseAndAnimesGratis
-from services.crawlers.crawlerAnimesOnline import CrawlerAnimesOnline
-from services.crawlers.crawlerGoyabuOld import CrawlerGoyabuOld as CrawlerGoyabu
-from services.table import Table
+from services import Sheet
+from services import Table
+from services.crawlers import CrawlerAnimesHouseAndAnimesGratis
+from services.crawlers import CrawlerAnimesOnline
+from services.crawlers import CrawlerGoyabuOld as CrawlerGoyabu
 
 load_dotenv()
 
