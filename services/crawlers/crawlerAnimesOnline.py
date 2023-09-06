@@ -22,7 +22,7 @@ class CrawlerAnimesOnline(Crawler, CrawlerInterface):
 
         for episodes in soup.find_all('div', class_='episodiotitle'):
             lastEpisode = episodes.contents[0].contents[0]
-            lastEpisodeNumber = search(r'\d', lastEpisode).group()
+            lastEpisodeNumber = search(r'\d+', lastEpisode).group()
 
         return lastEpisodeNumber
 
