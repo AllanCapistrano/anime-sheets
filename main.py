@@ -58,6 +58,9 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     elif(animesUrls[i].find("goyabu") != -1):
         lastEpisode    = crawlerGoyabu.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerGoyabu.getLastEpisodeUrl(animesUrls[i])
+    else:
+        print("Erro! Site não suportado.")
+        exit()
 
     lastEpisodesUpdated.append(lastEpisode)
     lastEpisodesUrlsUpdated.append(lastEpisodeUrl)
