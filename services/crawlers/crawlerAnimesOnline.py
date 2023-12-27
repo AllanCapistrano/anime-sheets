@@ -18,7 +18,7 @@ class CrawlerAnimesOnline(Crawler, CrawlerInterface):
         lastEpisodeNumber: :class:`str`
         """
 
-        soup = self.reqUrl(url)
+        soup = self.reqWebPage(url=url)
 
         for episodes in soup.find_all('div', class_='episodiotitle'):
             lastEpisode = episodes.contents[0].contents[0]
@@ -39,15 +39,9 @@ class CrawlerAnimesOnline(Crawler, CrawlerInterface):
         lastEpisodeUrl: :class:`str`
         """
         
-        soup = self.reqUrl(url)
+        soup = self.reqWebPage(url=url)
 
         for episodes in soup.find_all('div', class_='episodiotitle'):
             episodeUrl = episodes.find('a')
 
         return episodeUrl.attrs['href']
-    
-if __name__ == "__main__":
-    crawler = CrawlerAnimesOnline()
-
-    print(crawler.getLastEpisode("https://animesonline.nz/animes/watashi-no-shiawase-na-kekkon/"))
-    print(crawler.getLastEpisodeUrl("https://animesonline.nz/animes/watashi-no-shiawase-na-kekkon/"))
