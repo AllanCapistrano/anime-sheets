@@ -22,6 +22,13 @@
 - [x] [Animes Online](https://animesonline.nz/)
 - [x] [Goyabu](https://goyabu.com/)
 
+###### Obs: Possa ser que algum desses sites não existam mais.
+
+### ✍️ Notas do Autor
+Com o passar dos anos, alguns sites deixaram de existir e outros começaram a tentar barrar o projeto (talvez não intencionalmente, eu não sei), de lá para cá, fiz diversas atualizações, de certa forma simples, visando contornar isso. Porém, chegou um ponto que devido às limitações impostas, o projeto simplesmente não funcionava mais, por conta disso, tive que alterar algumas coisas no *core* do projeto, com isso, a partir da versão [1.1.0](https://github.com/AllanCapistrano/anime-sheets/tree/v1.1.0) o projeto só funciona corretamente em distribuições Linux.
+
+Talvez eu tente voltar a dar suporte para o Windows, mas sinta-se a vontade para tentar também, caso consiga, só enviar um [Pull Request](https://github.com/AllanCapistrano/anime-sheets/pulls).
+
 ---
 
 ## 🖥️ Como utilizar
