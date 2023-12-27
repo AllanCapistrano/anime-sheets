@@ -26,7 +26,7 @@ class Crawler:
 
         return soup
     
-    def reqWebPage(self, url: str, webpage_name: str = "index.html") -> BeautifulSoup:
+    def reqWebpage(self, url: str, webpage_name: str = "index.html") -> BeautifulSoup:
         """ Função responsável por buscar as Urls e fazer download das páginas.
 
         Parameters
