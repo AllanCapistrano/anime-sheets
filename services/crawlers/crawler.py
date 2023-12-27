@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from ..webpage import getWebPage, deleteWebpage
+from ..webpage import getWebpage, deleteWebpage
 
 # ------------------------------ Constants ----------------------------------- #
 DIRECTORY_PATH = "web"
@@ -43,7 +43,7 @@ class Crawler:
         
         webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
         
-        getWebPage(url=url)
+        getWebpage(url=url)
 
         file = open(webpage_name)
         soup = BeautifulSoup(file, 'html.parser')

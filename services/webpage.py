@@ -4,7 +4,7 @@ from subprocess import run
 DIRECTORY_PATH = "web"
 # ---------------------------------------------------------------------------- #
 
-def getWebPage(url: str, webpage_name: str = "index.html") -> None:
+def getWebpage(url: str, webpage_name: str = "index.html") -> None:
     """ Baixa uma página de um determinado site no formato HTML.
 
     Parameter
