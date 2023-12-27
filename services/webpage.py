@@ -1,7 +1,7 @@
 from subprocess import run
 
 # ------------------------------ Constants ----------------------------------- #
-DIRECTORY_PATH = "web/"
+DIRECTORY_PATH = "web"
 # ---------------------------------------------------------------------------- #
 
 def getWebPage(url: str, webpage_name: str = "index.html") -> None:
@@ -15,7 +15,7 @@ def getWebPage(url: str, webpage_name: str = "index.html") -> None:
         Nome do arquivo. Por padrão é `index.html`.
     """
 
-    webpage_name = f"web/{webpage_name}"
+    webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
 
     command = ["curl", "--silent", url, "-o", webpage_name]
 
@@ -34,7 +34,7 @@ def deleteWebpage(webpage_name: str = "index.html") -> None:
         Nome do arquivo. Por padrão é `index.html`.
     """
 
-    webpage_name = f"web/{webpage_name}"
+    webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
 
     command = ["rm", webpage_name]
 
