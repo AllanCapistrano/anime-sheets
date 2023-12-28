@@ -45,7 +45,7 @@ class Crawler:
         
         getWebpage(url=url)
 
-        file = open(webpage_name)
+        file = open(webpage_name, encoding="utf8")
         soup = BeautifulSoup(file, 'html.parser')
         file.close
 
