@@ -4,8 +4,7 @@ from dotenv import load_dotenv
 from rich.progress import track
 from rich.console import Console
 
-from services import Sheet
-from services import Table
+from services import Sheet, Table, deleteWebpage
 from services.crawlers import CrawlerAnimesHouseAndAnimesGratis
 from services.crawlers import CrawlerAnimesOnline
 from services.crawlers import CrawlerGoyabuOld as CrawlerGoyabu
@@ -76,6 +75,9 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
             sheet.setLastEpisodeUrl(i, lastEpisodeUrl)
     
     sheet.changeCellBackgroundColor(float(myEpisodes[i]), float(lastEpisode), i)
+
+# Removendo a página web do último anime da lista
+deleteWebpage()
 
 # Preenchendo a tabela.
 table.fillTable(
