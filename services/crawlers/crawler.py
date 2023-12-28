@@ -49,6 +49,4 @@ class Crawler:
         soup = BeautifulSoup(file, 'html.parser')
         file.close
 
-        deleteWebpage()
-
         return soup
