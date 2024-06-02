@@ -8,6 +8,7 @@ from services import Sheet, Table, deleteWebpage
 from services.crawlers import CrawlerAnimesHouseAndAnimesGratis
 from services.crawlers import CrawlerAnimesOnline
 from services.crawlers import CrawlerGoyabuOld as CrawlerGoyabu
+from services.crawlers import CrawlerBakashiTv
 
 load_dotenv()
 
@@ -32,6 +33,7 @@ start = time()
 crawlerAnimesHouseAndAnimesGratis = CrawlerAnimesHouseAndAnimesGratis()
 crawlerAnimesOnline               = CrawlerAnimesOnline()
 crawlerGoyabu                     = CrawlerGoyabu()
+crawlerBakashiTv                  = CrawlerBakashiTv()
 
 animeNames        = sheet.getAnimeNames()
 animeSeasons      = sheet.getAnimeSeasons()
@@ -57,6 +59,9 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     elif(animesUrls[i].find("goyabu") != -1):
         lastEpisode    = crawlerGoyabu.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerGoyabu.getLastEpisodeUrl(animesUrls[i])
+    elif(animesUrls[i].find("bakashi")  != -1):
+        lastEpisode    = crawlerBakashiTv.getLastEpisode(animesUrls[i])
+        lastEpisodeUrl = crawlerBakashiTv.getLastEpisodeUrl(animesUrls[i])
     else:
         print("Erro! Site não suportado.")
         exit()
