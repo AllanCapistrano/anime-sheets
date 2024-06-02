@@ -20,6 +20,7 @@
 - [x] [Animes Gratis](https://animesgratis.org)
 - [x] [Animes House](https://animeshouse.net/)
 - [x] [Animes Online](https://animesonline.nz/)
+- [x] [Bakashi TV](https://bakashi.tv/)
 - [x] [Goyabu](https://goyabu.com/)
 
 ###### Obs: Possa ser que algum desses sites não exista mais.
