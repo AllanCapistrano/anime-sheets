@@ -30,7 +30,7 @@
 
 ### Dependências 
 
-As [versões mais recentes](https://github.com/AllanCapistrano/anime-sheets/tree/v1.1.1) do projeto necessita da ferramenta [curl](https://curl.se/download.html), então garanta que você possui a mesma instalada em sua máquina.
+As [versões mais recentes](https://github.com/AllanCapistrano/anime-sheets/tree/v1.2.0) do projeto necessita da ferramenta [curl](https://curl.se/download.html), então garanta que você possui a mesma instalada em sua máquina.
 
 Caso esteja utilizando o Sistema Operacional *Windows*, recomendamos o uso do [Git For Windows](https://gitforwindows.org/), com ele o [curl](https://curl.se/download.html) já vem instalado por padrão, além de garantir o funcionamento correto do projeto.
 
