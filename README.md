@@ -11,9 +11,9 @@
 
 ## 📖 Descrição
 
-> **Crawler para verificar qual é o último episódio dos animes que estão na planilha, basta preencher com a URL[¹](#obs-verifique-quais-são-os-sites-suportados) do mesmo.**
+> **Crawler para verificar qual é o último episódio dos animes que estão na planilha, basta preencher com a URL[^1] do mesmo.**
 
-###### ¹Obs: Verifique quais são os [sites suportados](#-sites-suportados).
+[^1]: Verifique quais são os [sites suportados](#-sites-suportados).
 
 ### 🌐 Sites Suportados:
 
@@ -23,7 +23,8 @@
 - [x] [Bakashi TV](https://bakashi.tv/)
 - [x] [Goyabu](https://goyabu.com/)
 
-###### Obs: Possa ser que algum desses sites não exista mais.
+>[!NOTE]
+>Possa ser que algum desses sites não exista mais.
 ---
 
 ## 🖥️ Como utilizar
@@ -37,7 +38,7 @@ Caso esteja utilizando o Sistema Operacional *Windows*, recomendamos o uso do [G
 
 ### Configurando o Google Planilhas
 
-1. Crie uma planilha[<sup>2</sup>](#2obs-se-não-utilizar-o-nome-da-planilha-como-animes-será-necessário-alterar-a-constante-sheet_title-no-arquivo-sheetspy) no [Google Planilhas](https://www.google.com/sheets/about/) seguindo o modelo da imagem acima[<sup>3</sup>](#3obs-caso-não-siga-o-modelo-da-imagem-será-necessário-alterar-as-constantes-de-coluna-col_-no-arquivo-sheetspy) ou faça o download do [template](https://github.com/AllanCapistrano/anime-sheets/releases/tag/1.0);
+1. Crie uma planilha[^2] no [Google Planilhas](https://www.google.com/sheets/about/) seguindo o modelo da imagem acima[^3] ou faça o download do [template](https://github.com/AllanCapistrano/anime-sheets/releases/tag/1.0);
 2. Entre na [Google Cloud Plataform](https://console.cloud.google.com) e clique em **Criar Projeto**;
 3. Digite o nome do projeto e depois clique em **Criar**;
 4. Clique no menu lateral esquerdo, e depois selecione a opção **APIs e serviços**;
@@ -52,7 +53,7 @@ Caso esteja utilizando o Sistema Operacional *Windows*, recomendamos o uso do [G
 13. Em **Conceda a essa conta de serviço acesso ao projeto** selecione **Básico ➞ Editor**, clique em **Continuar** e depois clique em **Concluir**;
 14. Após isso, clique em **Credenciais** no menu lateral esquerdo, em **Contas de serviço**, clique no email correspondente (ex: test@myproject.iam.gserviceaccount.com);
 15. Nessa nova janela, no menu superior, clique em **Chaves**, e depois em **Adicionar chave ➞ Criar nova chave**;
-16. Selecione **JSON**[<sup>4</sup>](#4obs-recomenda-se-renomear-o-arquivo-json-baixado-para-credsjson) e clique em **Criar**;
+16. Selecione **JSON**[^4] e clique em **Criar**;
 17. Volte para a página de [Bibliotecas de APIs](https://console.cloud.google.com/apis/library), busque por **Google Sheets API** e clique em **Ativar**;
 18. Faça um Fork deste repositório (caso queira modificá-lo) ou somente clone-o;
 19. Coloque o arquivo contendo as credenciais na pasta do projeto;
@@ -80,19 +81,19 @@ Caso esteja utilizando o Sistema Operacional *Windows*, recomendamos o uso do [G
    1. `CREDENTIALS_FILE` nome do arquivo com a extensão `.json` que contém as credenciais do **Google Drive API**, criado no passo **8** de [Configurando o Google Planilhas](#configurando-o-google-planilhas) ;
    2. `USER_NAME` nome de usuário que deseja;
    3. `SHEET_LINK` URL da sua planilha (a mesma que você utilizou para compartilhar);
-   4. `BITLY_TOKEN`[<sup>5</sup>](#5obs-as-urls-curtas-melhoram-a-exibição-da-tabela-porém-caso-não-queira-encurtar-as-urls-basta-não-preencher-esse-campo) token de acesso do [Bitly](https://bitly.com/) para encurtar as URLs.
+   4. `BITLY_TOKEN`[^5] token de acesso do [Bitly](https://bitly.com/) para encurtar as URLs.
 4. Após isso, com um terminal aberto no diretório do projeto, basta executar o comando:
    ```powershell
    python main.py
    ```
 
-###### <sup>2</sup>Obs: Se não utilizar o nome da planilha como "Animes", será necessário alterar a constante `SHEET_TITLE` no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
+[^2]: Se não utilizar o nome da planilha como "Animes", será necessário alterar a constante `SHEET_TITLE` no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
 
-###### <sup>3</sup>Obs: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (`COL_*`) no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
+[^3]: Caso não siga o modelo da imagem, será necessário alterar as constantes de coluna (`COL_*`) no arquivo [`sheets.py`](https://github.com/AllanCapistrano/anime-sheets/blob/main/sheets.py)
 
-###### <sup>4</sup>Obs: Recomenda-se renomear o arquivo `.json` baixado para `creds.json`.
+[^4]: Recomenda-se renomear o arquivo `.json` baixado para `creds.json`.
 
-###### <sup>5</sup>Obs: As URLs curtas melhoram a exibição da tabela, porém, caso não queira encurtar as URLs basta não preencher esse campo.
+[^5]: As URLs curtas melhoram a exibição da tabela, porém, caso não queira encurtar as URLs basta não preencher esse campo.
 
 ---
 
