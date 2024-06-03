@@ -8,7 +8,7 @@ from services import Sheet, Table, deleteWebpage
 from services.crawlers import CrawlerAnimesHouseAndAnimesGratis
 from services.crawlers import CrawlerAnimesOnline
 from services.crawlers import CrawlerGoyabuOld as CrawlerGoyabu
-from services.crawlers import CrawlerBakashiTv
+from services.crawlers import CrawlerBakashiTvOld
 
 load_dotenv()
 
@@ -33,7 +33,7 @@ start = time()
 crawlerAnimesHouseAndAnimesGratis = CrawlerAnimesHouseAndAnimesGratis()
 crawlerAnimesOnline               = CrawlerAnimesOnline()
 crawlerGoyabu                     = CrawlerGoyabu()
-crawlerBakashiTv                  = CrawlerBakashiTv()
+crawlerBakashiTv                  = CrawlerBakashiTvOld()
 
 animeNames        = sheet.getAnimeNames()
 animeSeasons      = sheet.getAnimeSeasons()
