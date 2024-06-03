@@ -4,10 +4,11 @@ from .crawler import Crawler
 from .interface import CrawlerInterface
 
 # ------------------------------ Constants ----------------------------------- #
-EPISODE_CLASS   = "episodiotitle"
+ANCHOR_POSITION = 2
+EPISODE_CLASS   = "epnumber"
 # ---------------------------------------------------------------------------- #
 
-class CrawlerBakashiTv(Crawler, CrawlerInterface):
+class CrawlerBakashiTvOld(Crawler, CrawlerInterface):
     def getLastEpisode(self, url: str) -> str:
         """ Função responsável por retornar o número do último episódio do 
         anime.
@@ -25,9 +26,8 @@ class CrawlerBakashiTv(Crawler, CrawlerInterface):
         soup = self.reqWebpage(url=url)
 
         episodes                   = soup.find_all('div', class_=EPISODE_CLASS)
-        lastEpisodeAnchor          = episodes[-1].contents[0]
-        lastEpisodeNumber          = lastEpisodeAnchor.contents[0]
-        lastEpisodeNumberSanitized = search(r'\d+', lastEpisodeNumber).group()
+        lastEpisode                = episodes[-1].contents[0]
+        lastEpisodeNumberSanitized = search(r'\d+', lastEpisode).group()
 
         return lastEpisodeNumberSanitized
 
@@ -46,8 +46,9 @@ class CrawlerBakashiTv(Crawler, CrawlerInterface):
 
         soup = self.reqWebpage(url=url)
 
-        episodes          = soup.find_all('div', class_=EPISODE_CLASS)
-        lastEpisodeAnchor = episodes[-1].contents[0]
-        lastEpisodeUrl    = lastEpisodeAnchor.attrs["href"]
+        episodes            = soup.find_all('div', class_=EPISODE_CLASS)
+        lastEpisodeListItem = episodes[-1].parent
+        lastEpisodeAnchor   = lastEpisodeListItem.contents[ANCHOR_POSITION]
+        lastEpisodeUrl      = lastEpisodeAnchor.attrs["href"]
 
         return lastEpisodeUrl
