@@ -30,7 +30,7 @@
 
 ### Dependências 
 
-As [versões mais recente](https://github.com/AllanCapistrano/anime-sheets/tree/v1.1.1) do projeto necessita da ferramenta [curl](https://curl.se/download.html), então garanta que você possui a mesma instalada em sua máquina.
+As [versões mais recentes](https://github.com/AllanCapistrano/anime-sheets/tree/v1.1.1) do projeto necessita da ferramenta [curl](https://curl.se/download.html), então garanta que você possui a mesma instalada em sua máquina.
 
 Caso esteja utilizando o Sistema Operacional *Windows*, recomendamos o uso do [Git For Windows](https://gitforwindows.org/), com ele o [curl](https://curl.se/download.html) já vem instalado por padrão, além de garantir o funcionamento correto do projeto.
 
@@ -77,7 +77,7 @@ Caso esteja utilizando o Sistema Operacional *Windows*, recomendamos o uso do [G
    mv .env.example .env
    ```
 3. Abra o arquivo `.env` e preencha os campos (todos são opcionais):
-   1. `CREDENTIALS_FILE` nome do arquivo com a extensão `.json` que contém as credencias do **Google Drive API**, criado no passo **8** de [Configurando o Google Planilhas](#configurando-o-google-planilhas) ;
+   1. `CREDENTIALS_FILE` nome do arquivo com a extensão `.json` que contém as credenciais do **Google Drive API**, criado no passo **8** de [Configurando o Google Planilhas](#configurando-o-google-planilhas) ;
    2. `USER_NAME` nome de usuário que deseja;
    3. `SHEET_LINK` URL da sua planilha (a mesma que você utilizou para compartilhar);
    4. `BITLY_TOKEN`[<sup>5</sup>](#5obs-as-urls-curtas-melhoram-a-exibição-da-tabela-porém-caso-não-queira-encurtar-as-urls-basta-não-preencher-esse-campo) token de acesso do [Bitly](https://bitly.com/) para encurtar as URLs.
