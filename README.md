@@ -24,7 +24,7 @@
 - [x] [Goyabu](https://goyabu.com/)
 
 >[!NOTE]
->Possa ser que algum desses sites não exista mais.
+>Possa ser que algum desses sites não existam mais.
 ---
 
 ## 🖥️ Como utilizar
