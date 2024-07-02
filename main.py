@@ -23,10 +23,10 @@ table   = Table()
 
 try:
     sheet = Sheet()
-except Exception as error:
+except ValueError as ve:
     print()
-    console.print(error, style="bold red")
-    
+    console.print(ve, style="bold red")
+
     exit()
 
 start = time()
@@ -79,11 +79,11 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
         if(lastEpisodesSheet[i] != lastEpisode):
             sheet.set_last_episode(i, lastEpisode)
             sheet.set_last_episode_url(i, lastEpisodeUrl)
-    except :
+    except IndexError:
         if(myEpisodes[i]):
             sheet.set_last_episode(i, lastEpisode)
             sheet.set_last_episode_url(i, lastEpisodeUrl)
-    
+
     sheet.change_cell_background_color(float(myEpisodes[i]), float(lastEpisode), i)
 
 # Removendo a página web do último anime da lista
@@ -102,13 +102,14 @@ table.fill_table(
 
 end = time()
 
-console.print("Tempo de execução: {:.2f}s\n".format(end - start), style="bold green")
+execution_time = end - start
+
+console.print(f"Tempo de execução: {execution_time:.2f}s\n", style="bold green")
 
 if(USER_NAME != ""):
-    console.print("Planilha de animes atualizada com sucesso {}!".format(
-        USER_NAME), style="bold")
+    console.print(f"Planilha de animes atualizada com sucesso {USER_NAME}!", style="bold")
 if(SHEET_LINK != ""):
-    print("Link: {}".format(SHEET_LINK))
+    print(f"Link: {SHEET_LINK}")
 
 # Exibindo a tabela.
 table.show_table()
