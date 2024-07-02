@@ -8,7 +8,7 @@ EPISODE_CLASS   = "episodiotitle"
 # ---------------------------------------------------------------------------- #
 
 class CrawlerAssistirAnimes(Crawler, CrawlerInterface):
-    """Crawler responsável pelo site assistiranimes.org/
+    """Crawler responsável pelo site assistiranimes.
     """
 
     def getLastEpisode(self, url: str) -> str:

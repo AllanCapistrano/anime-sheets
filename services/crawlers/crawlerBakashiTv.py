@@ -8,18 +8,18 @@ EPISODE_CLASS   = "episodiotitle"
 # ---------------------------------------------------------------------------- #
 
 class CrawlerBakashiTv(Crawler, CrawlerInterface):
+    """Crawler responsável pelo site bakashi.
+    """
+
     def getLastEpisode(self, url: str) -> str:
-        """ Função responsável por retornar o número do último episódio do 
+        """Função responsável por retornar o número do último episódio do 
         anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        episodeNumber: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
         soup = self.req_webpage(url=url)
@@ -32,16 +32,13 @@ class CrawlerBakashiTv(Crawler, CrawlerInterface):
         return lastEpisodeNumberSanitized
 
     def getLastEpisodeUrl(self, url: str) -> str:
-        """ Função responsável por retornar a url do último episódio do anime.
+        """Função responsável por retornar a url do último episódio do anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        lastEpisodeUrl: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
         soup = self.req_webpage(url=url)

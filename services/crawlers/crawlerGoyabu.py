@@ -4,19 +4,18 @@ from .crawler import Crawler
 from .interface import CrawlerInterface
 
 class CrawlerGoyabu(Crawler, CrawlerInterface):
+    """Crawler responsável pela antiga versão do site goyabu.
+    """
 
     def getLastEpisode(self, url: str) -> str:
-        """ Função responsável por retornar o número do último episódio do 
+        """Função responsável por retornar o número do último episódio do
         anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        episodeNumber: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
         soup               = self.req_url(url)
@@ -28,16 +27,13 @@ class CrawlerGoyabu(Crawler, CrawlerInterface):
         return lastEpisodeNumeric
 
     def getLastEpisodeUrl(self, url: str) -> str:
-        """ Função responsável por retornar a url do último episódio do anime.
+        """Função responsável por retornar a url do último episódio do anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        lastEpisodeUrl: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
         soup = self.req_url(url)

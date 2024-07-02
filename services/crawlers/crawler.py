@@ -9,17 +9,17 @@ TIMEOUT        = 45
 # ---------------------------------------------------------------------------- #
 
 class Crawler:
+    """Classe base para os crawlers
+    """
+
     def req_url(self, url: str) -> BeautifulSoup:
-        """ Função responsável por buscar as Urls.
+        """Função responsável por buscar as Urls.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
+        Args:
+            url (str): Url do site.
 
-        Returns
-        -----------
-        soup: :class:`BeautifulSoup`
+        Returns:
+            BeautifulSoup
         """
 
         req  = requests.get(url=url, timeout=TIMEOUT)
@@ -28,18 +28,14 @@ class Crawler:
         return soup
 
     def req_webpage(self, url: str, webpage_name: str = "index.html") -> BeautifulSoup:
-        """ Função responsável por buscar as Urls e fazer download das páginas.
+        """Função responsável por buscar as Urls e fazer download das páginas.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-        webpage_name: :class:`str`
-            Nome do arquivo. Por padrão é `index.html`.
+        Args:
+            url (str): Url do site.
+            webpage_name (str, optional): Nome do arquivo. Por padrão é "index.html".
 
-        Returns
-        -----------
-        soup: :class:`BeautifulSoup`
+        Returns:
+            BeautifulSoup
         """
 
         webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"

@@ -4,18 +4,18 @@ from .crawler import Crawler
 from .interface import CrawlerInterface
 
 class CrawlerAnimesOnline(Crawler, CrawlerInterface):
+    """Crawler responsável pelo site animesonline.
+    """
+
     def getLastEpisode(self, url: str) -> str:
-        """ Função responsável por retornar o número do último episódio do 
+        """Função responsável por retornar o número do último episódio do 
         anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        lastEpisodeNumber: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
         soup = self.req_webpage(url=url)
@@ -27,16 +27,13 @@ class CrawlerAnimesOnline(Crawler, CrawlerInterface):
         return lastEpisodeNumber
 
     def getLastEpisodeUrl(self, url: str) -> str:
-        """ Função responsável por retornar a url do último episódio do anime.
+        """Função responsável por retornar a url do último episódio do anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        lastEpisodeUrl: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
         
         soup = self.req_webpage(url=url)
