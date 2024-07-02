@@ -9,7 +9,7 @@ SHORT_URL    = getenv("SHORT_URL")
 BITLY_TOKEN  = getenv("BITLY_TOKEN")
 # ---------------------------------------------------------------------------- #
 
-def shortenUrl(url: str) -> str:
+def shorten_url(url: str) -> str:
     """Encurta uma URL caso seja fornecido o token de acesso.
 
     Args:

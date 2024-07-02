@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from rich.progress import track
 from rich.console import Console
 
-from services import Sheet, Table, deleteWebpage
+from services import Sheet, Table, delete_webpage
 from services.crawlers import CrawlerAnimesHouseAndAnimesGratis
 from services.crawlers import CrawlerAnimesOnline
 from services.crawlers import CrawlerGoyabu
@@ -37,12 +37,12 @@ crawlerGoyabu                     = CrawlerGoyabu()
 crawlerBakashiTv                  = CrawlerBakashiTv()
 crawlerAssistirAnimes             = CrawlerAssistirAnimes()
 
-animeNames        = sheet.getAnimeNames()
-animeSeasons      = sheet.getAnimeSeasons()
-animesUrls        = sheet.getAnimeUrls()
-myEpisodes        = sheet.getMyEpisodes()
+animeNames        = sheet.get_anime_names()
+animeSeasons      = sheet.get_anime_seasons()
+animesUrls        = sheet.get_anime_urls()
+myEpisodes        = sheet.get_my_episodes()
 lastEpisodesSheet = sheet.get_last_episodes()
-animeBroadcasts   = sheet.getAnimeBroadcasts()
+animeBroadcasts   = sheet.get_anime_broadcasts()
 
 lastEpisodesUpdated     = []
 lastEpisodesUrlsUpdated = []
@@ -77,20 +77,20 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     try:
         # Evita escritas desnecessárias.
         if(lastEpisodesSheet[i] != lastEpisode):
-            sheet.setLastEpisode(i, lastEpisode)
-            sheet.setLastEpisodeUrl(i, lastEpisodeUrl)
+            sheet.set_last_episode(i, lastEpisode)
+            sheet.set_last_episode_url(i, lastEpisodeUrl)
     except :
         if(myEpisodes[i]):
-            sheet.setLastEpisode(i, lastEpisode)
-            sheet.setLastEpisodeUrl(i, lastEpisodeUrl)
+            sheet.set_last_episode(i, lastEpisode)
+            sheet.set_last_episode_url(i, lastEpisodeUrl)
     
-    sheet.changeCellBackgroundColor(float(myEpisodes[i]), float(lastEpisode), i)
+    sheet.change_cell_background_color(float(myEpisodes[i]), float(lastEpisode), i)
 
 # Removendo a página web do último anime da lista
-deleteWebpage()
+delete_webpage()
 
 # Preenchendo a tabela.
-table.fillTable(
+table.fill_table(
     names            = animeNames, 
     seasons          = animeSeasons, 
     urls             = animesUrls, 
@@ -111,6 +111,6 @@ if(SHEET_LINK != ""):
     print("Link: {}".format(SHEET_LINK))
 
 # Exibindo a tabela.
-table.showTable()
+table.show_table()
 
 print()

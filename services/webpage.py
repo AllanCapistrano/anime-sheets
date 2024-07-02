@@ -4,7 +4,7 @@ from subprocess import run
 DIRECTORY_PATH = "web"
 # ---------------------------------------------------------------------------- #
 
-def getWebpage(url: str, webpage_name: str = "index.html") -> None:
+def get_webpage(url: str, webpage_name: str = "index.html") -> None:
     """Baixa uma página de um determinado site no formato HTML.
 
     Args:
@@ -22,7 +22,7 @@ def getWebpage(url: str, webpage_name: str = "index.html") -> None:
         print(f"Error trying to get '{url}'.")
         exit()
 
-def deleteWebpage(webpage_name: str = "index.html") -> None:
+def delete_webpage(webpage_name: str = "index.html") -> None:
     """Remove, caso exista, uma página web salva.
 
     Args:

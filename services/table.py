@@ -3,7 +3,7 @@ from rich.console import Console
 from rich.table import Table as RichTable
 from rich.progress import track
 
-from .shortUrl import shortenUrl
+from .shortUrl import shorten_url
 
 class Table:
     """Classe que lida com a tabela que será exibida no terminal.
@@ -15,9 +15,9 @@ class Table:
 
         self.console = Console()
         self.table = RichTable(show_lines=True)
-        self.__createTable__()
+        self.__create_table__()
 
-    def __createTable__(self) -> None:
+    def __create_table__(self) -> None:
         """ Cria a tabela que será exibida no terminal.
         """
 
@@ -30,7 +30,7 @@ class Table:
         self.table.add_column("Last Episode (URL)", justify="center", vertical="middle", no_wrap=True)
         self.table.add_column("Broadcast", justify="center", vertical="middle")
 
-    def fillTable(
+    def fill_table(
         self,
         names: list,
         seasons: list,
@@ -67,10 +67,10 @@ class Table:
                         str(i + 1), 
                         names[i], 
                         seasons[i], 
-                        shortenUrl(urls[i]), 
+                        shorten_url(urls[i]), 
                         myEpisodes[i], 
                         lastEpisodes[i], 
-                        ("[red]" if float(myEpisodes[i]) < float(lastEpisodes[i]) else "[green]") + shortenUrl(lastEpisodesUrls[i]), 
+                        ("[red]" if float(myEpisodes[i]) < float(lastEpisodes[i]) else "[green]") + shorten_url(lastEpisodesUrls[i]), 
                         broadcasts[i],
                     )
             except Exception as error:
@@ -79,7 +79,7 @@ class Table:
 
                 exit()
 
-    def showTable(self) -> None:
+    def show_table(self) -> None:
         """ Exibe a tabela no terminal.
         """
 

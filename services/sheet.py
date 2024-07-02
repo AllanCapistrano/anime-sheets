@@ -45,7 +45,7 @@ class Sheet:
         # Abrindo a planilha.
         self.sheet = self.client.open(SHEET_TITLE).sheet1
 
-    def getAnimeNames(self) -> list:
+    def get_anime_names(self) -> list:
         """Retorna uma lista com os nomes dos animes que estão na planilha.
 
         Returns:
@@ -57,7 +57,7 @@ class Sheet:
 
         return animeNames
 
-    def getAnimeSeasons(self) -> list:
+    def get_anime_seasons(self) -> list:
         """Retorna uma lista com os números das temporadas dos animes que estão 
         na planilha.
 
@@ -70,7 +70,7 @@ class Sheet:
 
         return animeSeasons
 
-    def getAnimeUrls(self) -> list:
+    def get_anime_urls(self) -> list:
         """Retorna uma lista com as URL dos animes que estão na planilha.
 
         Returns:
@@ -82,7 +82,7 @@ class Sheet:
 
         return animeUrls
 
-    def getMyEpisodes(self) -> list:
+    def get_my_episodes(self) -> list:
         """Retorna uma lista com os episódios que parei dos animes que estão na 
         planilha.
 
@@ -108,7 +108,7 @@ class Sheet:
 
         return lastEpisodes
 
-    def getAnimeBroadcasts(self) -> list:
+    def get_anime_broadcasts(self) -> list:
         """Retorna uma lista com os dias de lançamentos dos animes que estão na 
         planilha.
 
@@ -121,7 +121,7 @@ class Sheet:
 
         return animeBroadcasts
 
-    def setLastEpisode(self, index: int, value: str) -> None:
+    def set_last_episode(self, index: int, value: str) -> None:
         """Altera na planilha o número do último episódio lançado.
 
         Args:
@@ -131,7 +131,7 @@ class Sheet:
 
         self.sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE, value)
 
-    def setLastEpisodeUrl(self, index: int , value: str) -> None:
+    def set_last_episode_url(self, index: int , value: str) -> None:
         """Altera na planilha a URL do último episódio lançado.
 
         Args:
@@ -141,7 +141,7 @@ class Sheet:
 
         self.sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE_URL, value)
 
-    def setCellBackgroundColor(self, posX: str, posY: int, color: list) -> None:
+    def set_cell_background_color(self, posX: str, posY: int, color: list) -> None:
         """Alterar a cor de fundo de uma célula na planilha.
 
         Args:
@@ -158,7 +158,7 @@ class Sheet:
             }
         })
 
-    def changeCellBackgroundColor(
+    def change_cell_background_color(
         self, 
         myEpisode: float,
         lastEpisode: float, 
@@ -174,6 +174,6 @@ class Sheet:
         """
 
         if(myEpisode < lastEpisode):
-            self.setCellBackgroundColor(COL_NAME_LAST_EPISODE, pos + 2, COLOR_NOT_OK)
+            self.set_cell_background_color(COL_NAME_LAST_EPISODE, pos + 2, COLOR_NOT_OK)
         else:
-            self.setCellBackgroundColor(COL_NAME_LAST_EPISODE, pos + 2, COLOR_OK)
+            self.set_cell_background_color(COL_NAME_LAST_EPISODE, pos + 2, COLOR_OK)
