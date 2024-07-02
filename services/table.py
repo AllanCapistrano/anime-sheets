@@ -1,7 +1,7 @@
-from sys import exit
 from rich.console import Console
 from rich.table import Table as RichTable
 from rich.progress import track
+from rich.errors import NotRenderableError
 
 from .shortUrl import shorten_url
 
@@ -53,29 +53,29 @@ class Table:
         """
 
         if(
-            len(names) > 0 and 
-            len(seasons) > 0 and 
-            len(urls) > 0 and 
-            len(myEpisodes) > 0 and 
-            len(lastEpisodes) > 0 and 
-            len(lastEpisodesUrls) > 0 and 
+            len(names) > 0 and
+            len(seasons) > 0 and
+            len(urls) > 0 and
+            len(myEpisodes) > 0 and
+            len(lastEpisodes) > 0 and
+            len(lastEpisodesUrls) > 0 and
             len(broadcasts) > 0
         ):
             try:
                 for i in track(range(len(names)), description="[cyan]Montando a tabela"):
                     self.table.add_row(
-                        str(i + 1), 
-                        names[i], 
-                        seasons[i], 
-                        shorten_url(urls[i]), 
-                        myEpisodes[i], 
-                        lastEpisodes[i], 
-                        ("[red]" if float(myEpisodes[i]) < float(lastEpisodes[i]) else "[green]") + shorten_url(lastEpisodesUrls[i]), 
+                        str(i + 1),
+                        names[i],
+                        seasons[i],
+                        shorten_url(urls[i]),
+                        myEpisodes[i],
+                        lastEpisodes[i],
+                        ("[red]" if float(myEpisodes[i]) < float(lastEpisodes[i]) else "[green]") + shorten_url(lastEpisodesUrls[i]),
                         broadcasts[i],
                     )
-            except Exception as error:
+            except NotRenderableError as nre:
                 print()
-                self.console.print(error, style="bold red")
+                self.console.print(nre, style="bold red")
 
                 exit()
 
