@@ -21,6 +21,9 @@ COLOR_NOT_OK                = [1, 0, 0]
 # ---------------------------------------------------------------------------- #
 
 class Sheet:
+    """Classe responsável por lidar com o Google Planilhas
+    """
+
     def __init__(self) -> None:
         """ Método construtor.
         """
@@ -43,11 +46,10 @@ class Sheet:
         self.sheet = self.client.open(SHEET_TITLE).sheet1
 
     def getAnimeNames(self) -> list:
-        """ Retorna uma lista com os nomes dos animes que estão na planilha.
+        """Retorna uma lista com os nomes dos animes que estão na planilha.
 
-        Returns
-        -----------
-        animeNames: :class:`list`
+        Returns:
+            list
         """
 
         animeNames = self.sheet.col_values(COL_NUMBER_ANIME_NAME)
@@ -56,12 +58,11 @@ class Sheet:
         return animeNames
 
     def getAnimeSeasons(self) -> list:
-        """ Retorna uma lista com os números das temporadas dos animes que estão 
+        """Retorna uma lista com os números das temporadas dos animes que estão 
         na planilha.
 
-        Returns
-        -----------
-        animeSeasons: :class:`list`
+        Returns:
+            list
         """
 
         animeSeasons = self.sheet.col_values(COL_NUMBER_SEASON)
@@ -70,11 +71,10 @@ class Sheet:
         return animeSeasons
 
     def getAnimeUrls(self) -> list:
-        """ Retorna uma lista com as URL dos animes que estão na planilha.
+        """Retorna uma lista com as URL dos animes que estão na planilha.
 
-        Returns
-        -----------
-        animeUrls: :class:`list`
+        Returns:
+            list
         """
 
         animeUrls = self.sheet.col_values(COL_NUMBER_URL)
@@ -83,12 +83,11 @@ class Sheet:
         return animeUrls
 
     def getMyEpisodes(self) -> list:
-        """ Retorna uma lista com os episódios que parei dos animes que estão na 
+        """Retorna uma lista com os episódios que parei dos animes que estão na 
         planilha.
 
-        Returns
-        -----------
-        myEpisodes: :class:`list`
+        Returns:
+            list
         """
 
         myEpisodes = self.sheet.col_values(COL_NUMBER_MY_EPISODES)
@@ -97,26 +96,24 @@ class Sheet:
         return myEpisodes
 
     def get_last_episodes(self) -> list:
-        """ Retorna uma lista com o número do último episódio lançado dos animes 
+        """Retorna uma lista com o número do último episódio lançado dos animes 
         que estão na planilha.
 
-        Returns
-        -----------
-        lastEpisodes: :class:`list`
+        Returns:
+            list
         """
-        
+
         lastEpisodes = self.sheet.col_values(COL_NUMBER_LAST_EPISODE)
         lastEpisodes.pop(0)
 
         return lastEpisodes
 
     def getAnimeBroadcasts(self) -> list:
-        """ Retorna uma lista com os dias de lançamentos dos animes que estão na 
+        """Retorna uma lista com os dias de lançamentos dos animes que estão na 
         planilha.
 
-        Returns
-        -----------
-        animeBroadcasts: :class:`list`
+        Returns:
+            list
         """
 
         animeBroadcasts = self.sheet.col_values(COL_NUMBER_BROADCAST)
@@ -125,42 +122,32 @@ class Sheet:
         return animeBroadcasts
 
     def setLastEpisode(self, index: int, value: str) -> None:
-        """ Altera na planilha o número do último episódio lançado.
+        """Altera na planilha o número do último episódio lançado.
 
-        Parameters
-        -----------
-        index: :class:`int`
-            Posição na planilha.
-        value: :class:`str`
-            Número do episódio.
+        Args:
+            index (int): Posição na planilha.
+            value (str): Número do episódio.
         """
 
         self.sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE, value)
 
     def setLastEpisodeUrl(self, index: int , value: str) -> None:
-        """ Altera na planilha a URL do último episódio lançado.
+        """Altera na planilha a URL do último episódio lançado.
 
-        Parameters
-        -----------
-        index: :class:`int`
-            Posição na planilha.
-        value: :class:`str`
-            URL do episódio.
+        Args:
+            index (int): Posição na planilha.
+            value (str):  URL do episódio.
         """
 
         self.sheet.update_cell(index + 2, COL_NUMBER_LAST_EPISODE_URL, value)
 
     def setCellBackgroundColor(self, posX: str, posY: int, color: list) -> None:
-        """ Alterar a cor de fundo de uma célula na planilha.
+        """Alterar a cor de fundo de uma célula na planilha.
 
-        Parameters
-        -----------
-        posX: :class:`str`
-            Posição na planilha, eixo X.
-        posY: :class:`int`
-            Posição na planilha, eixo Y.
-        color: :class:`list`
-            Lista com os valores RGB ([red, green, blue]). 
+        Args:
+            posX (str): Posição na planilha, eixo X.
+            posY (int): Posição na planilha, eixo Y.
+            color (list): Lista com os valores RGB ([red, green, blue]). 
         """
 
         self.sheet.format(posX + str(posY), {
@@ -177,19 +164,15 @@ class Sheet:
         lastEpisode: float, 
         pos: int
     ) -> None:
-        """ Altera a cor de fundo da célula de acordo com o último episódio 
+        """Altera a cor de fundo da célula de acordo com o último episódio 
         assistido.
 
-        Parameters
-        -----------
-        myEpisode: :class:`float`
-            Último episódio assistido.
-        lastEpisode: :class:`float`
-            Último episódio lançado.
-        pos: :class:`int`
-            Posição na planilha da URL do último episódio lançado.
+        Args:
+            myEpisode (float): Último episódio assistido.
+            lastEpisode (float): Último episódio lançado.
+            pos (int): Posição na planilha da URL do último episódio lançado.
         """
-        
+
         if(myEpisode < lastEpisode):
             self.setCellBackgroundColor(COL_NAME_LAST_EPISODE, pos + 2, COLOR_NOT_OK)
         else:

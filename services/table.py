@@ -6,6 +6,9 @@ from rich.progress import track
 from .shortUrl import shortenUrl
 
 class Table:
+    """Classe que lida com a tabela que será exibida no terminal.
+    """
+
     def __init__(self) -> None:
         """ Método construtor.
         """
@@ -17,7 +20,7 @@ class Table:
     def __createTable__(self) -> None:
         """ Cria a tabela que será exibida no terminal.
         """
-        
+
         self.table.add_column("nº", justify="center", vertical="middle")
         self.table.add_column("Anime", justify="center", vertical="middle")
         self.table.add_column("Season", justify="center", vertical="middle")
@@ -27,38 +30,26 @@ class Table:
         self.table.add_column("Last Episode (URL)", justify="center", vertical="middle", no_wrap=True)
         self.table.add_column("Broadcast", justify="center", vertical="middle")
 
-
     def fillTable(
         self,
-        names: list, 
-        seasons: list, 
-        urls: list, 
-        myEpisodes: list, 
-        lastEpisodes: list, 
-        lastEpisodesUrls: list, 
+        names: list,
+        seasons: list,
+        urls: list,
+        myEpisodes: list,
+        lastEpisodes: list,
+        lastEpisodesUrls: list,
         broadcasts: list
     ) -> None:
-        """ Preenche a tabela com as informações passadas.
+        """Preenche a tabela com as informações passadas.
 
-        Parameters
-        -----------
-        table: :class:`Table`
-            Tabela que será preenchida.
-        names: :class:`list`
-            Nomes dos animes.
-        seasons: :class:`list`
-            Temporadas dos animes.
-        urls: :class:`list`
-            URLs dos animes.
-        myEpisodes: :class:`list`
-            Episódio que parei dos animes.
-        lastEpisodes: :class:`list`
-            Últimos episódios dos animes.
-        lastEpisodesUrls: :class:`list`
-            URLS dos últimos episódios dos animes.
-        broadcasts: :class:`list`
-            Dia de lançamento de novos episódios dos animes.
-
+        Args:
+            names (list): Nomes dos animes.
+            seasons (list): Temporadas dos animes.
+            urls (list):  URLs dos animes.
+            myEpisodes (list): Episódio que parei dos animes.
+            lastEpisodes (list): Últimos episódios dos animes.
+            lastEpisodesUrls (list): URLS dos últimos episódios dos animes.
+            broadcasts (list): Dia de lançamento de novos episódios dos animes.
         """
 
         if(
@@ -85,9 +76,8 @@ class Table:
             except Exception as error:
                 print()
                 self.console.print(error, style="bold red")
-                
-                exit()
 
+                exit()
 
     def showTable(self) -> None:
         """ Exibe a tabela no terminal.

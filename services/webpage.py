@@ -5,14 +5,11 @@ DIRECTORY_PATH = "web"
 # ---------------------------------------------------------------------------- #
 
 def getWebpage(url: str, webpage_name: str = "index.html") -> None:
-    """ Baixa uma página de um determinado site no formato HTML.
+    """Baixa uma página de um determinado site no formato HTML.
 
-    Parameter
-    ---------
-    url: :class:`str`
-        Url do site.
-    webpage_name: :class:`str`
-        Nome do arquivo. Por padrão é `index.html`.
+    Args:
+        url (str): Url do site.
+        webpage_name (str, optional): Nome do arquivo. Por padrão é "index.html".
     """
 
     webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
@@ -26,12 +23,10 @@ def getWebpage(url: str, webpage_name: str = "index.html") -> None:
         exit()
 
 def deleteWebpage(webpage_name: str = "index.html") -> None:
-    """ Remove, caso exista, uma página web salva.
+    """Remove, caso exista, uma página web salva.
 
-    Parameter
-    ---------
-    webpage_name: :class:`str`
-        Nome do arquivo. Por padrão é `index.html`.
+    Args:
+        webpage_name (str, optional): Nome do arquivo. Por padrão é "index.html".
     """
 
     webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
