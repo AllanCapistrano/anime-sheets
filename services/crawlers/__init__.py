@@ -6,3 +6,4 @@ from .crawlerGoyabuOld import CrawlerGoyabuOld
 from .crawlerBakashiTvOld import CrawlerBakashiTvOld
 from .crawlerBakashiTv import CrawlerBakashiTv
 from .crawlerAssistirAnimes import CrawlerAssistirAnimes
+from .crawlerAnimesHouse import CrawlerAnimesHouse

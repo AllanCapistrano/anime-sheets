@@ -10,6 +10,7 @@ from services.crawlers import CrawlerAnimesOnline
 from services.crawlers import CrawlerGoyabu
 from services.crawlers import CrawlerBakashiTv
 from services.crawlers import CrawlerAssistirAnimes
+from services.crawlers import CrawlerAnimesHouse
 
 load_dotenv()
 
@@ -32,6 +33,7 @@ except ValueError as ve:
 start = time()
 
 crawler_animes_house_and_animes_gratis = CrawlerAnimesHouseAndAnimesGratis()
+crawler_animes_house                   = CrawlerAnimesHouse()
 crawler_animes_online                  = CrawlerAnimesOnline()
 crawler_goyabu                         = CrawlerGoyabu()
 crawler_bakashi_tv                     = CrawlerBakashiTv()
@@ -52,12 +54,12 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     if (animesUrls[i].find("animesonline")  != -1):
         last_episode     = crawler_animes_online.get_last_episode(animesUrls[i])
         last_episode_url = crawler_animes_online.get_last_episode_url(animesUrls[i])
-    elif (
-        animesUrls[i].find("animeshouse")  != -1 or 
-        animesUrls[i].find("animesgratis") != -1
-    ):
+    elif (animesUrls[i].find("animesgratis") != -1):
         last_episode     = crawler_animes_house_and_animes_gratis.get_last_episode(animesUrls[i])
         last_episode_url = crawler_animes_house_and_animes_gratis.get_last_episode_url(animesUrls[i])
+    elif (animesUrls[i].find("animeshouse")):
+        last_episode     = crawler_animes_house.get_last_episode(animesUrls[i])
+        last_episode_url = crawler_animes_house.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("goyabu") != -1):
         last_episode     = crawler_goyabu.get_last_episode(animesUrls[i])
         last_episode_url = crawler_goyabu.get_last_episode_url(animesUrls[i])
