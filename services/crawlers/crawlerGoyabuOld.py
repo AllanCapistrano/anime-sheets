@@ -26,7 +26,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
         episodeInfo = episode.contents[0].split(" ")
 
         for episodeNumber in episodeInfo:
-            if(episodeNumber.isnumeric()):
+            if (episodeNumber.isnumeric()):
                 return episodeNumber
 
     def get_last_episode_url(self, url: str) -> str:
@@ -64,7 +64,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
                 episodeInfo = episodes.contents[0].split(" ")
 
         for episodeNumber in episodeInfo:
-            if(episodeNumber.isnumeric()):
+            if (episodeNumber.isnumeric()):
                 return episodeNumber
 
     def get_last_episode_urlOld(self, url: str) -> str:

@@ -28,7 +28,7 @@ class Sheet:
         """ Método construtor.
         """
 
-        if(CREDENTIALS_FILE == ""):
+        if (CREDENTIALS_FILE == ""):
             raise ValueError("Erro! É necessário informar o arquivo de credenciais.")
 
         self.scope = [
@@ -173,7 +173,7 @@ class Sheet:
             pos (int): Posição na planilha da URL do último episódio lançado.
         """
 
-        if(myEpisode < lastEpisode):
+        if (myEpisode < lastEpisode):
             self.set_cell_background_color(COL_NAME_LAST_EPISODE, pos + 2, COLOR_NOT_OK)
         else:
             self.set_cell_background_color(COL_NAME_LAST_EPISODE, pos + 2, COLOR_OK)

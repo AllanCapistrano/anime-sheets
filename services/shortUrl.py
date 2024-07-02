@@ -22,7 +22,7 @@ def shorten_url(url: str) -> str:
         str
     """
 
-    if(BITLY_TOKEN != ""):
+    if (BITLY_TOKEN != ""):
         try:
             bitlyShorten = pyshorteners.Shortener(api_key=BITLY_TOKEN)
 

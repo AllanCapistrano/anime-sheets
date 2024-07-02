@@ -49,22 +49,22 @@ lastEpisodesUrlsUpdated = []
 
 for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
-    if(animesUrls[i].find("animesonline")  != -1):
+    if (animesUrls[i].find("animesonline")  != -1):
         lastEpisode    = crawlerAnimesOnline.get_last_episode(animesUrls[i])
         lastEpisodeUrl = crawlerAnimesOnline.get_last_episode_url(animesUrls[i])
-    elif(
+    elif (
         animesUrls[i].find("animeshouse")  != -1 or 
         animesUrls[i].find("animesgratis") != -1
     ):
         lastEpisode    = crawlerAnimesHouseAndAnimesGratis.get_last_episode(animesUrls[i])
         lastEpisodeUrl = crawlerAnimesHouseAndAnimesGratis.get_last_episode_url(animesUrls[i])
-    elif(animesUrls[i].find("goyabu") != -1):
+    elif (animesUrls[i].find("goyabu") != -1):
         lastEpisode    = crawlerGoyabu.get_last_episode(animesUrls[i])
         lastEpisodeUrl = crawlerGoyabu.get_last_episode_url(animesUrls[i])
-    elif(animesUrls[i].find("bakashi")  != -1):
+    elif (animesUrls[i].find("bakashi")  != -1):
         lastEpisode    = crawlerBakashiTv.get_last_episode(animesUrls[i])
         lastEpisodeUrl = crawlerBakashiTv.get_last_episode_url(animesUrls[i])
-    elif(animesUrls[i].find("assistiranimes")  != -1):
+    elif (animesUrls[i].find("assistiranimes")  != -1):
         lastEpisode    = crawlerAssistirAnimes.get_last_episode(animesUrls[i])
         lastEpisodeUrl = crawlerAssistirAnimes.get_last_episode_url(animesUrls[i])
     else:
@@ -76,11 +76,11 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
 
     try:
         # Evita escritas desnecessárias.
-        if(lastEpisodesSheet[i] != lastEpisode):
+        if (lastEpisodesSheet[i] != lastEpisode):
             sheet.set_last_episode(i, lastEpisode)
             sheet.set_last_episode_url(i, lastEpisodeUrl)
     except IndexError:
-        if(myEpisodes[i]):
+        if (myEpisodes[i]):
             sheet.set_last_episode(i, lastEpisode)
             sheet.set_last_episode_url(i, lastEpisodeUrl)
 
@@ -106,9 +106,9 @@ execution_time = end - start
 
 console.print(f"Tempo de execução: {execution_time:.2f}s\n", style="bold green")
 
-if(USER_NAME != ""):
+if (USER_NAME != ""):
     console.print(f"Planilha de animes atualizada com sucesso {USER_NAME}!", style="bold")
-if(SHEET_LINK != ""):
+if (SHEET_LINK != ""):
     print(f"Link: {SHEET_LINK}")
 
 # Exibindo a tabela.

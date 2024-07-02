@@ -52,7 +52,7 @@ class Table:
             broadcasts (list): Dia de lançamento de novos episódios dos animes.
         """
 
-        if(
+        if (
             len(names) > 0 and
             len(seasons) > 0 and
             len(urls) > 0 and
