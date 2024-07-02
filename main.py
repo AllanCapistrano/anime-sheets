@@ -1,5 +1,6 @@
 from os import getenv
 from time import time
+
 from dotenv import load_dotenv
 from rich.progress import track
 from rich.console import Console
@@ -32,12 +33,9 @@ except ValueError as ve:
 
 start = time()
 
-anime_names        = sheet.get_anime_names()
-anime_seasons      = sheet.get_anime_seasons()
-animes_urls         = sheet.get_anime_urls()
+animes_urls        = sheet.get_anime_urls()
 my_episodes        = sheet.get_my_episodes()
 last_episodesSheet = sheet.get_last_episodes()
-anime_broadcasts   = sheet.get_anime_broadcasts()
 
 last_episodesUpdated     = []
 last_episodesUrlsUpdated = []
@@ -98,13 +96,13 @@ delete_webpage()
 
 # Preenchendo a tabela.
 table.fill_table(
-    names             = anime_names,
-    seasons           = anime_seasons,
+    names             = sheet.get_anime_names(),
+    seasons           = sheet.get_anime_seasons(),
     urls              = animes_urls,
     my_episodes       = my_episodes,
     last_episodes     = last_episodesUpdated,
     last_episodesUrls = last_episodesUrlsUpdated,
-    broadcasts        = anime_broadcasts
+    broadcasts        = sheet.get_anime_broadcasts()
 )
 
 end = time()
