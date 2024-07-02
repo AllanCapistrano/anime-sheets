@@ -34,7 +34,7 @@ start = time()
 
 anime_names        = sheet.get_anime_names()
 anime_seasons      = sheet.get_anime_seasons()
-animesUrls         = sheet.get_anime_urls()
+animes_urls         = sheet.get_anime_urls()
 my_episodes        = sheet.get_my_episodes()
 last_episodesSheet = sheet.get_last_episodes()
 anime_broadcasts   = sheet.get_anime_broadcasts()
@@ -42,38 +42,38 @@ anime_broadcasts   = sheet.get_anime_broadcasts()
 last_episodesUpdated     = []
 last_episodesUrlsUpdated = []
 
-for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
+for i in track(range(0, len(animes_urls)), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
-    if (animesUrls[i].find("animesonline")  != -1):
+    if (animes_urls[i].find("animesonline")  != -1):
         crawler_animes_online = CrawlerAnimesOnline()
 
-        last_episode     = crawler_animes_online.get_last_episode(animesUrls[i])
-        last_episode_url = crawler_animes_online.get_last_episode_url(animesUrls[i])
-    elif (animesUrls[i].find("animesgratis") != -1):
+        last_episode     = crawler_animes_online.get_last_episode(animes_urls[i])
+        last_episode_url = crawler_animes_online.get_last_episode_url(animes_urls[i])
+    elif (animes_urls[i].find("animesgratis") != -1):
         crawler_animes_gratis = CrawlerAnimesGratis()
 
-        last_episode     = crawler_animes_gratis.get_last_episode(animesUrls[i])
-        last_episode_url = crawler_animes_gratis.get_last_episode_url(animesUrls[i])
-    elif (animesUrls[i].find("animeshouse")):
+        last_episode     = crawler_animes_gratis.get_last_episode(animes_urls[i])
+        last_episode_url = crawler_animes_gratis.get_last_episode_url(animes_urls[i])
+    elif (animes_urls[i].find("animeshouse")):
         crawler_animes_house = CrawlerAnimesHouse()
 
-        last_episode     = crawler_animes_house.get_last_episode(animesUrls[i])
-        last_episode_url = crawler_animes_house.get_last_episode_url(animesUrls[i])
-    elif (animesUrls[i].find("goyabu") != -1):
+        last_episode     = crawler_animes_house.get_last_episode(animes_urls[i])
+        last_episode_url = crawler_animes_house.get_last_episode_url(animes_urls[i])
+    elif (animes_urls[i].find("goyabu") != -1):
         crawler_goyabu = CrawlerGoyabu()
 
-        last_episode     = crawler_goyabu.get_last_episode(animesUrls[i])
-        last_episode_url = crawler_goyabu.get_last_episode_url(animesUrls[i])
-    elif (animesUrls[i].find("bakashi")  != -1):
+        last_episode     = crawler_goyabu.get_last_episode(animes_urls[i])
+        last_episode_url = crawler_goyabu.get_last_episode_url(animes_urls[i])
+    elif (animes_urls[i].find("bakashi")  != -1):
         crawler_bakashi_tv = CrawlerBakashiTv()
 
-        last_episode     = crawler_bakashi_tv.get_last_episode(animesUrls[i])
-        last_episode_url = crawler_bakashi_tv.get_last_episode_url(animesUrls[i])
-    elif (animesUrls[i].find("assistiranimes")  != -1):
+        last_episode     = crawler_bakashi_tv.get_last_episode(animes_urls[i])
+        last_episode_url = crawler_bakashi_tv.get_last_episode_url(animes_urls[i])
+    elif (animes_urls[i].find("assistiranimes")  != -1):
         crawler_assistir_animes = CrawlerAssistirAnimes()
 
-        last_episode     = crawler_assistir_animes.get_last_episode(animesUrls[i])
-        last_episode_url = crawler_assistir_animes.get_last_episode_url(animesUrls[i])
+        last_episode     = crawler_assistir_animes.get_last_episode(animes_urls[i])
+        last_episode_url = crawler_assistir_animes.get_last_episode_url(animes_urls[i])
     else:
         print("Erro! Site não suportado.")
         exit()
@@ -100,7 +100,7 @@ delete_webpage()
 table.fill_table(
     names             = anime_names,
     seasons           = anime_seasons,
-    urls              = animesUrls,
+    urls              = animes_urls,
     my_episodes       = my_episodes,
     last_episodes     = last_episodesUpdated,
     last_episodesUrls = last_episodesUrlsUpdated,
