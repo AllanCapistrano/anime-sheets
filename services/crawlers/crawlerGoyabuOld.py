@@ -1,6 +1,9 @@
+from deprecated import deprecated
+
 from .crawler import Crawler
 from .interface import CrawlerInterface
 
+@deprecated("Esta classe não é mais compatível com o site goyabu")
 class CrawlerGoyabuOld(Crawler, CrawlerInterface):
     """Crawler responsável pela antiga versão do site goyabu.
     """
@@ -43,6 +46,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
 
         return lastEpisodeUrl
 
+    @deprecated()
     def getLastEpisodeOld(self, url: str) -> str:
         """Função responsável por retornar o número do último episódio do anime.
 

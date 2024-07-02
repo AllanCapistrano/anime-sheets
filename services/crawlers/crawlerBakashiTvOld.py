@@ -1,3 +1,5 @@
+from deprecated import deprecated
+
 from re import search
 
 from .crawler import Crawler
@@ -8,6 +10,7 @@ ANCHOR_POSITION = 2
 EPISODE_CLASS   = "epnumber"
 # ---------------------------------------------------------------------------- #
 
+@deprecated("Esta classe não é mais compatível com o site bakashi")
 class CrawlerBakashiTvOld(Crawler, CrawlerInterface):
     """Crawler responsável pela antiga versão do site bakashi.
     """
