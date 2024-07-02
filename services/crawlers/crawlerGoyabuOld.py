@@ -21,8 +21,8 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
 
         soup = self.req_url(url)
 
-        anime_info = soup.find("div", class_="anime-episode")
-        episode = anime_info.find("h3")
+        anime_info   = soup.find("div", class_="anime-episode")
+        episode      = anime_info.find("h3")
         episode_info = episode.contents[0].split(" ")
 
         for episode_number in episode_info:
@@ -39,9 +39,9 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
             str
         """
 
-        soup = self.req_url(url)
-        anime_info = soup.find("div", class_="anime-episode")
-        episode = anime_info.find("a")
+        soup             = self.req_url(url)
+        anime_info       = soup.find("div", class_="anime-episode")
+        episode          = anime_info.find("a")
         last_episode_url = episode.attrs["href"]
 
         return last_episode_url

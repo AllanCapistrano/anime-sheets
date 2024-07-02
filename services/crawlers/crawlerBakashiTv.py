@@ -24,9 +24,9 @@ class CrawlerBakashiTv(Crawler, CrawlerInterface):
 
         soup = self.req_webpage(url=url)
 
-        episodes                   = soup.find_all('div', class_=EPISODE_CLASS)
-        last_episode_anchor          = episodes[-1].contents[0]
-        last_episode_number          = last_episode_anchor.contents[0]
+        episodes                      = soup.find_all('div', class_=EPISODE_CLASS)
+        last_episode_anchor           = episodes[-1].contents[0]
+        last_episode_number           = last_episode_anchor.contents[0]
         last_episode_number_sanitized = search(r'\d+', last_episode_number).group()
 
         return last_episode_number_sanitized
@@ -43,7 +43,7 @@ class CrawlerBakashiTv(Crawler, CrawlerInterface):
 
         soup = self.req_webpage(url=url)
 
-        episodes          = soup.find_all('div', class_=EPISODE_CLASS)
+        episodes            = soup.find_all('div', class_=EPISODE_CLASS)
         last_episode_anchor = episodes[-1].contents[0]
         last_episode_url    = last_episode_anchor.attrs["href"]
 
