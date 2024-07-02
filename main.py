@@ -32,13 +32,6 @@ except ValueError as ve:
 
 start = time()
 
-crawler_animes_gratis   = CrawlerAnimesGratis()
-crawler_animes_house    = CrawlerAnimesHouse()
-crawler_animes_online   = CrawlerAnimesOnline()
-crawler_goyabu          = CrawlerGoyabu()
-crawler_bakashi_tv      = CrawlerBakashiTv()
-crawler_assistir_animes = CrawlerAssistirAnimes()
-
 anime_names        = sheet.get_anime_names()
 anime_seasons      = sheet.get_anime_seasons()
 animesUrls         = sheet.get_anime_urls()
@@ -52,21 +45,33 @@ last_episodesUrlsUpdated = []
 for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
     if (animesUrls[i].find("animesonline")  != -1):
+        crawler_animes_online = CrawlerAnimesOnline()
+
         last_episode     = crawler_animes_online.get_last_episode(animesUrls[i])
         last_episode_url = crawler_animes_online.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("animesgratis") != -1):
+        crawler_animes_gratis = CrawlerAnimesGratis()
+
         last_episode     = crawler_animes_gratis.get_last_episode(animesUrls[i])
         last_episode_url = crawler_animes_gratis.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("animeshouse")):
+        crawler_animes_house = CrawlerAnimesHouse()
+
         last_episode     = crawler_animes_house.get_last_episode(animesUrls[i])
         last_episode_url = crawler_animes_house.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("goyabu") != -1):
+        crawler_goyabu = CrawlerGoyabu()
+
         last_episode     = crawler_goyabu.get_last_episode(animesUrls[i])
         last_episode_url = crawler_goyabu.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("bakashi")  != -1):
+        crawler_bakashi_tv = CrawlerBakashiTv()
+
         last_episode     = crawler_bakashi_tv.get_last_episode(animesUrls[i])
         last_episode_url = crawler_bakashi_tv.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("assistiranimes")  != -1):
+        crawler_assistir_animes = CrawlerAssistirAnimes()
+
         last_episode     = crawler_assistir_animes.get_last_episode(animesUrls[i])
         last_episode_url = crawler_assistir_animes.get_last_episode_url(animesUrls[i])
     else:
