@@ -9,6 +9,7 @@ from services.crawlers import CrawlerAnimesHouseAndAnimesGratis
 from services.crawlers import CrawlerAnimesOnline
 from services.crawlers import CrawlerGoyabuOld as CrawlerGoyabu
 from services.crawlers import CrawlerBakashiTv
+from services.crawlers import CrawlerAssistirAnimes
 
 load_dotenv()
 
@@ -34,6 +35,7 @@ crawlerAnimesHouseAndAnimesGratis = CrawlerAnimesHouseAndAnimesGratis()
 crawlerAnimesOnline               = CrawlerAnimesOnline()
 crawlerGoyabu                     = CrawlerGoyabu()
 crawlerBakashiTv                  = CrawlerBakashiTv()
+crawlerAssistirAnimes             = CrawlerAssistirAnimes()
 
 animeNames        = sheet.getAnimeNames()
 animeSeasons      = sheet.getAnimeSeasons()
@@ -62,6 +64,9 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     elif(animesUrls[i].find("bakashi")  != -1):
         lastEpisode    = crawlerBakashiTv.getLastEpisode(animesUrls[i])
         lastEpisodeUrl = crawlerBakashiTv.getLastEpisodeUrl(animesUrls[i])
+    elif(animesUrls[i].find("assistiranimes")  != -1):
+        lastEpisode    = crawlerAssistirAnimes.getLastEpisode(animesUrls[i])
+        lastEpisodeUrl = crawlerAssistirAnimes.getLastEpisodeUrl(animesUrls[i])
     else:
         print("Erro! Site não suportado.")
         exit()
