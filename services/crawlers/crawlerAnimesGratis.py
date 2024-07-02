@@ -1,8 +1,8 @@
 from .crawler import Crawler
 from .interface import CrawlerInterface
 
-class CrawlerAnimesHouseAndAnimesGratis(Crawler, CrawlerInterface):
-    """Crawler responsável pelos sites animeshouse e animesgratis.
+class CrawlerAnimesGratis(Crawler, CrawlerInterface):
+    """Crawler responsável pelo site animesgratis.
     """
 
     def get_last_episode(self, url: str) -> str:

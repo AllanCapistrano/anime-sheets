@@ -5,7 +5,7 @@ from rich.progress import track
 from rich.console import Console
 
 from services import Sheet, Table, delete_webpage
-from services.crawlers import CrawlerAnimesHouseAndAnimesGratis
+from services.crawlers import CrawlerAnimesGratis
 from services.crawlers import CrawlerAnimesOnline
 from services.crawlers import CrawlerGoyabu
 from services.crawlers import CrawlerBakashiTv
@@ -32,12 +32,12 @@ except ValueError as ve:
 
 start = time()
 
-crawler_animes_house_and_animes_gratis = CrawlerAnimesHouseAndAnimesGratis()
-crawler_animes_house                   = CrawlerAnimesHouse()
-crawler_animes_online                  = CrawlerAnimesOnline()
-crawler_goyabu                         = CrawlerGoyabu()
-crawler_bakashi_tv                     = CrawlerBakashiTv()
-crawler_assistir_animes                = CrawlerAssistirAnimes()
+crawler_animes_gratis   = CrawlerAnimesGratis()
+crawler_animes_house    = CrawlerAnimesHouse()
+crawler_animes_online   = CrawlerAnimesOnline()
+crawler_goyabu          = CrawlerGoyabu()
+crawler_bakashi_tv      = CrawlerBakashiTv()
+crawler_assistir_animes = CrawlerAssistirAnimes()
 
 anime_names        = sheet.get_anime_names()
 anime_seasons      = sheet.get_anime_seasons()
@@ -55,8 +55,8 @@ for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
         last_episode     = crawler_animes_online.get_last_episode(animesUrls[i])
         last_episode_url = crawler_animes_online.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("animesgratis") != -1):
-        last_episode     = crawler_animes_house_and_animes_gratis.get_last_episode(animesUrls[i])
-        last_episode_url = crawler_animes_house_and_animes_gratis.get_last_episode_url(animesUrls[i])
+        last_episode     = crawler_animes_gratis.get_last_episode(animesUrls[i])
+        last_episode_url = crawler_animes_gratis.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("animeshouse")):
         last_episode     = crawler_animes_house.get_last_episode(animesUrls[i])
         last_episode_url = crawler_animes_house.get_last_episode_url(animesUrls[i])

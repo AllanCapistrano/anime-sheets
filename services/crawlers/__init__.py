@@ -1,5 +1,5 @@
 from .crawler import Crawler
-from .crawlerAnimesHouseAndAnimesGratis import CrawlerAnimesHouseAndAnimesGratis
+from .crawlerAnimesGratis import CrawlerAnimesGratis
 from .crawlerAnimesOnline import CrawlerAnimesOnline
 from .crawlerGoyabu import CrawlerGoyabu
 from .crawlerGoyabuOld import CrawlerGoyabuOld
