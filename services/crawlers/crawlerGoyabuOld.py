@@ -16,7 +16,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
         episodeNumber: :class:`str`
         """
 
-        soup = self.reqUrl(url)
+        soup = self.req_url(url)
 
         animeInfo = soup.find("div", class_="anime-episode")
         episode = animeInfo.find("h3")
@@ -39,7 +39,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
         lastEpisodeUrl: :class:`str`
         """
 
-        soup = self.reqUrl(url)
+        soup = self.req_url(url)
         animeInfo = soup.find("div", class_="anime-episode")
         episode = animeInfo.find("a")
         lastEpisodeUrl = episode.attrs["href"]
@@ -60,7 +60,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
         episodeNumber: :class:`str`
         """
 
-        soup = self.reqUrl(url)
+        soup = self.req_url(url)
 
         for animeInfo in soup.find_all("div", class_="anime-episode"):
             for episodes in animeInfo.find_all("h3"):
@@ -83,7 +83,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
         lastEpisodeUrl: :class:`str`
         """
 
-        soup = self.reqUrl(url)
+        soup = self.req_url(url)
 
         for animeInfo in soup.find_all("div", class_="anime-episode"):
             for episodes in animeInfo.find_all("a"):

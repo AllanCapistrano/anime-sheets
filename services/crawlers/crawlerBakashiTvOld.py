@@ -23,7 +23,7 @@ class CrawlerBakashiTvOld(Crawler, CrawlerInterface):
         episodeNumber: :class:`str`
         """
 
-        soup = self.reqWebpage(url=url)
+        soup = self.req_webpage(url=url)
 
         episodes                   = soup.find_all('div', class_=EPISODE_CLASS)
         lastEpisode                = episodes[-1].contents[0]
@@ -44,7 +44,7 @@ class CrawlerBakashiTvOld(Crawler, CrawlerInterface):
         lastEpisodeUrl: :class:`str`
         """
 
-        soup = self.reqWebpage(url=url)
+        soup = self.req_webpage(url=url)
 
         episodes            = soup.find_all('div', class_=EPISODE_CLASS)
         lastEpisodeListItem = episodes[-1].parent

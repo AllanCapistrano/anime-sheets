@@ -1,14 +1,15 @@
 import requests
 from bs4 import BeautifulSoup
 
-from ..webpage import getWebpage, deleteWebpage
+from ..webpage import getWebpage
 
 # ------------------------------ Constants ----------------------------------- #
 DIRECTORY_PATH = "web"
+TIMEOUT        = 45
 # ---------------------------------------------------------------------------- #
 
 class Crawler:
-    def reqUrl(self, url: str) -> BeautifulSoup:
+    def req_url(self, url: str) -> BeautifulSoup:
         """ Função responsável por buscar as Urls.
 
         Parameters
@@ -21,12 +22,12 @@ class Crawler:
         soup: :class:`BeautifulSoup`
         """
 
-        req  = requests.get(url)
+        req  = requests.get(url=url, timeout=TIMEOUT)
         soup = BeautifulSoup(req.text, 'lxml')
 
         return soup
-    
-    def reqWebpage(self, url: str, webpage_name: str = "index.html") -> BeautifulSoup:
+
+    def req_webpage(self, url: str, webpage_name: str = "index.html") -> BeautifulSoup:
         """ Função responsável por buscar as Urls e fazer download das páginas.
 
         Parameters
@@ -40,9 +41,9 @@ class Crawler:
         -----------
         soup: :class:`BeautifulSoup`
         """
-        
+
         webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
-        
+
         getWebpage(url=url)
 
         file = open(webpage_name, encoding="utf8")

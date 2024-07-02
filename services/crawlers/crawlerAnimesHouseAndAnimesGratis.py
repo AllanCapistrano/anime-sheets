@@ -16,7 +16,7 @@ class CrawlerAnimesHouseAndAnimesGratis(Crawler, CrawlerInterface):
         episodeNumber: :class:`str`
         """
 
-        soup = self.reqUrl(url)
+        soup = self.req_url(url)
 
         for episodes in soup.find_all('div', class_='numerando'):
             lastEpisode = episodes.contents[0]
@@ -36,7 +36,7 @@ class CrawlerAnimesHouseAndAnimesGratis(Crawler, CrawlerInterface):
         lastEpisodeUrl: :class:`str`
         """
         
-        soup = self.reqUrl(url)
+        soup = self.req_url(url)
 
         for episodes in soup.find_all('div', class_='episodiotitle'):
             episodeUrl = episodes.find('a')

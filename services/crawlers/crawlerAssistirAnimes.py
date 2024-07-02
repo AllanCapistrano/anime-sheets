@@ -25,7 +25,7 @@ class CrawlerAssistirAnimes(Crawler, CrawlerInterface):
         episodeNumber: :class:`str`
         """
 
-        soup = self.reqWebpage(url=url)
+        soup = self.req_webpage(url=url)
 
         episodes                   = soup.find_all('div', class_=EPISODE_CLASS)
         lastEpisodeAnchor          = episodes[-1].contents[0]
@@ -47,7 +47,7 @@ class CrawlerAssistirAnimes(Crawler, CrawlerInterface):
         lastEpisodeUrl: :class:`str`
         """
 
-        soup = self.reqWebpage(url=url)
+        soup = self.req_webpage(url=url)
 
         episodes          = soup.find_all('div', class_=EPISODE_CLASS)
         lastEpisodeAnchor = episodes[-1].contents[0]
