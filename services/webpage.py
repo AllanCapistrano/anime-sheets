@@ -19,7 +19,7 @@ def get_webpage(url: str, webpage_name: str = "index.html") -> None:
     try:
         run(command, check=False)
     except CalledProcessError:
-        print(f"Error trying to get '{url}'.")
+        print(f"Erro ao tentar baixar a página '{url}'.")
         exit()
 
 def delete_webpage(webpage_name: str = "index.html") -> None:
@@ -36,7 +36,7 @@ def delete_webpage(webpage_name: str = "index.html") -> None:
     try:
         run(command, check=False)
     except CalledProcessError:
-        print(f"Error trying to remove '{webpage_name}'.")
+        print(f"Erro ao tentar remover a página '{webpage_name}'.")
         exit()
 
 def list_webpages() -> list:
@@ -57,5 +57,5 @@ def list_webpages() -> list:
 
         return webpages_filtered
     except CalledProcessError:
-        print("Error trying to list the web pages'.")
+        print("Erro ao tentar listar as páginas baixadas'.")
         exit()
