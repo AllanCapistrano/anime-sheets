@@ -4,46 +4,42 @@ from .crawler import Crawler
 from .interface import CrawlerInterface
 
 class CrawlerGoyabu(Crawler, CrawlerInterface):
+    """Crawler responsável pela antiga versão do site goyabu.
+    """
 
-    def getLastEpisode(self, url: str) -> str:
-        """ Função responsável por retornar o número do último episódio do 
+    def get_last_episode(self, url: str) -> str:
+        """Função responsável por retornar o número do último episódio do
         anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        episodeNumber: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
-        soup               = self.reqUrl(url)
-        animeInfo          = soup.find("div", class_="chaps-infs")
-        lastEpisode        = animeInfo.contents[0].split(" ")
-        index              = len(lastEpisode) - 2
-        lastEpisodeNumeric = sub('[^.0-9]', '', lastEpisode[index])
+        soup                 = self.req_url(url)
+        anime_info           = soup.find("div", class_="chaps-infs")
+        last_episode         = anime_info.contents[0].split(" ")
+        index                = len(last_episode) - 2
+        last_episode_numeric = sub('[^.0-9]', '', last_episode[index])
 
-        return lastEpisodeNumeric
+        return last_episode_numeric
 
-    def getLastEpisodeUrl(self, url: str) -> str:
-        """ Função responsável por retornar a url do último episódio do anime.
+    def get_last_episode_url(self, url: str) -> str:
+        """Função responsável por retornar a url do último episódio do anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        lastEpisodeUrl: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
-        soup = self.reqUrl(url)
+        soup = self.req_url(url)
 
-        animeInfo      = soup.find("div", class_="row")
-        animeLink      = animeInfo.find("a")
-        lastEpisodeUrl = animeLink.attrs["href"]
+        anime_info       = soup.find("div", class_="row")
+        animeLink        = anime_info.find("a")
+        last_episode_url = animeLink.attrs["href"]
 
-        return lastEpisodeUrl
+        return last_episode_url

@@ -8,10 +8,10 @@ EPISODE_CLASS   = "episodiotitle"
 # ---------------------------------------------------------------------------- #
 
 class CrawlerAssistirAnimes(Crawler, CrawlerInterface):
-    """Crawler responsável pelo site assistiranimes.org/
+    """Crawler responsável pelo site assistiranimes.
     """
 
-    def getLastEpisode(self, url: str) -> str:
+    def get_last_episode(self, url: str) -> str:
         """ Função responsável por retornar o número do último episódio do 
         anime.
 
@@ -22,19 +22,19 @@ class CrawlerAssistirAnimes(Crawler, CrawlerInterface):
             
         Returns
         -----------
-        episodeNumber: :class:`str`
+        episode_number: :class:`str`
         """
 
-        soup = self.reqWebpage(url=url)
+        soup = self.req_webpage(url=url)
 
-        episodes                   = soup.find_all('div', class_=EPISODE_CLASS)
-        lastEpisodeAnchor          = episodes[-1].contents[0]
-        lastEpisodeNumber          = lastEpisodeAnchor.contents[0]
-        lastEpisodeNumberSanitized = search(r'\d+', lastEpisodeNumber).group()
+        episodes                      = soup.find_all('div', class_=EPISODE_CLASS)
+        last_episode_anchor           = episodes[-1].contents[0]
+        last_episode_number           = last_episode_anchor.contents[0]
+        last_episode_number_sanitized = search(r'\d+', last_episode_number).group()
 
-        return lastEpisodeNumberSanitized
+        return last_episode_number_sanitized
 
-    def getLastEpisodeUrl(self, url: str) -> str:
+    def get_last_episode_url(self, url: str) -> str:
         """ Função responsável por retornar a url do último episódio do anime.
 
         Parameters
@@ -44,13 +44,13 @@ class CrawlerAssistirAnimes(Crawler, CrawlerInterface):
             
         Returns
         -----------
-        lastEpisodeUrl: :class:`str`
+        last_episode_url: :class:`str`
         """
 
-        soup = self.reqWebpage(url=url)
+        soup = self.req_webpage(url=url)
 
-        episodes          = soup.find_all('div', class_=EPISODE_CLASS)
-        lastEpisodeAnchor = episodes[-1].contents[0]
-        lastEpisodeUrl    = lastEpisodeAnchor.attrs["href"]
+        episodes            = soup.find_all('div', class_=EPISODE_CLASS)
+        last_episode_anchor = episodes[-1].contents[0]
+        last_episode_url    = last_episode_anchor.attrs["href"]
 
-        return lastEpisodeUrl
+        return last_episode_url

@@ -1,52 +1,49 @@
 import requests
 from bs4 import BeautifulSoup
 
-from ..webpage import getWebpage, deleteWebpage
+from ..webpage import get_webpage
 
 # ------------------------------ Constants ----------------------------------- #
 DIRECTORY_PATH = "web"
+TIMEOUT        = 45
 # ---------------------------------------------------------------------------- #
 
 class Crawler:
-    def reqUrl(self, url: str) -> BeautifulSoup:
-        """ Função responsável por buscar as Urls.
+    """Classe base para os crawlers
+    """
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
+    def req_url(self, url: str) -> BeautifulSoup:
+        """Função responsável por buscar as Urls.
 
-        Returns
-        -----------
-        soup: :class:`BeautifulSoup`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            BeautifulSoup
         """
 
-        req  = requests.get(url)
+        req  = requests.get(url=url, timeout=TIMEOUT)
         soup = BeautifulSoup(req.text, 'lxml')
 
         return soup
-    
-    def reqWebpage(self, url: str, webpage_name: str = "index.html") -> BeautifulSoup:
-        """ Função responsável por buscar as Urls e fazer download das páginas.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-        webpage_name: :class:`str`
-            Nome do arquivo. Por padrão é `index.html`.
+    def req_webpage(self, url: str, webpage_name: str = "index.html") -> BeautifulSoup:
+        """Função responsável por buscar as Urls e fazer download das páginas.
 
-        Returns
-        -----------
-        soup: :class:`BeautifulSoup`
+        Args:
+            url (str): Url do site.
+            webpage_name (str, optional): Nome do arquivo. Por padrão é "index.html".
+
+        Returns:
+            BeautifulSoup
         """
-        
+
         webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
-        
-        getWebpage(url=url)
+
+        get_webpage(url=url)
 
         file = open(webpage_name, encoding="utf8")
         soup = BeautifulSoup(file, 'html.parser')
-        file.close
+        file.close()
 
         return soup

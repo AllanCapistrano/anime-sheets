@@ -9,25 +9,25 @@ SHORT_URL    = getenv("SHORT_URL")
 BITLY_TOKEN  = getenv("BITLY_TOKEN")
 # ---------------------------------------------------------------------------- #
 
-def shortenUrl(url: str) -> str:
-    """ Encurta uma URL caso seja fornecido o token de acesso.
+def shorten_url(url: str) -> str:
+    """Encurta uma URL caso seja fornecido o token de acesso.
 
-    Parameters
-    -----------
-    url: :class:`str`
-        URL a ser encurtada
+    Args:
+        url (str): URL a ser encurtada
 
-    Returns
-    -----------
-    shortUrl: :class:`str`
+    Raises:
+        ValueError: Token de acesso do Bitly incorreto.
+
+    Returns:
+        str
     """
 
-    if(BITLY_TOKEN != ""):
+    if (BITLY_TOKEN != ""):
         try:
-            bitlyShorten = pyshorteners.Shortener(api_key=BITLY_TOKEN)
+            bitly_shorten = pyshorteners.Shortener(api_key=BITLY_TOKEN)
 
-            return bitlyShorten.bitly.short(url)
-        except:
-            raise ValueError("Erro! Token de acesso inválido.") 
-    
+            return bitly_shorten.bitly.short(url)
+        except ValueError as ve:
+            raise ValueError("Erro! Token de acesso inválido.") from ve
+
     return url

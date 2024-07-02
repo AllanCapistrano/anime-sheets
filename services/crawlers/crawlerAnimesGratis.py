@@ -1,10 +1,8 @@
-from re import search
-
 from .crawler import Crawler
 from .interface import CrawlerInterface
 
-class CrawlerAnimesOnline(Crawler, CrawlerInterface):
-    """Crawler responsável pelo site animesonline.
+class CrawlerAnimesGratis(Crawler, CrawlerInterface):
+    """Crawler responsável pelo site animesgratis.
     """
 
     def get_last_episode(self, url: str) -> str:
@@ -18,13 +16,12 @@ class CrawlerAnimesOnline(Crawler, CrawlerInterface):
             str
         """
 
-        soup = self.req_webpage(url=url)
+        soup = self.req_url(url)
 
-        for episodes in soup.find_all('div', class_='episodiotitle'):
-            last_episode = episodes.contents[0].contents[0]
-            last_episode_number = search(r'\d+', last_episode).group()
+        for episodes in soup.find_all('div', class_='numerando'):
+            last_episode = episodes.contents[0]
 
-        return last_episode_number
+        return last_episode.split('- ')[1]
 
     def get_last_episode_url(self, url: str) -> str:
         """Função responsável por retornar a url do último episódio do anime.
@@ -35,8 +32,8 @@ class CrawlerAnimesOnline(Crawler, CrawlerInterface):
         Returns:
             str
         """
-        
-        soup = self.req_webpage(url=url)
+
+        soup = self.req_url(url)
 
         for episodes in soup.find_all('div', class_='episodiotitle'):
             episode_url = episodes.find('a')

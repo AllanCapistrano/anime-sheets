@@ -1,18 +1,15 @@
-from subprocess import run
+from subprocess import run, CalledProcessError, PIPE
 
 # ------------------------------ Constants ----------------------------------- #
 DIRECTORY_PATH = "web"
 # ---------------------------------------------------------------------------- #
 
-def getWebpage(url: str, webpage_name: str = "index.html") -> None:
-    """ Baixa uma página de um determinado site no formato HTML.
+def get_webpage(url: str, webpage_name: str = "index.html") -> None:
+    """Baixa uma página de um determinado site no formato HTML.
 
-    Parameter
-    ---------
-    url: :class:`str`
-        Url do site.
-    webpage_name: :class:`str`
-        Nome do arquivo. Por padrão é `index.html`.
+    Args:
+        url (str): Url do site.
+        webpage_name (str, optional): Nome do arquivo. Por padrão é "index.html".
     """
 
     webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
@@ -20,18 +17,16 @@ def getWebpage(url: str, webpage_name: str = "index.html") -> None:
     command = ["curl", "--silent", url, "-o", webpage_name]
 
     try:
-        run(command)
-    except:
+        run(command, check=False)
+    except CalledProcessError:
         print(f"Error trying to get '{url}'.")
         exit()
 
-def deleteWebpage(webpage_name: str = "index.html") -> None:
-    """ Remove, caso exista, uma página web salva.
+def delete_webpage(webpage_name: str = "index.html") -> None:
+    """Remove, caso exista, uma página web salva.
 
-    Parameter
-    ---------
-    webpage_name: :class:`str`
-        Nome do arquivo. Por padrão é `index.html`.
+    Args:
+        webpage_name (str, optional): Nome do arquivo. Por padrão é "index.html".
     """
 
     webpage_name = f"{DIRECTORY_PATH}/{webpage_name}"
@@ -39,7 +34,28 @@ def deleteWebpage(webpage_name: str = "index.html") -> None:
     command = ["rm", webpage_name]
 
     try:
-        run(command)
-    except:
+        run(command, check=False)
+    except CalledProcessError:
         print(f"Error trying to remove '{webpage_name}'.")
+        exit()
+
+def list_webpages() -> list:
+    """Lista quais são as páginas web baixadas.
+
+    Returns:
+        list
+    """
+
+    command = ["ls", "./web"]
+
+    try:
+        result = run(command, stdout=PIPE, stderr=PIPE, text=True, check=True)
+
+        webpages = result.stdout.split("\n")
+        
+        webpages_filtered = [line for line in webpages if line.strip()]
+
+        return webpages_filtered
+    except CalledProcessError:
+        print("Error trying to list the web pages'.")
         exit()

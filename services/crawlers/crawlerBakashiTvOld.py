@@ -1,3 +1,5 @@
+from deprecated import deprecated
+
 from re import search
 
 from .crawler import Crawler
@@ -8,47 +10,45 @@ ANCHOR_POSITION = 2
 EPISODE_CLASS   = "epnumber"
 # ---------------------------------------------------------------------------- #
 
+@deprecated("Esta classe não é mais compatível com o site bakashi")
 class CrawlerBakashiTvOld(Crawler, CrawlerInterface):
-    def getLastEpisode(self, url: str) -> str:
-        """ Função responsável por retornar o número do último episódio do 
+    """Crawler responsável pela antiga versão do site bakashi.
+    """
+
+    def get_last_episode(self, url: str) -> str:
+        """Função responsável por retornar o número do último episódio do 
         anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        episodeNumber: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
-        soup = self.reqWebpage(url=url)
+        soup = self.req_webpage(url=url)
 
-        episodes                   = soup.find_all('div', class_=EPISODE_CLASS)
-        lastEpisode                = episodes[-1].contents[0]
-        lastEpisodeNumberSanitized = search(r'\d+', lastEpisode).group()
+        episodes                      = soup.find_all('div', class_=EPISODE_CLASS)
+        last_episode                  = episodes[-1].contents[0]
+        last_episode_number_sanitized = search(r'\d+', last_episode).group()
 
-        return lastEpisodeNumberSanitized
+        return last_episode_number_sanitized
 
-    def getLastEpisodeUrl(self, url: str) -> str:
-        """ Função responsável por retornar a url do último episódio do anime.
+    def get_last_episode_url(self, url: str) -> str:
+        """Função responsável por retornar a url do último episódio do anime.
 
-        Parameters
-        -----------
-        url: :class:`str`
-            Url do site.
-            
-        Returns
-        -----------
-        lastEpisodeUrl: :class:`str`
+        Args:
+            url (str): Url do site.
+
+        Returns:
+            str
         """
 
-        soup = self.reqWebpage(url=url)
+        soup = self.req_webpage(url=url)
 
-        episodes            = soup.find_all('div', class_=EPISODE_CLASS)
-        lastEpisodeListItem = episodes[-1].parent
-        lastEpisodeAnchor   = lastEpisodeListItem.contents[ANCHOR_POSITION]
-        lastEpisodeUrl      = lastEpisodeAnchor.attrs["href"]
+        episodes               = soup.find_all('div', class_=EPISODE_CLASS)
+        last_episode_list_item = episodes[-1].parent
+        last_episode_anchor    = last_episode_list_item.contents[ANCHOR_POSITION]
+        last_episode_url       = last_episode_anchor.attrs["href"]
 
-        return lastEpisodeUrl
+        return last_episode_url
