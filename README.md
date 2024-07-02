@@ -17,6 +17,7 @@
 
 ### 🌐 Sites Suportados:
 
+- [x] [Assistir Animes](https://assistiranimes.org/)
 - [x] [Animes Gratis](https://animesgratis.org)
 - [x] [Animes House](https://animeshouse.net/)
 - [x] [Animes Online](https://animesonline.nz/)
