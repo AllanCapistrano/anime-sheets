@@ -96,7 +96,7 @@ class Sheet:
 
         return myEpisodes
 
-    def getLastEpisodes(self) -> list:
+    def get_last_episodes(self) -> list:
         """ Retorna uma lista com o número do último episódio lançado dos animes 
         que estão na planilha.
 

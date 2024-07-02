@@ -5,7 +5,7 @@ class CrawlerAnimesHouseAndAnimesGratis(Crawler, CrawlerInterface):
     """Crawler responsável pelos sites animeshouse e animesgratis.
     """
 
-    def getLastEpisode(self, url: str) -> str:
+    def get_last_episode(self, url: str) -> str:
         """Função responsável por retornar o número do último episódio do 
         anime.
 
@@ -23,7 +23,7 @@ class CrawlerAnimesHouseAndAnimesGratis(Crawler, CrawlerInterface):
 
         return lastEpisode.split('- ')[1]
 
-    def getLastEpisodeUrl(self, url: str) -> str:
+    def get_last_episode_url(self, url: str) -> str:
         """Função responsável por retornar a url do último episódio do anime.
 
         Args:

@@ -11,7 +11,7 @@ class CrawlerAssistirAnimes(Crawler, CrawlerInterface):
     """Crawler responsável pelo site assistiranimes.
     """
 
-    def getLastEpisode(self, url: str) -> str:
+    def get_last_episode(self, url: str) -> str:
         """ Função responsável por retornar o número do último episódio do 
         anime.
 
@@ -34,7 +34,7 @@ class CrawlerAssistirAnimes(Crawler, CrawlerInterface):
 
         return lastEpisodeNumberSanitized
 
-    def getLastEpisodeUrl(self, url: str) -> str:
+    def get_last_episode_url(self, url: str) -> str:
         """ Função responsável por retornar a url do último episódio do anime.
 
         Parameters

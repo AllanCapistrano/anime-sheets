@@ -8,7 +8,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
     """Crawler responsável pela antiga versão do site goyabu.
     """
 
-    def getLastEpisode(self, url: str) -> str:
+    def get_last_episode(self, url: str) -> str:
         """Função responsável por retornar o número do último episódio do
         anime.
 
@@ -29,7 +29,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
             if(episodeNumber.isnumeric()):
                 return episodeNumber
 
-    def getLastEpisodeUrl(self, url: str) -> str:
+    def get_last_episode_url(self, url: str) -> str:
         """Função responsável por retornar a url do último episódio do anime.
 
         Args:
@@ -47,7 +47,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
         return lastEpisodeUrl
 
     @deprecated()
-    def getLastEpisodeOld(self, url: str) -> str:
+    def get_last_episodeOld(self, url: str) -> str:
         """Função responsável por retornar o número do último episódio do anime.
 
         Args:
@@ -67,7 +67,7 @@ class CrawlerGoyabuOld(Crawler, CrawlerInterface):
             if(episodeNumber.isnumeric()):
                 return episodeNumber
 
-    def getLastEpisodeUrlOld(self, url: str) -> str:
+    def get_last_episode_urlOld(self, url: str) -> str:
         """Função responsável por retornar a url do último episódio do anime.
 
         Args:
