@@ -35,9 +35,9 @@ class Table:
         names: list,
         seasons: list,
         urls: list,
-        myEpisodes: list,
-        lastEpisodes: list,
-        lastEpisodesUrls: list,
+        my_episodes: list,
+        last_episodes: list,
+        last_episodesUrls: list,
         broadcasts: list
     ) -> None:
         """Preenche a tabela com as informações passadas.
@@ -46,9 +46,9 @@ class Table:
             names (list): Nomes dos animes.
             seasons (list): Temporadas dos animes.
             urls (list):  URLs dos animes.
-            myEpisodes (list): Episódio que parei dos animes.
-            lastEpisodes (list): Últimos episódios dos animes.
-            lastEpisodesUrls (list): URLS dos últimos episódios dos animes.
+            my_episodes (list): Episódio que parei dos animes.
+            last_episodes (list): Últimos episódios dos animes.
+            last_episodesUrls (list): URLS dos últimos episódios dos animes.
             broadcasts (list): Dia de lançamento de novos episódios dos animes.
         """
 
@@ -56,9 +56,9 @@ class Table:
             len(names) > 0 and
             len(seasons) > 0 and
             len(urls) > 0 and
-            len(myEpisodes) > 0 and
-            len(lastEpisodes) > 0 and
-            len(lastEpisodesUrls) > 0 and
+            len(my_episodes) > 0 and
+            len(last_episodes) > 0 and
+            len(last_episodesUrls) > 0 and
             len(broadcasts) > 0
         ):
             try:
@@ -68,9 +68,9 @@ class Table:
                         names[i],
                         seasons[i],
                         shorten_url(urls[i]),
-                        myEpisodes[i],
-                        lastEpisodes[i],
-                        ("[red]" if float(myEpisodes[i]) < float(lastEpisodes[i]) else "[green]") + shorten_url(lastEpisodesUrls[i]),
+                        my_episodes[i],
+                        last_episodes[i],
+                        ("[red]" if float(my_episodes[i]) < float(last_episodes[i]) else "[green]") + shorten_url(last_episodesUrls[i]),
                         broadcasts[i],
                     )
             except NotRenderableError as nre:

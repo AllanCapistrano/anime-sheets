@@ -31,73 +31,73 @@ except ValueError as ve:
 
 start = time()
 
-crawlerAnimesHouseAndAnimesGratis = CrawlerAnimesHouseAndAnimesGratis()
-crawlerAnimesOnline               = CrawlerAnimesOnline()
-crawlerGoyabu                     = CrawlerGoyabu()
-crawlerBakashiTv                  = CrawlerBakashiTv()
-crawlerAssistirAnimes             = CrawlerAssistirAnimes()
+crawler_animes_house_and_animes_gratis = CrawlerAnimesHouseAndAnimesGratis()
+crawler_animes_online               = CrawlerAnimesOnline()
+crawler_goyabu                     = CrawlerGoyabu()
+crawler_bakashi_tv                  = CrawlerBakashiTv()
+crawler_assistir_animes             = CrawlerAssistirAnimes()
 
-animeNames        = sheet.get_anime_names()
-animeSeasons      = sheet.get_anime_seasons()
+anime_names        = sheet.get_anime_names()
+anime_seasons      = sheet.get_anime_seasons()
 animesUrls        = sheet.get_anime_urls()
-myEpisodes        = sheet.get_my_episodes()
-lastEpisodesSheet = sheet.get_last_episodes()
-animeBroadcasts   = sheet.get_anime_broadcasts()
+my_episodes        = sheet.get_my_episodes()
+last_episodesSheet = sheet.get_last_episodes()
+anime_broadcasts   = sheet.get_anime_broadcasts()
 
-lastEpisodesUpdated     = []
-lastEpisodesUrlsUpdated = []
+last_episodesUpdated     = []
+last_episodesUrlsUpdated = []
 
 for i in track(range(0, len(animesUrls)), description="[cyan]Atualizando..."):
     # Verifica qual é o site que está sendo utilizado para assistir o anime.
     if (animesUrls[i].find("animesonline")  != -1):
-        lastEpisode    = crawlerAnimesOnline.get_last_episode(animesUrls[i])
-        lastEpisodeUrl = crawlerAnimesOnline.get_last_episode_url(animesUrls[i])
+        last_episode    = crawler_animes_online.get_last_episode(animesUrls[i])
+        last_episode_url = crawler_animes_online.get_last_episode_url(animesUrls[i])
     elif (
         animesUrls[i].find("animeshouse")  != -1 or 
         animesUrls[i].find("animesgratis") != -1
     ):
-        lastEpisode    = crawlerAnimesHouseAndAnimesGratis.get_last_episode(animesUrls[i])
-        lastEpisodeUrl = crawlerAnimesHouseAndAnimesGratis.get_last_episode_url(animesUrls[i])
+        last_episode    = crawler_animes_house_and_animes_gratis.get_last_episode(animesUrls[i])
+        last_episode_url = crawler_animes_house_and_animes_gratis.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("goyabu") != -1):
-        lastEpisode    = crawlerGoyabu.get_last_episode(animesUrls[i])
-        lastEpisodeUrl = crawlerGoyabu.get_last_episode_url(animesUrls[i])
+        last_episode    = crawler_goyabu.get_last_episode(animesUrls[i])
+        last_episode_url = crawler_goyabu.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("bakashi")  != -1):
-        lastEpisode    = crawlerBakashiTv.get_last_episode(animesUrls[i])
-        lastEpisodeUrl = crawlerBakashiTv.get_last_episode_url(animesUrls[i])
+        last_episode    = crawler_bakashi_tv.get_last_episode(animesUrls[i])
+        last_episode_url = crawler_bakashi_tv.get_last_episode_url(animesUrls[i])
     elif (animesUrls[i].find("assistiranimes")  != -1):
-        lastEpisode    = crawlerAssistirAnimes.get_last_episode(animesUrls[i])
-        lastEpisodeUrl = crawlerAssistirAnimes.get_last_episode_url(animesUrls[i])
+        last_episode    = crawler_assistir_animes.get_last_episode(animesUrls[i])
+        last_episode_url = crawler_assistir_animes.get_last_episode_url(animesUrls[i])
     else:
         print("Erro! Site não suportado.")
         exit()
 
-    lastEpisodesUpdated.append(lastEpisode)
-    lastEpisodesUrlsUpdated.append(lastEpisodeUrl)
+    last_episodesUpdated.append(last_episode)
+    last_episodesUrlsUpdated.append(last_episode_url)
 
     try:
         # Evita escritas desnecessárias.
-        if (lastEpisodesSheet[i] != lastEpisode):
-            sheet.set_last_episode(i, lastEpisode)
-            sheet.set_last_episode_url(i, lastEpisodeUrl)
+        if (last_episodesSheet[i] != last_episode):
+            sheet.set_last_episode(i, last_episode)
+            sheet.set_last_episode_url(i, last_episode_url)
     except IndexError:
-        if (myEpisodes[i]):
-            sheet.set_last_episode(i, lastEpisode)
-            sheet.set_last_episode_url(i, lastEpisodeUrl)
+        if (my_episodes[i]):
+            sheet.set_last_episode(i, last_episode)
+            sheet.set_last_episode_url(i, last_episode_url)
 
-    sheet.change_cell_background_color(float(myEpisodes[i]), float(lastEpisode), i)
+    sheet.change_cell_background_color(float(my_episodes[i]), float(last_episode), i)
 
 # Removendo a página web do último anime da lista
 delete_webpage()
 
 # Preenchendo a tabela.
 table.fill_table(
-    names            = animeNames, 
-    seasons          = animeSeasons, 
-    urls             = animesUrls, 
-    myEpisodes       = myEpisodes, 
-    lastEpisodes     = lastEpisodesUpdated, 
-    lastEpisodesUrls = lastEpisodesUrlsUpdated, 
-    broadcasts       = animeBroadcasts
+    names            = anime_names,
+    seasons          = anime_seasons,
+    urls             = animesUrls,
+    my_episodes       = my_episodes,
+    last_episodes     = last_episodesUpdated,
+    last_episodesUrls = last_episodesUrlsUpdated,
+    broadcasts       = anime_broadcasts
 )
 
 end = time()

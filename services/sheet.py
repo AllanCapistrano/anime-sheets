@@ -52,10 +52,10 @@ class Sheet:
             list
         """
 
-        animeNames = self.sheet.col_values(COL_NUMBER_ANIME_NAME)
-        animeNames.pop(0)
+        anime_names = self.sheet.col_values(COL_NUMBER_ANIME_NAME)
+        anime_names.pop(0)
 
-        return animeNames
+        return anime_names
 
     def get_anime_seasons(self) -> list:
         """Retorna uma lista com os números das temporadas dos animes que estão 
@@ -65,10 +65,10 @@ class Sheet:
             list
         """
 
-        animeSeasons = self.sheet.col_values(COL_NUMBER_SEASON)
-        animeSeasons.pop(0)
+        anime_seasons = self.sheet.col_values(COL_NUMBER_SEASON)
+        anime_seasons.pop(0)
 
-        return animeSeasons
+        return anime_seasons
 
     def get_anime_urls(self) -> list:
         """Retorna uma lista com as URL dos animes que estão na planilha.
@@ -77,10 +77,10 @@ class Sheet:
             list
         """
 
-        animeUrls = self.sheet.col_values(COL_NUMBER_URL)
-        animeUrls.pop(0)
+        anime_urls = self.sheet.col_values(COL_NUMBER_URL)
+        anime_urls.pop(0)
 
-        return animeUrls
+        return anime_urls
 
     def get_my_episodes(self) -> list:
         """Retorna uma lista com os episódios que parei dos animes que estão na 
@@ -90,10 +90,10 @@ class Sheet:
             list
         """
 
-        myEpisodes = self.sheet.col_values(COL_NUMBER_MY_EPISODES)
-        myEpisodes.pop(0)
+        my_episodes = self.sheet.col_values(COL_NUMBER_MY_EPISODES)
+        my_episodes.pop(0)
 
-        return myEpisodes
+        return my_episodes
 
     def get_last_episodes(self) -> list:
         """Retorna uma lista com o número do último episódio lançado dos animes 
@@ -103,10 +103,10 @@ class Sheet:
             list
         """
 
-        lastEpisodes = self.sheet.col_values(COL_NUMBER_LAST_EPISODE)
-        lastEpisodes.pop(0)
+        last_episodes = self.sheet.col_values(COL_NUMBER_LAST_EPISODE)
+        last_episodes.pop(0)
 
-        return lastEpisodes
+        return last_episodes
 
     def get_anime_broadcasts(self) -> list:
         """Retorna uma lista com os dias de lançamentos dos animes que estão na 
@@ -116,10 +116,10 @@ class Sheet:
             list
         """
 
-        animeBroadcasts = self.sheet.col_values(COL_NUMBER_BROADCAST)
-        animeBroadcasts.pop(0)
+        anime_broadcasts = self.sheet.col_values(COL_NUMBER_BROADCAST)
+        anime_broadcasts.pop(0)
 
-        return animeBroadcasts
+        return anime_broadcasts
 
     def set_last_episode(self, index: int, value: str) -> None:
         """Altera na planilha o número do último episódio lançado.
@@ -161,7 +161,7 @@ class Sheet:
     def change_cell_background_color(
         self, 
         myEpisode: float,
-        lastEpisode: float, 
+        last_episode: float, 
         pos: int
     ) -> None:
         """Altera a cor de fundo da célula de acordo com o último episódio 
@@ -169,11 +169,11 @@ class Sheet:
 
         Args:
             myEpisode (float): Último episódio assistido.
-            lastEpisode (float): Último episódio lançado.
+            last_episode (float): Último episódio lançado.
             pos (int): Posição na planilha da URL do último episódio lançado.
         """
 
-        if (myEpisode < lastEpisode):
+        if (myEpisode < last_episode):
             self.set_cell_background_color(COL_NAME_LAST_EPISODE, pos + 2, COLOR_NOT_OK)
         else:
             self.set_cell_background_color(COL_NAME_LAST_EPISODE, pos + 2, COLOR_OK)

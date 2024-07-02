@@ -25,11 +25,11 @@ class CrawlerBakashiTv(Crawler, CrawlerInterface):
         soup = self.req_webpage(url=url)
 
         episodes                   = soup.find_all('div', class_=EPISODE_CLASS)
-        lastEpisodeAnchor          = episodes[-1].contents[0]
-        lastEpisodeNumber          = lastEpisodeAnchor.contents[0]
-        lastEpisodeNumberSanitized = search(r'\d+', lastEpisodeNumber).group()
+        last_episode_anchor          = episodes[-1].contents[0]
+        last_episode_number          = last_episode_anchor.contents[0]
+        last_episode_number_sanitized = search(r'\d+', last_episode_number).group()
 
-        return lastEpisodeNumberSanitized
+        return last_episode_number_sanitized
 
     def get_last_episode_url(self, url: str) -> str:
         """Função responsável por retornar a url do último episódio do anime.
@@ -44,7 +44,7 @@ class CrawlerBakashiTv(Crawler, CrawlerInterface):
         soup = self.req_webpage(url=url)
 
         episodes          = soup.find_all('div', class_=EPISODE_CLASS)
-        lastEpisodeAnchor = episodes[-1].contents[0]
-        lastEpisodeUrl    = lastEpisodeAnchor.attrs["href"]
+        last_episode_anchor = episodes[-1].contents[0]
+        last_episode_url    = last_episode_anchor.attrs["href"]
 
-        return lastEpisodeUrl
+        return last_episode_url

@@ -24,9 +24,9 @@ def shorten_url(url: str) -> str:
 
     if (BITLY_TOKEN != ""):
         try:
-            bitlyShorten = pyshorteners.Shortener(api_key=BITLY_TOKEN)
+            bitly_shorten = pyshorteners.Shortener(api_key=BITLY_TOKEN)
 
-            return bitlyShorten.bitly.short(url)
+            return bitly_shorten.bitly.short(url)
         except ValueError as ve:
             raise ValueError("Erro! Token de acesso inválido.") from ve
 
