@@ -1,4 +1,4 @@
-from subprocess import run
+from subprocess import run, CalledProcessError
 
 # ------------------------------ Constants ----------------------------------- #
 DIRECTORY_PATH = "web"
@@ -17,8 +17,8 @@ def get_webpage(url: str, webpage_name: str = "index.html") -> None:
     command = ["curl", "--silent", url, "-o", webpage_name]
 
     try:
-        run(command)
-    except:
+        run(command, check=False)
+    except CalledProcessError:
         print(f"Error trying to get '{url}'.")
         exit()
 
@@ -34,7 +34,7 @@ def delete_webpage(webpage_name: str = "index.html") -> None:
     command = ["rm", webpage_name]
 
     try:
-        run(command)
-    except:
+        run(command, check=False)
+    except CalledProcessError:
         print(f"Error trying to remove '{webpage_name}'.")
         exit()
