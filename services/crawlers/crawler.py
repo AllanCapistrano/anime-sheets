@@ -48,6 +48,6 @@ class Crawler:
 
         file = open(webpage_name, encoding="utf8")
         soup = BeautifulSoup(file, 'html.parser')
-        file.close
+        file.close()
 
         return soup
