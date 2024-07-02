@@ -1,4 +1,4 @@
-from subprocess import run, CalledProcessError
+from subprocess import run, CalledProcessError, PIPE
 
 # ------------------------------ Constants ----------------------------------- #
 DIRECTORY_PATH = "web"
@@ -37,4 +37,25 @@ def delete_webpage(webpage_name: str = "index.html") -> None:
         run(command, check=False)
     except CalledProcessError:
         print(f"Error trying to remove '{webpage_name}'.")
+        exit()
+
+def list_webpages() -> list:
+    """Lista quais são as páginas web baixadas.
+
+    Returns:
+        list
+    """
+
+    command = ["ls", "./web"]
+
+    try:
+        result = run(command, stdout=PIPE, stderr=PIPE, text=True, check=True)
+
+        webpages = result.stdout.split("\n")
+        
+        webpages_filtered = [line for line in webpages if line.strip()]
+
+        return webpages_filtered
+    except CalledProcessError:
+        print("Error trying to list the web pages'.")
         exit()
