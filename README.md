@@ -31,7 +31,7 @@
 ## 🖥️ Como utilizar
 
 > [!IMPORTANT]  
-> A partri da versão [v1.2.0](https://github.com/AllanCapistrano/anime-sheets/tree/v1.2.0) é necessário a instalação da ferramenta [curl](https://curl.se/download.html), então garanta que você possui a mesma instalada em sua máquina.
+> A partir da versão [v1.2.0](https://github.com/AllanCapistrano/anime-sheets/tree/v1.2.0) é necessário a instalação da ferramenta [curl](https://curl.se/download.html), então garanta que você possui a mesma instalada em sua máquina.
 > Caso esteja utilizando o Sistema Operacional *Windows*, recomendamos o uso do [Git For Windows](https://gitforwindows.org/), nele o [curl](https://curl.se/download.html) já vem instalado por padrão, além de garantir o funcionamento correto do projeto.
 
 
