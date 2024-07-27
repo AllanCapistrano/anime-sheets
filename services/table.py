@@ -2,6 +2,7 @@ from rich.console import Console
 from rich.table import Table as RichTable
 from rich.progress import track
 from rich.errors import NotRenderableError
+from pyshorteners.exceptions import ShorteningErrorException
 
 from .shortUrl import shorten_url
 
@@ -15,6 +16,7 @@ class Table:
 
         self.console = Console()
         self.table = RichTable(show_lines=True)
+        self.__error_occurred__ = False
         self.__create_table__()
 
     def __create_table__(self) -> None:
@@ -74,14 +76,20 @@ class Table:
                         broadcasts[i],
                     )
             except NotRenderableError as nre:
+                self.__error_occurred__ = True
                 print()
                 self.console.print(nre, style="bold red")
 
                 exit()
+            except ShorteningErrorException as sre:
+                self.__error_occurred__ = True
+                self.console.print("O limite de encurtamentos da Bitly foi alcançado.\n", style="bold red")
+
 
     def show_table(self) -> None:
         """ Exibe a tabela no terminal.
         """
 
-        print()
-        self.console.print(self.table)
+        if (not self.__error_occurred__):
+            print()
+            self.console.print(self.table)
